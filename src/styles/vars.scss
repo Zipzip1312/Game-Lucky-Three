@@ -1,3 +1,4 @@
+@import './fonts.scss';
 /*==================================================================================
   PALETTE
 ==================================================================================*/
@@ -21,7 +22,7 @@ $base-size-mobile: $base-size * 2.2; // scaling multiplicator for mobile viewpor
 $body-fontsize: 1rem;
 $body-fontsize-mobile: 1.3rem;
 $body-fontweight: 400;
-$body-font-family: 'Arial', sans-serif;
+$body-font-family: 'Noteworthy Light';
 $body-lineheight: 1.3;
 /*==================================================================================
   TRANSITIONS
