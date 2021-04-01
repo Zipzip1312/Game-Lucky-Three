@@ -1,19 +1,35 @@
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import WelcomeScreen from 'components/screens/WelcomeScreen'
+import RulesScreen from 'components/screens/RulesScreen'
+import FormScreen from 'components/screens/FormScreen'
+import InviteScreen from 'components/screens/InviteScreen'
+import GameScreen from 'components/screens/GameScreen'
+import ScoreScreen from 'components/screens/ScoreScreen'
+
 function App() {
+  const screen = useSelector((state) => state.game.screen)
+  console.log(screen)
+
   return (
-    <div className="app">
-      <h1>Грай та вигравай!</h1>
-      <h3>Призовий фонд: 20 млн грн</h3>
-      <h2>Вперед за перемогою!</h2>
-      <em>правила</em>
-      <p class="text-center">
-        хочемо знати трішки
-        <br />
-        більше про тебе ;)
-      </p>
-      <h2 class="orange">Стать?</h2>
-      <h2 class="orange">Вік?</h2>
-      <h2>+5</h2>
-    </div>
+    <Router>
+      <div className="app">
+        <Switch>
+          <Route exact path="/" component={WelcomeScreen} />
+          <Route path="/rules" component={RulesScreen} />
+          <Route path="/form" component={FormScreen} />
+          <Route path="/invite" component={InviteScreen} />
+          <Route path="/game" component={GameScreen} />
+          <Route path="/score" component={ScoreScreen} />
+          <Redirect to="/" />
+        </Switch>
+      </div>
+    </Router>
   )
 }
 

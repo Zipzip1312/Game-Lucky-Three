@@ -4,7 +4,7 @@ import middleware from 'redux/middleware'
 
 export default configureStore({
   reducer: {
-    app: reducer
+    game: reducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(middleware)

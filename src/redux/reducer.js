@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 export const slice = createSlice({
-  name: 'app',
+  name: 'game',
   initialState: {
+    screen: 'score',
     data: undefined
   },
   reducers: {
