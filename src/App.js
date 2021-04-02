@@ -13,7 +13,14 @@ function App() {
   const dispatch = useDispatch()
   return (
     <div className="app">
-      <div style={{ display: 'flex' }}>
+      <div
+        style={{
+          display: 'flex',
+          marginBottom: '1rem',
+          width: 250,
+          justifyContent: 'space-around'
+        }}
+      >
         <button onClick={() => dispatch(prevScreen())}>Go BACK</button>
         <button onClick={() => dispatch(nextScreen())}>Go NEXT</button>
       </div>

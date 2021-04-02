@@ -1,0 +1,31 @@
+@import './vars.scss';
+@import './mixins.scss';
+
+.card {
+  position: relative;
+  width: 70vw;
+  max-width: 560px;
+  min-height: 9rem;
+  background: url(../images/high-card.svg) no-repeat center;
+  background-size: cover;
+  padding: 0.25rem 0.5rem;
+  color: $white;
+  outline: 2px dashed $white;
+
+  &-image {
+    position: absolute;
+    left: -1.5rem;
+    top: -1.75rem;
+    width: 55%;
+  }
+
+  &-info {
+    justify-content: space-around;
+    &-card {
+      background: url(../images/holder-lg.svg) no-repeat center;
+      background-size: cover;
+      padding: 0.6rem 1rem;
+      line-height: 0.6;
+    }
+  }
+}

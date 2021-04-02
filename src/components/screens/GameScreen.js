@@ -6,7 +6,7 @@ export default function GameScreen() {
   if (played) return <Redirect to="/score" />
 
   return (
-    <div>
+    <div className="card">
       <h1>Game Screen</h1>
       <button onClick={() => setPlayed(true)}>PLAY</button>
     </div>

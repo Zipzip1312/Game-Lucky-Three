@@ -1,6 +1,6 @@
 export default function RulesScreen() {
   return (
-    <div>
+    <div className="card">
       <h1>Rules Screen</h1>
     </div>
   )

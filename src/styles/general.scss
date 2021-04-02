@@ -7,14 +7,10 @@ html {
   overflow-x: hidden;
   margin: 0;
   padding: 0;
-  font-size: $base-size; // only used for rem-handling, the actual font-size is $body-fontsize
-  @include vpw_min($scaling-endpoint) {
-    font-size: $scaling-endpoint / 100 * stripunit($base-size);
+  font-size: $base-size;
+  @include vpw_min($breakpoint) {
+    font-size: $breakpoint / 100 * stripunit($base-size);
   }
-  @include mobile {
-    font-size: $base-size-mobile;
-  }
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -25,7 +21,4 @@ body {
   font-size: $body-fontsize;
   font-weight: $body-fontweight;
   line-height: $body-lineheight;
-  @include mobile {
-    font-size: $body-fontsize-mobile;
-  }
 }
