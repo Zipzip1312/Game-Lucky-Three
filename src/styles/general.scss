@@ -11,9 +11,6 @@ html {
   @include vpw_min($scaling-endpoint) {
     font-size: $scaling-endpoint / 100 * stripunit($base-size);
   }
-  @include mobile {
-    font-size: $base-size-mobile;
-  }
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -25,7 +22,4 @@ body {
   font-size: $body-fontsize;
   font-weight: $body-fontweight;
   line-height: $body-lineheight;
-  @include mobile {
-    font-size: $body-fontsize-mobile;
-  }
 }
