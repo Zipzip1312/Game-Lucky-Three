@@ -8,6 +8,11 @@ import InviteScreen from 'components/screens/InviteScreen'
 import GameScreen from 'components/screens/GameScreen'
 import ScoreScreen from 'components/screens/ScoreScreen'
 import NavButtons from 'components/NavButtons'
+// ------------------------------------------------------------------------
+import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import history from './history'
+// ------------------------------------------------------------------------
 
 const routes = [
   { path: ['/', '/welcome'], name: 'Welcome', Component: WelcomeScreen },
@@ -19,6 +24,12 @@ const routes = [
 ]
 
 function App() {
+  // ------------------------------------------------------------------------
+  const activeScreen = useSelector((state) => state.game.activeScreen)
+  useEffect(() => {
+    history.push(activeScreen)
+  }, [activeScreen])
+  // ------------------------------------------------------------------------
   const refs = {
     Welcome: useRef(null),
     Rules: useRef(null),

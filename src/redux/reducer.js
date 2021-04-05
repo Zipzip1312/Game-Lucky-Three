@@ -4,7 +4,7 @@ export const slice = createSlice({
   name: 'game',
   initialState: {
     screens: ['welcome', 'rules', 'form', 'game', 'score'],
-    activeScreen: 'rules',
+    activeScreen: 'form',
     data: undefined
   },
   reducers: {

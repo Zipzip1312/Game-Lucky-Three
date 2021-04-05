@@ -49,13 +49,10 @@
     font-weight: 700;
     letter-spacing: 0.1rem;
     padding-bottom: 0.5rem;
-    background: -webkit-linear-gradient($orange, $yellow);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    @include text-gradient;
     > img {
       width: 2rem;
-      margin-right: 0.5rem;
+      margin-right: 1rem;
       align-self: flex-end;
     }
   }
@@ -100,6 +97,19 @@
     &.back {
       transform: rotate(-180deg);
       margin-top: -0.2rem;
+    }
+  }
+}
+
+.form {
+  flex-direction: column;
+  &-control {
+    margin-top: 0.75rem;
+  }
+  .label {
+    @include text-gradient;
+    &-small {
+      font-size: 1.05rem;
     }
   }
 }
