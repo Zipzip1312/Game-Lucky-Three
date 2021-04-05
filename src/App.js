@@ -1,7 +1,5 @@
 import { useRef } from 'react'
 import { Route, Redirect } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { nextScreen, prevScreen } from 'redux/reducer'
 import { CSSTransition } from 'react-transition-group'
 import WelcomeScreen from 'components/screens/WelcomeScreen'
 import RulesScreen from 'components/screens/RulesScreen'
@@ -9,6 +7,7 @@ import FormScreen from 'components/screens/FormScreen'
 import InviteScreen from 'components/screens/InviteScreen'
 import GameScreen from 'components/screens/GameScreen'
 import ScoreScreen from 'components/screens/ScoreScreen'
+import NavButtons from 'components/NavButtons'
 
 const routes = [
   { path: ['/', '/welcome'], name: 'Welcome', Component: WelcomeScreen },
@@ -28,13 +27,10 @@ function App() {
     Game: useRef(null),
     Score: useRef(null)
   }
-  const dispatch = useDispatch()
+
   return (
     <div className="app">
-      <div className="control-buttons">
-        <button onClick={() => dispatch(prevScreen())}>Go BACK</button>
-        <button onClick={() => dispatch(nextScreen())}>Go NEXT</button>
-      </div>
+      <div className="control-buttons"></div>
       {routes.map(({ path, name, Component }) => (
         <Route key={path} exact path={path}>
           {({ match }) => (
@@ -47,6 +43,7 @@ function App() {
             >
               <div className="screen" ref={refs[name]}>
                 <Component />
+                <NavButtons />
               </div>
             </CSSTransition>
           )}

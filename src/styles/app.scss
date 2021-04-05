@@ -4,16 +4,3 @@
 @import './general.scss';
 @import './ui.scss';
 @import './screens.scss';
-
-.app {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: url(../images/design.jpg) no-repeat center top;
-  background-size: cover;
-  .logo {
-    width: 20rem;
-  }
-}

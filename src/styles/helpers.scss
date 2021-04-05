@@ -33,6 +33,11 @@
 .small {
   font-size: 0.7rem;
 }
+.svg-bg {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
 .flex-center {
   display: flex;
   justify-content: center;
