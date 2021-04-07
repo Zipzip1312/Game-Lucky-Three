@@ -31,6 +31,7 @@
 
   &-info {
     justify-content: space-around;
+    line-height: 1.3;
     &-card {
       background: url(../images/holder-lg.svg) no-repeat center;
       background-size: cover;
@@ -55,6 +56,10 @@
       margin-right: 1rem;
       align-self: flex-end;
     }
+  }
+
+  &-title-right {
+    padding-left: 50%;
   }
 
   .stars {
@@ -132,30 +137,39 @@
       height: 0.7rem;
     }
   }
-  .social-links {
-    .link {
-      width: 1.8rem;
-      height: 1.6rem;
-      margin: 0 0.3rem;
+}
 
-      &.viber {
-        background-image: url(../images/viber.svg);
-        &.active {
-          background-image: url(../images/viber-active.svg);
-        }
+.social-links {
+  .link {
+    width: 1.8rem;
+    height: 1.6rem;
+    margin: 0 0.3rem;
+
+    &.viber {
+      background-image: url(../images/viber.svg);
+      &.active {
+        background-image: url(../images/viber-active.svg);
       }
-      &.messenger {
-        background-image: url(../images/messenger.svg);
-        &.active {
-          background-image: url(../images/messenger-active.svg);
-        }
+    }
+    &.messenger {
+      background-image: url(../images/messenger.svg);
+      &.active {
+        background-image: url(../images/messenger-active.svg);
       }
-      &.telegram {
-        background-image: url(../images/telegram.svg);
-        &.active {
-          background-image: url(../images/telegram-active.svg);
-        }
+    }
+    &.telegram {
+      background-image: url(../images/telegram.svg);
+      &.active {
+        background-image: url(../images/telegram-active.svg);
       }
     }
   }
+}
+
+.invites-counter {
+  width: 3rem;
+  height: 2.6rem;
+  color: $blue;
+  background-image: url(../images/holder.svg);
+  margin: 0 1rem;
 }

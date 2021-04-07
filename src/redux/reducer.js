@@ -3,8 +3,8 @@ import { createSlice } from '@reduxjs/toolkit'
 export const slice = createSlice({
   name: 'game',
   initialState: {
-    screens: ['welcome', 'rules', 'form', 'game', 'score'],
-    activeScreen: 'form',
+    screens: ['welcome', 'rules', 'form', 'invite', 'game', 'score'],
+    activeScreen: 'game',
     data: undefined
   },
   reducers: {
