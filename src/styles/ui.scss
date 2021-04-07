@@ -7,7 +7,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: url(../images/design.jpg) no-repeat center -590px, $blue;
+  background: url(../images/design.jpg) no-repeat center -840px, $blue;
   background-size: cover;
 }
 
@@ -104,12 +104,58 @@
 .form {
   flex-direction: column;
   &-control {
+    @extend .flex-center;
     margin-top: 0.75rem;
   }
   .label {
     @include text-gradient;
-    &-small {
-      font-size: 1.05rem;
+    font-size: 1rem;
+    font-weight: 700;
+    padding-bottom: 0.3rem;
+    &:not(:last-child) {
+      margin-right: 0.5rem;
+    }
+  }
+  .checkbox {
+    width: 1.8rem;
+    height: 1.4rem;
+    color: $blue;
+    font-size: 0.5rem;
+    font-weight: 700;
+    margin: 0 0.11rem;
+    cursor: pointer;
+    background-image: url(../images/holder.svg);
+    &.active {
+      background-image: url(../images/holder-active.svg);
+    }
+    > span {
+      height: 0.7rem;
+    }
+  }
+  .social-links {
+    .link {
+      width: 1.8rem;
+      height: 1.6rem;
+      margin: 0 0.3rem;
+
+      &.viber {
+        background-image: url(../images/viber.svg);
+        &.active {
+          background-image: url(../images/viber-active.svg);
+        }
+      }
+      &.messenger {
+        background-image: url(../images/messenger.svg);
+        &.active {
+          background-image: url(../images/messenger-active.svg);
+        }
+      }
+      &.telegram {
+        background-image: url(../images/telegram.svg);
+        &.active {
+          background-image: url(../images/telegram-active.svg);
+        }
+      }
     }
   }
 }
