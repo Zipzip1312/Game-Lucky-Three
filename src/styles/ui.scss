@@ -19,7 +19,6 @@
   background-image: url(../images/card.svg);
   padding: 0.5rem 0.5rem 1rem;
   color: $white;
-  box-sizing: border-box;
   outline: 2px dashed $white;
 
   &-image {
@@ -41,19 +40,20 @@
   }
 
   &-title {
-    height: 2rem;
+    height: 2.6rem;
     font-size: 1.8rem;
     display: flex;
     align-items: baseline;
     justify-content: center;
+    margin-top: 0.5rem;
     color: $orange;
     font-weight: 700;
     letter-spacing: 0.1rem;
-    padding-bottom: 0.5rem;
     @include text-gradient;
     > img {
       width: 2rem;
-      margin-right: 1rem;
+      margin-right: 0.6rem;
+      margin-bottom: 0.5rem;
       align-self: flex-end;
     }
   }
@@ -146,19 +146,22 @@
     margin: 0 0.3rem;
 
     &.viber {
-      background-image: url(../images/viber.svg);
+      background-image: url(../images/viber.svg),
+        url(../images/viber-active.svg);
       &.active {
         background-image: url(../images/viber-active.svg);
       }
     }
     &.messenger {
-      background-image: url(../images/messenger.svg);
+      background-image: url(../images/messenger.svg),
+        url(../images/messenger-active.svg);
       &.active {
         background-image: url(../images/messenger-active.svg);
       }
     }
     &.telegram {
-      background-image: url(../images/telegram.svg);
+      background-image: url(../images/telegram.svg),
+        url(../images/telegram-active.svg);
       &.active {
         background-image: url(../images/telegram-active.svg);
       }
@@ -166,10 +169,23 @@
   }
 }
 
-.invites-counter {
-  width: 3rem;
-  height: 2.6rem;
-  color: $blue;
-  background-image: url(../images/holder.svg);
-  margin: 0 1rem;
+.form-submit {
+  text-align: center;
+  font-weight: 700;
+  &.invite {
+    width: 7rem;
+    height: 3rem;
+    font-size: 0.8rem;
+    color: $blue;
+    background-image: url(../images/holder.svg);
+    padding: 0.5rem 0.25rem 1rem;
+    transition: all 0.5s ease;
+
+    .done,
+    .active {
+      @extend .flex-center;
+      height: 3rem;
+      margin-top: -0.6rem;
+    }
+  }
 }

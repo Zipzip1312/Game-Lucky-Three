@@ -18,6 +18,10 @@ export default function Form() {
     '60+': 'за 60'
   }
   const activeAge = '40-50'
+
+  const setSocialMedia = (link) => {
+    console.log(`Selected: ${link}`)
+  }
   // ---------------------------------------
   return (
     <div className="form flex-center">
@@ -36,7 +40,7 @@ export default function Form() {
       <div className="form-control">
         <span className="label">Де з тобою краще спілкуватись?</span>
       </div>
-      <SocialLinks />
+      <SocialLinks onClick={(link) => setSocialMedia(link)} />
     </div>
   )
 }
