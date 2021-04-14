@@ -1,23 +1,26 @@
-import { useState } from 'react'
 import { Redirect } from 'react-router-dom'
-import shuffle from 'lodash.shuffle'
-import Game from 'components/Game'
 import { useSelector, useDispatch } from 'react-redux'
-import { toggleGame } from 'redux/reducer'
+import { toggleGame, shuffleScore } from 'redux/reducer'
+import Game from 'components/Game'
 
 export default function GameScreen() {
   const gameStarted = useSelector((state) => state.game.gameStarted)
   const finishedPlaying = useSelector((state) => state.game.finishedPlaying)
-  const scores = useSelector((state) => state.game.scores)
   const dispatch = useDispatch()
   // ------------------------------
-  const [indexes, setIndexes] = useState([...scores.map((_, i) => i)])
-  const shuffleIndexes = () => {
+  const shuffle = () => {
     dispatch(toggleGame())
-    setIndexes(shuffle(indexes))
-    setTimeout(() => {
-      dispatch(toggleGame())
-    }, 2000)
+    dispatch(shuffleScore())
+    const duration = 1500
+    const shuffling = setInterval(() => {
+      dispatch(shuffleScore())
+    }, duration)
+    setTimeout(clearInterval, duration * 3, shuffling)
+  }
+  // ------------------------------
+  const onShuffleCompleted = () => {
+    dispatch(toggleGame())
+    console.log('shuffleCompleted')
   }
   // ------------------------------
   if (finishedPlaying) return <Redirect to="/score" />
@@ -28,9 +31,9 @@ export default function GameScreen() {
         className="game-start-btn"
         type="button"
         disabled={gameStarted}
-        onClick={shuffleIndexes}
+        onClick={shuffle}
       ></button>
-      <Game scores={scores} indexes={indexes} />
+      <Game seal={!gameStarted} onShuffleCompleted={onShuffleCompleted} />
     </div>
   )
 }

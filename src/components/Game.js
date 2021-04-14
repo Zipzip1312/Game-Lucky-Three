@@ -1,49 +1,44 @@
-import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Flipper, Flipped } from 'react-flip-toolkit'
 import ScoreCard from 'components/ScoreCard'
 
-const Game = ({ scores, indexes }) => {
-  const [started, setStarted] = useState(true)
+const Game = ({ seal, onShuffleCompleted }) => {
+  const scores = useSelector((state) => state.game.scores)
+  const indexes = useSelector((state) => state.game.indexes)
+  const sealStatus = (index) => seal
+  const getValue = (index) => scores[index]
   // ------------------------------
   // Set current score
   // ------------------------------
-  const currentScore = useSelector((state) => state.game.currentScore)
-  const scoreResults = {}
-  for (let i = 0; i < currentScore.length; i++) {
-    const { index, score } = currentScore[i]
-    scoreResults[index] = score
-  }
-  const isSealed = (index) => {
-    return scoreResults.hasOwnProperty(index) ? false : started
-  }
-  const getValue = (index) => {
-    return scoreResults.hasOwnProperty(index)
-      ? scoreResults[index]
-      : scores[index]
-  }
+  // const currentScore = useSelector((state) => state.game.currentScore)
+  // const scoreResults = {}
+  // for (let i = 0; i < currentScore.length; i++) {
+  //   const { index, score } = currentScore[i]
+  //   scoreResults[index] = score
+  // }
+  // // ------------------------------
+  // const sealStatus = (index) =>
+  // scoreResults.hasOwnProperty(index) ? false : seal
+  // const getValue = (index) =>
+  // scoreResults.hasOwnProperty(index) ? scoreResults[index] : scores[index]
   // ------------------------------
 
   return (
-    <Flipper
-      flipKey={JSON.stringify(indexes)}
-      onStart={() => setStarted(true)}
-      onComplete={() => setStarted(false)}
-    >
+    <Flipper flipKey={JSON.stringify(indexes)} onComplete={onShuffleCompleted}>
       <div className="game-lobby">
-        {indexes.map((_, index) => (
+        {indexes.map((index, i) => (
           <Flipped
             key={index}
-            flipId={indexes[index]}
+            flipId={index}
             stagger="none"
             spring={{ stiffness: 300, damping: 30 }}
           >
             {(flippedProps) => (
               <ScoreCard
                 value={getValue(index)}
-                sealed={isSealed(index)}
+                sealed={sealStatus(index)}
                 flippedProps={flippedProps}
-                index={index}
+                index={i}
               />
             )}
           </Flipped>
