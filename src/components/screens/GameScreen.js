@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleGame, shuffleScore } from 'redux/reducer'
@@ -6,24 +7,35 @@ import Game from 'components/Game'
 export default function GameScreen() {
   const gameStarted = useSelector((state) => state.game.gameStarted)
   const finishedPlaying = useSelector((state) => state.game.finishedPlaying)
+  const shuffleDuration = useSelector((state) => state.game.shuffleDuration)
+  const timesToShuffle = useSelector((state) => state.game.timesToShuffle)
   const dispatch = useDispatch()
   // ------------------------------
   const shuffle = () => {
-    dispatch(toggleGame())
-    dispatch(shuffleScore())
-    const duration = 1500
-    const shuffling = setInterval(() => {
+    dispatch(toggleGame(true))
+    setTimeout(() => {
       dispatch(shuffleScore())
-    }, duration)
-    setTimeout(clearInterval, duration * 3, shuffling)
+      const shuffling = setInterval(dispatch, shuffleDuration, shuffleScore())
+
+      setTimeout(
+        clearInterval,
+        shuffleDuration * (timesToShuffle - 1),
+        shuffling
+      )
+    }, 1000)
   }
   // ------------------------------
   const onShuffleCompleted = () => {
-    dispatch(toggleGame())
+    dispatch(toggleGame(false))
     console.log('shuffleCompleted')
   }
   // ------------------------------
-  if (finishedPlaying) return <Redirect to="/score" />
+  useEffect(() => {
+    if (finishedPlaying) {
+      console.log('Finished Playing')
+    }
+  }, [finishedPlaying, dispatch])
+  // ------------------------------
 
   return (
     <div className="game">
@@ -33,7 +45,7 @@ export default function GameScreen() {
         disabled={gameStarted}
         onClick={shuffle}
       ></button>
-      <Game seal={!gameStarted} onShuffleCompleted={onShuffleCompleted} />
+      <Game onShuffleCompleted={onShuffleCompleted} />
     </div>
   )
 }

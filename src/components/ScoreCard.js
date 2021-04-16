@@ -1,38 +1,51 @@
 import { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { makePick } from 'redux/reducer'
 
-export default function ScoreCard({ value, sealed, flippedProps, index }) {
+export default function ScoreCard({ value, flippedProps, cardIndex }) {
   const dispatch = useDispatch()
   const [score, setScore] = useState(value)
-  const [isSealed, setIsSealed] = useState(sealed)
-  const [showScore, setShowScore] = useState(!isSealed)
-  const select = async (index) => {
-    if (isSealed) {
-      const pickScore = await dispatch(makePick(index))
-      console.log('pickScore', pickScore)
-      setScore(pickScore)
-      setIsSealed(!isSealed)
-    }
+  const [showScore, setShowScore] = useState(true)
+  const [status, setStatus] = useState('opened')
+
+  const select = async (cardIndex) => {
+    const pickScore = await dispatch(makePick(cardIndex))
+    console.log('pickScore', pickScore)
+    setShowScore(true)
+    setScore(pickScore)
+    setStatus('opened')
   }
+  // -----------------------------
+  const gameStarted = useSelector((state) => state.game.gameStarted)
+  const wonIndexes = useSelector((state) => state.game.wonIndexes)
+  const finishedPlaying = useSelector((state) => state.game.finishedPlaying)
+  const picksEnabled = useSelector((state) => state.game.picksEnabled)
 
   useEffect(() => {
-    const timeout = isSealed ? 500 : 0
-    const timer = setTimeout(() => {
-      setShowScore(!isSealed)
-    }, timeout)
-    return () => {
-      clearTimeout(timer)
+    if (gameStarted) {
+      setStatus('sealed')
+      setTimeout(setShowScore, 1000, false)
     }
-  }, [isSealed])
+  }, [gameStarted])
+
+  useEffect(() => {
+    if (finishedPlaying) {
+      setShowScore(true)
+      if (wonIndexes.includes(cardIndex)) {
+        setStatus('opened')
+      } else {
+        setTimeout(setStatus, Math.random() * (1000 - 300) + 300, 'disabled')
+      }
+    }
+  }, [finishedPlaying, wonIndexes, cardIndex])
+  // -----------------------------
 
   return (
     <div
-      className={`score flex-center flex-column ${
-        isSealed ? 'sealed' : 'opened'
-      }`}
+      className={`score flex-center flex-column ${status}`}
       {...flippedProps}
-      onClick={() => select(index)}
+      onClick={() => picksEnabled && !finishedPlaying && select(cardIndex)}
     >
       <span className="seal"></span>
       <span className="coin"></span>

@@ -7,19 +7,21 @@ export const slice = createSlice({
   name: 'game',
   initialState: {
     player: '',
-    picks: 3,
+    score: 0,
+    picksAvailable: 3,
+    picksEnabled: false,
     screens: ['welcome', 'rules', 'form', 'invite', 'game', 'score'],
     activeScreen: 'game',
     gameStarted: false,
+    shuffleDuration: 1500,
+    timesToShuffle: 1,
     finishedPlaying: false,
     scores: [1000, 500, 250, 250, 100, 100, 50, 50, 25, 25, 10, 10, 0, 0, 0, 0],
     indexes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
-    currentScore: []
-    // currentScore: [
-    //   { index: 2, score: 1000 },
-    //   { index: 10, score: 25 },
-    //   { index: 8, score: 0 }
-    // ]
+    currentScore: [],
+    wonIndexes: [],
+    gameResults: [],
+    resettable: true
   },
   reducers: {
     setPlayer: (state, { payload }) => {
@@ -40,18 +42,39 @@ export const slice = createSlice({
         state.activeScreen = state.screens[activeScreenIdx - 1]
       }
     },
-    toggleGame: (state) => {
-      state.gameStarted = !state.gameStarted
+    toggleGame: (state, { payload }) => {
+      state.gameStarted = payload
+      state.picksEnabled = !payload
+      if (payload && state.resettable) {
+        state.finishedPlaying = false
+        state.currentScore = []
+        state.wonIndexes = []
+      }
     },
     shuffleScore: (state) => {
       state.scores = shuffle(state.scores)
       state.indexes = shuffle(state.indexes)
     },
+    disablePicks: (state) => {
+      state.picksEnabled = false
+    },
     updateCurrentScore: (state, { payload }) => {
       state.currentScore.push(payload)
-      // if (state.currentScore.length === state.picks) {
-      //   state.finishedPlaying = true
-      // }
+      state.wonIndexes.push(payload.index)
+      state.score += payload.score
+      state.picksEnabled = state.currentScore.length < state.picksAvailable
+
+      if (state.currentScore.length === state.picksAvailable) {
+        state.finishedPlaying = true
+        state.picksEnabled = false
+        // Set game results
+        for (let i = 0; i < state.scores.length; i++) {
+          state.gameResults.push({
+            score: state.scores[i],
+            won: state.wonIndexes.includes(i)
+          })
+        }
+      }
     }
   }
 })
@@ -63,7 +86,8 @@ export const {
   prevScreen,
   toggleGame,
   shuffleScore,
-  updateCurrentScore
+  updateCurrentScore,
+  disablePicks
 } = slice.actions
 
 export default slice.reducer
@@ -72,7 +96,7 @@ export function registerPlayer() {
   return async (dispatch) => {
     await sleep(500)
     const response = {
-      verification: 'CoIenJl'
+      verification: 'Player'
     }
     dispatch(setPlayer(response.verification))
   }
@@ -80,9 +104,11 @@ export function registerPlayer() {
 
 export function makePick(index) {
   return async (dispatch, getState) => {
+    dispatch(disablePicks())
     await sleep(300)
     const score = getState().game.scores[index]
     dispatch(updateCurrentScore({ index, score }))
+
     return score
   }
 }
