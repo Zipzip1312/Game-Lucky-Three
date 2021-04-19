@@ -8,20 +8,13 @@ export default function ScoreCard({ value, flippedProps, cardIndex }) {
   const [score, setScore] = useState(value)
   const [showScore, setShowScore] = useState(true)
   const [status, setStatus] = useState('opened')
-
-  const select = async (cardIndex) => {
-    const pickScore = await dispatch(makePick(cardIndex))
-    console.log('pickScore', pickScore)
-    setShowScore(true)
-    setScore(pickScore)
-    setStatus('opened')
-  }
   // -----------------------------
   const gameStarted = useSelector((state) => state.game.gameStarted)
   const wonIndexes = useSelector((state) => state.game.wonIndexes)
   const finishedPlaying = useSelector((state) => state.game.finishedPlaying)
   const picksEnabled = useSelector((state) => state.game.picksEnabled)
-
+  const scores = useSelector((state) => state.game.scores)
+  // -----------------------------
   useEffect(() => {
     if (gameStarted) {
       setStatus('sealed')
@@ -31,21 +24,28 @@ export default function ScoreCard({ value, flippedProps, cardIndex }) {
 
   useEffect(() => {
     if (finishedPlaying) {
+      setScore(scores[cardIndex])
       setShowScore(true)
-      if (wonIndexes.includes(cardIndex)) {
-        setStatus('opened')
-      } else {
-        setTimeout(setStatus, Math.random() * (1000 - 300) + 300, 'disabled')
-      }
+      if (wonIndexes.includes(cardIndex)) return setStatus('opened')
+      setTimeout(setStatus, Math.random() * (1500 - 300) + 300, 'disabled')
     }
-  }, [finishedPlaying, wonIndexes, cardIndex])
+  }, [finishedPlaying, wonIndexes, scores, cardIndex])
+  // -----------------------------
+  const select = async (cardIndex) => {
+    if (!picksEnabled || wonIndexes.includes(cardIndex) || finishedPlaying)
+      return false
+    const score = await dispatch(makePick(cardIndex))
+    setScore(score)
+    setShowScore(true)
+    setStatus('opened')
+  }
   // -----------------------------
 
   return (
     <div
       className={`score flex-center flex-column ${status}`}
       {...flippedProps}
-      onClick={() => picksEnabled && !finishedPlaying && select(cardIndex)}
+      onClick={() => select(cardIndex)}
     >
       <span className="seal"></span>
       <span className="coin"></span>

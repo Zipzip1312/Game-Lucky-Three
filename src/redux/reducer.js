@@ -7,7 +7,6 @@ export const slice = createSlice({
   name: 'game',
   initialState: {
     player: '',
-    score: 0,
     picksAvailable: 3,
     picksEnabled: false,
     screens: ['welcome', 'rules', 'form', 'invite', 'game', 'score'],
@@ -42,13 +41,19 @@ export const slice = createSlice({
         state.activeScreen = state.screens[activeScreenIdx - 1]
       }
     },
-    toggleGame: (state, { payload }) => {
-      state.gameStarted = payload
-      state.picksEnabled = !payload
-      if (payload && state.resettable) {
+    startGame: (state) => {
+      state.gameStarted = true
+      // state.picksEnabled = false
+      if (state.resettable) {
         state.finishedPlaying = false
         state.currentScore = []
         state.wonIndexes = []
+      }
+    },
+    endGame: (state) => {
+      state.picksEnabled = true
+      if (state.resettable) {
+        state.gameStarted = false
       }
     },
     shuffleScore: (state) => {
@@ -61,12 +66,10 @@ export const slice = createSlice({
     updateCurrentScore: (state, { payload }) => {
       state.currentScore.push(payload)
       state.wonIndexes.push(payload.index)
-      state.score += payload.score
       state.picksEnabled = state.currentScore.length < state.picksAvailable
 
-      if (state.currentScore.length === state.picksAvailable) {
+      if (!state.picksEnabled) {
         state.finishedPlaying = true
-        state.picksEnabled = false
         // Set game results
         for (let i = 0; i < state.scores.length; i++) {
           state.gameResults.push({
@@ -84,7 +87,8 @@ export const {
   setScreen,
   nextScreen,
   prevScreen,
-  toggleGame,
+  startGame,
+  endGame,
   shuffleScore,
   updateCurrentScore,
   disablePicks

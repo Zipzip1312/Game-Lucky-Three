@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
-import { Redirect } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { toggleGame, shuffleScore } from 'redux/reducer'
+import { startGame, endGame, shuffleScore } from 'redux/reducer'
 import Game from 'components/Game'
 
 export default function GameScreen() {
@@ -12,7 +11,7 @@ export default function GameScreen() {
   const dispatch = useDispatch()
   // ------------------------------
   const shuffle = () => {
-    dispatch(toggleGame(true))
+    dispatch(startGame())
     setTimeout(() => {
       dispatch(shuffleScore())
       const shuffling = setInterval(dispatch, shuffleDuration, shuffleScore())
@@ -26,7 +25,7 @@ export default function GameScreen() {
   }
   // ------------------------------
   const onShuffleCompleted = () => {
-    dispatch(toggleGame(false))
+    dispatch(endGame())
     console.log('shuffleCompleted')
   }
   // ------------------------------
