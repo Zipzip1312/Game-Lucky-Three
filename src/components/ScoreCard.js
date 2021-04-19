@@ -1,39 +1,42 @@
 import { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { makePick } from 'redux/reducer'
 
-export default function ScoreCard({ value, flippedProps, cardIndex }) {
-  const dispatch = useDispatch()
-  const [score, setScore] = useState(value)
+export default function ScoreCard({
+  scoreValue,
+  cardIndex,
+  picksEnabled,
+  shuffling,
+  selectedCards,
+  finishedPlaying,
+  scores,
+  flippedProps
+}) {
+  const [score, setScore] = useState(scoreValue)
   const [showScore, setShowScore] = useState(true)
   const [status, setStatus] = useState('opened')
-  // -----------------------------
-  const gameStarted = useSelector((state) => state.game.gameStarted)
-  const wonIndexes = useSelector((state) => state.game.wonIndexes)
-  const finishedPlaying = useSelector((state) => state.game.finishedPlaying)
-  const picksEnabled = useSelector((state) => state.game.picksEnabled)
-  const scores = useSelector((state) => state.game.scores)
+  const dispatch = useDispatch()
   // -----------------------------
   useEffect(() => {
-    if (gameStarted) {
-      setStatus('sealed')
-      setTimeout(setShowScore, 1000, false)
+    if (shuffling) {
+      setStatus('sealed') // hide score behind the seal
+      setTimeout(setShowScore, 1000, false) // remove score from the DOM
     }
-  }, [gameStarted])
+  }, [shuffling])
 
   useEffect(() => {
     if (finishedPlaying) {
       setScore(scores[cardIndex])
       setShowScore(true)
-      if (wonIndexes.includes(cardIndex)) return setStatus('opened')
-      setTimeout(setStatus, Math.random() * (1500 - 300) + 300, 'disabled')
+      setTimeout(
+        setStatus,
+        Math.random() * (1500 - 300) + 300,
+        selectedCards.includes(cardIndex) ? 'opened win' : 'disabled'
+      )
     }
-  }, [finishedPlaying, wonIndexes, scores, cardIndex])
+  }, [finishedPlaying, scores, cardIndex, selectedCards])
   // -----------------------------
   const select = async (cardIndex) => {
-    if (!picksEnabled || wonIndexes.includes(cardIndex) || finishedPlaying)
-      return false
     const score = await dispatch(makePick(cardIndex))
     setScore(score)
     setShowScore(true)
@@ -45,7 +48,12 @@ export default function ScoreCard({ value, flippedProps, cardIndex }) {
     <div
       className={`score flex-center flex-column ${status}`}
       {...flippedProps}
-      onClick={() => select(cardIndex)}
+      onClick={() =>
+        picksEnabled &&
+        !selectedCards.includes(cardIndex) &&
+        !finishedPlaying &&
+        select(cardIndex)
+      }
     >
       <span className="seal"></span>
       <span className="coin"></span>

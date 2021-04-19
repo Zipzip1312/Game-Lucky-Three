@@ -5,10 +5,15 @@ import ScoreCard from 'components/ScoreCard'
 const Game = ({ onShuffleCompleted }) => {
   const scores = useSelector((state) => state.game.scores)
   const indexes = useSelector((state) => state.game.indexes)
+  // -----------------------------
+  const shuffling = useSelector((state) => state.game.shuffling)
+  const selectedCards = useSelector((state) => state.game.selectedCards)
+  const finishedPlaying = useSelector((state) => state.game.finishedPlaying)
+  const picksEnabled = useSelector((state) => state.game.picksEnabled)
 
   return (
     <Flipper flipKey={JSON.stringify(indexes)} onComplete={onShuffleCompleted}>
-      <div className="game-lobby">
+      <div className="game-body">
         {indexes.map((index, i) => (
           <Flipped
             key={index}
@@ -18,9 +23,14 @@ const Game = ({ onShuffleCompleted }) => {
           >
             {(flippedProps) => (
               <ScoreCard
-                value={scores[index]}
-                flippedProps={flippedProps}
+                scoreValue={scores[index]}
                 cardIndex={i}
+                picksEnabled={picksEnabled}
+                shuffling={shuffling}
+                selectedCards={selectedCards}
+                finishedPlaying={finishedPlaying}
+                scores={scores}
+                flippedProps={flippedProps}
               />
             )}
           </Flipped>

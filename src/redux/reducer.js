@@ -11,14 +11,14 @@ export const slice = createSlice({
     picksEnabled: false,
     screens: ['welcome', 'rules', 'form', 'invite', 'game', 'score'],
     activeScreen: 'game',
-    gameStarted: false,
+    shuffling: false,
     shuffleDuration: 1500,
     timesToShuffle: 1,
     finishedPlaying: false,
     scores: [1000, 500, 250, 250, 100, 100, 50, 50, 25, 25, 10, 10, 0, 0, 0, 0],
-    indexes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+    indexes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], // for shuffling animation and further score select
     currentScore: [],
-    wonIndexes: [],
+    selectedCards: [],
     gameResults: [],
     resettable: true
   },
@@ -41,22 +41,21 @@ export const slice = createSlice({
         state.activeScreen = state.screens[activeScreenIdx - 1]
       }
     },
-    startGame: (state) => {
-      state.gameStarted = true
-      // state.picksEnabled = false
+    startShuffle: (state) => {
+      state.shuffling = true
       if (state.resettable) {
         state.finishedPlaying = false
         state.currentScore = []
-        state.wonIndexes = []
+        state.selectedCards = []
       }
     },
-    endGame: (state) => {
+    stopShuffle: (state) => {
       state.picksEnabled = true
       if (state.resettable) {
-        state.gameStarted = false
+        state.shuffling = false
       }
     },
-    shuffleScore: (state) => {
+    shuffleScores: (state) => {
       state.scores = shuffle(state.scores)
       state.indexes = shuffle(state.indexes)
     },
@@ -65,16 +64,16 @@ export const slice = createSlice({
     },
     updateCurrentScore: (state, { payload }) => {
       state.currentScore.push(payload)
-      state.wonIndexes.push(payload.index)
+      state.selectedCards.push(payload.index)
       state.picksEnabled = state.currentScore.length < state.picksAvailable
 
       if (!state.picksEnabled) {
         state.finishedPlaying = true
         // Set game results
-        for (let i = 0; i < state.scores.length; i++) {
+        for (let i = 0; i < state.indexes.length; i++) {
           state.gameResults.push({
             score: state.scores[i],
-            won: state.wonIndexes.includes(i)
+            won: state.selectedCards.includes(i)
           })
         }
       }
@@ -87,9 +86,9 @@ export const {
   setScreen,
   nextScreen,
   prevScreen,
-  startGame,
-  endGame,
-  shuffleScore,
+  startShuffle,
+  stopShuffle,
+  shuffleScores,
   updateCurrentScore,
   disablePicks
 } = slice.actions
