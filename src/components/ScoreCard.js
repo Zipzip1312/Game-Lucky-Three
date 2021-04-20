@@ -2,58 +2,60 @@ import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { makePick } from 'redux/reducer'
 
+const CARD_OPENED = 'opened'
+const CARD_SELECTED = 'opened win'
+const CARD_SEALED = 'sealed'
+const CARD_DISABLED = 'disabled'
+
 export default function ScoreCard({
-  scoreValue,
   cardIndex,
-  picksEnabled,
-  shuffling,
-  selectedCards,
+  enabled,
+  sealed,
+  selected,
   finishedPlaying,
   scores,
   flippedProps
 }) {
-  const [score, setScore] = useState(scoreValue)
+  const [score, setScore] = useState(scores[cardIndex])
   const [showScore, setShowScore] = useState(true)
-  const [status, setStatus] = useState('opened')
+  const [status, setStatus] = useState(CARD_OPENED) // className
   const dispatch = useDispatch()
   // -----------------------------
   useEffect(() => {
-    if (shuffling) {
-      setStatus('sealed') // hide score behind the seal
+    if (sealed) {
+      setStatus(CARD_SEALED) // hide score behind the seal
       setTimeout(setShowScore, 1000, false) // remove score from the DOM
     }
-  }, [shuffling])
+  }, [sealed])
 
   useEffect(() => {
     if (finishedPlaying) {
-      setScore(scores[cardIndex])
+      const score = scores[cardIndex]
+      setScore(score)
       setShowScore(true)
-      setTimeout(
-        setStatus,
-        Math.random() * (1500 - 300) + 300,
-        selectedCards.includes(cardIndex) ? 'opened win' : 'disabled'
-      )
+      // animate appearance
+      const defaultTimeout = () => Math.random() * (1500 - 300) + 300
+      const timeout = score === 1000 ? 2000 : defaultTimeout()
+      const status = selected ? CARD_SELECTED : CARD_DISABLED
+      setTimeout(setStatus, timeout, status)
     }
-  }, [finishedPlaying, scores, cardIndex, selectedCards])
+  }, [finishedPlaying, scores, cardIndex, selected])
   // -----------------------------
   const select = async (cardIndex) => {
     const score = await dispatch(makePick(cardIndex))
     setScore(score)
     setShowScore(true)
-    setStatus('opened')
+    setStatus(CARD_OPENED)
   }
+  const isSelectable = () =>
+    enabled && !finishedPlaying && status !== CARD_OPENED
   // -----------------------------
 
   return (
     <div
       className={`score flex-center flex-column ${status}`}
       {...flippedProps}
-      onClick={() =>
-        picksEnabled &&
-        !selectedCards.includes(cardIndex) &&
-        !finishedPlaying &&
-        select(cardIndex)
-      }
+      onClick={() => isSelectable() && select(cardIndex)}
     >
       <span className="seal"></span>
       <span className="coin"></span>

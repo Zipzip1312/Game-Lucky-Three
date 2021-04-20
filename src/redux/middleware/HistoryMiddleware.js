@@ -1,6 +1,6 @@
-import history from '../history'
+import history from '../../history'
 
-const middleware = (store) => (next) => (action) => {
+const HistoryMiddleware = (store) => (next) => (action) => {
   next(action)
 
   const type = action.type
@@ -14,4 +14,4 @@ const middleware = (store) => (next) => (action) => {
     history.push(store.getState().game.activeScreen)
 }
 
-export default middleware
+export default HistoryMiddleware
