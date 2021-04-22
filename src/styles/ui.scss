@@ -7,8 +7,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: url(../images/design.jpg) no-repeat center -1480px, $blue;
-  background-size: cover;
+  background: $blue;
 }
 
 .card {
@@ -19,7 +18,6 @@
   background-image: url(../images/card.svg);
   padding: 0.5rem 0.5rem 1rem;
   color: $white;
-  outline: 2px dashed $white;
 
   &-image {
     position: absolute;
@@ -56,33 +54,59 @@
       margin-bottom: 0.5rem;
       align-self: flex-end;
     }
+    &.hail {
+      justify-content: flex-end;
+      font-size: 2rem;
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+    }
   }
 
   &-title-right {
     padding-left: 50%;
   }
 
-  .stars {
-    width: 100%;
-    position: relative;
-    bottom: -1.5rem;
-    outline: 2px dashed $orange;
-    .star {
-      width: 1.5rem;
-      &:nth-of-type(2) {
-        width: 2rem;
-        margin-top: -0.5rem;
-      }
+  .total-score {
+    font-size: 2rem;
+    padding: 0.5rem 0 0.8rem;
+    min-width: 3rem;
+  }
+
+  &.hail {
+    position: absolute;
+    bottom: -5rem;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.5s ease-in-out;
+    &.open {
+      bottom: 1rem;
+      opacity: 1;
+      transform: scale(1);
     }
-    &-active {
-      position: absolute;
-      width: 100%;
-      top: -0.1rem;
-      .star {
-        opacity: 0;
-        &.visible {
-          opacity: 1;
-        }
+  }
+}
+
+.stars {
+  width: 100%;
+  position: relative;
+  bottom: -1.5rem;
+
+  .star {
+    width: 1.5rem;
+    &:nth-of-type(2) {
+      width: 2rem;
+      margin-top: -0.5rem;
+    }
+  }
+
+  &-active {
+    position: absolute;
+    width: 100%;
+    top: -0.1rem;
+    .star {
+      opacity: 0;
+      &.visible {
+        opacity: 1;
       }
     }
   }
@@ -108,10 +132,12 @@
 
 .form {
   flex-direction: column;
+
   &-control {
     @extend .flex-center;
     margin-top: 0.75rem;
   }
+
   .label {
     @include text-gradient;
     font-size: 1rem;
@@ -121,6 +147,7 @@
       margin-right: 0.5rem;
     }
   }
+
   .checkbox {
     width: 1.8rem;
     height: 1.4rem;
@@ -135,6 +162,27 @@
     }
     > span {
       height: 0.7rem;
+    }
+  }
+
+  &-submit {
+    text-align: center;
+    font-weight: 700;
+    &.invite {
+      width: 7rem;
+      height: 3rem;
+      font-size: 0.8rem;
+      color: $blue;
+      background-image: url(../images/holder.svg);
+      padding: 0.5rem 0.25rem 1rem;
+      transition: all 0.5s ease;
+
+      .done,
+      .active {
+        @extend .flex-center;
+        height: 3rem;
+        margin-top: -0.6rem;
+      }
     }
   }
 }
@@ -165,27 +213,6 @@
       &.active {
         background-image: url(../images/telegram-active.svg);
       }
-    }
-  }
-}
-
-.form-submit {
-  text-align: center;
-  font-weight: 700;
-  &.invite {
-    width: 7rem;
-    height: 3rem;
-    font-size: 0.8rem;
-    color: $blue;
-    background-image: url(../images/holder.svg);
-    padding: 0.5rem 0.25rem 1rem;
-    transition: all 0.5s ease;
-
-    .done,
-    .active {
-      @extend .flex-center;
-      height: 3rem;
-      margin-top: -0.6rem;
     }
   }
 }

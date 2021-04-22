@@ -12,14 +12,24 @@ export default function ScoreCard({
   enabled,
   sealed,
   selected,
-  finishedPlaying,
+  gameOver,
   scores,
   flippedProps
 }) {
   const [score, setScore] = useState(scores[cardIndex])
   const [showScore, setShowScore] = useState(true)
-  const [status, setStatus] = useState(CARD_OPENED) // className
+  const [status, setStatus] = useState(gameOver ? CARD_SEALED : CARD_OPENED) // className
   const dispatch = useDispatch()
+
+  const select = async (cardIndex) => {
+    const score = await dispatch(makePick(cardIndex))
+    setScore(score)
+    setShowScore(true)
+    setStatus(CARD_OPENED)
+  }
+  const isSelectable = () => enabled && !gameOver && status !== CARD_OPENED
+  // -----------------------------
+  // Seal cards
   // -----------------------------
   useEffect(() => {
     if (sealed) {
@@ -27,9 +37,11 @@ export default function ScoreCard({
       setTimeout(setShowScore, 1000, false) // remove score from the DOM
     }
   }, [sealed])
-
+  // -----------------------------
+  // Show all cards when game is over
+  // -----------------------------
   useEffect(() => {
-    if (finishedPlaying) {
+    if (gameOver) {
       const score = scores[cardIndex]
       setScore(score)
       setShowScore(true)
@@ -39,16 +51,7 @@ export default function ScoreCard({
       const status = selected ? CARD_SELECTED : CARD_DISABLED
       setTimeout(setStatus, timeout, status)
     }
-  }, [finishedPlaying, scores, cardIndex, selected])
-  // -----------------------------
-  const select = async (cardIndex) => {
-    const score = await dispatch(makePick(cardIndex))
-    setScore(score)
-    setShowScore(true)
-    setStatus(CARD_OPENED)
-  }
-  const isSelectable = () =>
-    enabled && !finishedPlaying && status !== CARD_OPENED
+  }, [gameOver, scores, cardIndex, selected])
   // -----------------------------
 
   return (
@@ -61,7 +64,7 @@ export default function ScoreCard({
       <span className="coin"></span>
 
       {showScore && (
-        <span className={`score-value ${score === 0 ? 'oops' : ''}`}>
+        <span className={`${score === 0 ? 'oops' : ''}`}>
           {score > 0 ? score : 'упс...'}
         </span>
       )}

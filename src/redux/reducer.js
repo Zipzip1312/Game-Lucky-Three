@@ -6,17 +6,19 @@ const sleep = (m) => new Promise((r) => setTimeout(r, m))
 export const slice = createSlice({
   name: 'game',
   initialState: {
+    screens: ['welcome', 'rules', 'form', 'invite', 'game', 'score'],
+    activeScreen: 'game',
     player: '',
     picksAvailable: 3,
     picksEnabled: false,
-    screens: ['welcome', 'rules', 'form', 'invite', 'game', 'score'],
-    activeScreen: 'game',
+    showPicksCounter: false,
     shuffling: false,
     shuffleDuration: 1500,
     timesToShuffle: 1,
-    finishedPlaying: false,
+    gameOver: false,
     scores: [1000, 500, 250, 250, 100, 100, 50, 50, 25, 25, 10, 10, 0, 0, 0, 0],
     indexes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], // for shuffling animation and further score select
+    totalScore: 0,
     currentScore: [],
     selectedCards: [],
     gameResults: [],
@@ -44,13 +46,15 @@ export const slice = createSlice({
     startShuffle: (state) => {
       state.shuffling = true
       if (state.resettable) {
-        state.finishedPlaying = false
+        state.gameOver = false
+        state.totalScore = 0
         state.currentScore = []
         state.selectedCards = []
       }
     },
     stopShuffle: (state) => {
       state.picksEnabled = true
+      state.showPicksCounter = true
       if (state.resettable) {
         state.shuffling = false
       }
@@ -64,11 +68,12 @@ export const slice = createSlice({
     },
     updateCurrentScore: (state, { payload }) => {
       state.currentScore.push(payload)
+      state.totalScore += payload.score
       state.selectedCards.push(payload.index)
       state.picksEnabled = state.currentScore.length < state.picksAvailable
 
       if (!state.picksEnabled) {
-        state.finishedPlaying = true
+        state.gameOver = true
         // Set game results
         for (let i = 0; i < state.indexes.length; i++) {
           state.gameResults.push({
