@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { startShuffle } from 'redux/reducer'
 import HailCard from 'components/HailCard'
+import GameResetButton from 'components/GameResetButton'
 
 const GameTitle = ({ picks, remove, hide }) => {
   return (
@@ -74,6 +75,8 @@ const GameHeader = ({ shuffling, gameOver }) => {
       </div>
 
       <HailCard show={gameOver} />
+
+      <GameResetButton />
     </div>
   )
 }

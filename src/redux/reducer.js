@@ -45,19 +45,10 @@ export const slice = createSlice({
     },
     startShuffle: (state) => {
       state.shuffling = true
-      if (state.resettable) {
-        state.gameOver = false
-        state.totalScore = 0
-        state.currentScore = []
-        state.selectedCards = []
-      }
     },
     stopShuffle: (state) => {
       state.picksEnabled = true
       state.showPicksCounter = true
-      if (state.resettable) {
-        state.shuffling = false
-      }
     },
     shuffleScores: (state) => {
       state.scores = shuffle(state.scores)
@@ -82,6 +73,18 @@ export const slice = createSlice({
           })
         }
       }
+    },
+    resetGame: (state) => {
+      if (state.resettable) {
+        state.gameOver = false
+        state.showPicksCounter = false
+        state.picksEnabled = false
+        state.shuffling = false
+        state.totalScore = 0
+        state.currentScore = []
+        state.selectedCards = []
+        state.gameResults = []
+      }
     }
   }
 })
@@ -95,7 +98,8 @@ export const {
   stopShuffle,
   shuffleScores,
   updateCurrentScore,
-  disablePicks
+  disablePicks,
+  resetGame
 } = slice.actions
 
 export default slice.reducer
