@@ -13,7 +13,9 @@ export default function SocialLinks({ onClick, activeLink = 'telegram' }) {
       {media.map((link) => {
         return (
           <div
-            className={`link ${link} ${active === link ? 'active' : ''}`}
+            className={`link ${link} ${
+              active === link ? 'active animate jello' : ''
+            }`}
             onClick={() => handleClick(link)}
             key={link}
           ></div>

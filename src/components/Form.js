@@ -8,7 +8,7 @@ export default function Form() {
     female: 'жін',
     other: 'інше'
   }
-  const activeSex = 'female'
+  const activeSex = ''
 
   const age = {
     '<30': 'до 30',
@@ -17,7 +17,7 @@ export default function Form() {
     '50-60': '50-60',
     '60+': 'за 60'
   }
-  const activeAge = '40-50'
+  const activeAge = ''
 
   const setSocialMedia = (link) => {
     console.log(`Selected: ${link}`)
@@ -40,7 +40,7 @@ export default function Form() {
       <div className="form-control">
         <span className="label">Де з тобою краще спілкуватись?</span>
       </div>
-      <SocialLinks onClick={(link) => setSocialMedia(link)} />
+      <SocialLinks activeLink="" onClick={(link) => setSocialMedia(link)} />
     </div>
   )
 }

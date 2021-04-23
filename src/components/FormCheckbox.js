@@ -5,7 +5,7 @@ export default function FormCheckbox({ label, isActive }) {
 
   return (
     <div
-      className={`checkbox flex-center ${active ? 'active' : ''}`}
+      className={`checkbox flex-center ${active ? 'active animate jello' : ''}`}
       onClick={() => setActive(!active)}
     >
       <span>{label}</span>

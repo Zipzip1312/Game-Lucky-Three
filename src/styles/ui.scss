@@ -188,28 +188,42 @@
 
 .social-links {
   .link {
-    width: 1.8rem;
-    height: 1.6rem;
+    width: 2rem;
+    height: 1.8rem;
     margin: 0 0.3rem;
+    position: relative;
+    cursor: pointer;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.1s ease-in-out;
+    }
+
+    &.active {
+      &:before {
+        opacity: 1;
+      }
+    }
 
     &.viber {
-      background-image: url(../images/viber.svg),
-        url(../images/viber-active.svg);
-      &.active {
+      background-image: url(../images/viber.svg);
+      &:before {
         background-image: url(../images/viber-active.svg);
       }
     }
     &.messenger {
-      background-image: url(../images/messenger.svg),
-        url(../images/messenger-active.svg);
-      &.active {
+      background-image: url(../images/messenger.svg);
+      &:before {
         background-image: url(../images/messenger-active.svg);
       }
     }
     &.telegram {
-      background-image: url(../images/telegram.svg),
-        url(../images/telegram-active.svg);
-      &.active {
+      background-image: url(../images/telegram.svg);
+      &:before {
         background-image: url(../images/telegram-active.svg);
       }
     }
