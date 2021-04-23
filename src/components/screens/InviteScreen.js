@@ -2,13 +2,13 @@ import { useState } from 'react'
 import DogsImg from 'images/dogs.svg'
 import Stars from 'components/Stars'
 import SocialLinks from 'components/SocialLinks'
-import SubmitInvite from 'components/SubmitInvite'
+import InviteButton from 'components/InviteButton'
 
 export default function InviteScreen() {
   const [doneInviting, setDoneInviting] = useState(false)
   const [invitesLeft, setInvitesLeft] = useState(2)
   const [media, setMedia] = useState('')
-  const inviteText = invitesLeft > 1 ? `${invitesLeft} друзям` : 'ще 1 другу'
+  const inviteText = invitesLeft > 1 ? `${invitesLeft} друзям` : 'ще 1 друга'
 
   const handleLinkClick = (link) => {
     setMedia(link)
@@ -16,7 +16,7 @@ export default function InviteScreen() {
   }
   const handleInvite = () => {
     setInvitesLeft(invitesLeft - 1)
-    console.log('inviting')
+    console.log('invites left: ', invitesLeft)
     if (invitesLeft === 1) {
       console.log('DONE INVITING')
       setDoneInviting(true)
@@ -45,13 +45,11 @@ export default function InviteScreen() {
               <SocialLinks onClick={handleLinkClick} activeLink={media} />
             </div>
           )}
-          <div className="form-submit invite">
-            <SubmitInvite
-              media={media}
-              done={doneInviting}
-              onClick={handleInvite}
-            />
-          </div>
+          <InviteButton
+            media={media}
+            done={doneInviting}
+            onClick={handleInvite}
+          />
         </div>
       </div>
       <Stars />

@@ -24,6 +24,9 @@
     animation-name: jello;
     transform-origin: center;
   }
+  &.bounceInRight {
+    animation-name: bounceInRight;
+  }
   &.once {
     animation-iteration-count: 1 !important;
   }
@@ -164,5 +167,36 @@
 
   88.8% {
     transform: skewX(-0.1953125deg) skewY(-0.1953125deg);
+  }
+}
+@keyframes bounceInRight {
+  from,
+  60%,
+  75%,
+  90%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  from {
+    opacity: 0;
+    transform: translate3d(15rem, 0, 0) scaleX(3);
+  }
+
+  40% {
+    opacity: 1;
+    transform: translate3d(-3rem, 0, 0) scaleX(1);
+  }
+
+  65% {
+    transform: translate3d(1.5rem, 0, 0) scaleX(0.98);
+  }
+
+  85% {
+    transform: translate3d(-0.5rem, 0, 0) scaleX(0.995);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
   }
 }
