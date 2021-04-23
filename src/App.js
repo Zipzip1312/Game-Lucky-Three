@@ -6,7 +6,6 @@ import RulesScreen from 'components/screens/RulesScreen'
 import FormScreen from 'components/screens/FormScreen'
 import InviteScreen from 'components/screens/InviteScreen'
 import GameScreen from 'components/screens/GameScreen'
-import ScoreScreen from 'components/screens/ScoreScreen'
 import NavButtons from 'components/NavButtons'
 // ------------------------------------------------------------------------
 import { useEffect } from 'react'
@@ -19,8 +18,7 @@ const routes = [
   { path: '/rules', name: 'Rules', Component: RulesScreen },
   { path: '/form', name: 'Form', Component: FormScreen },
   { path: '/invite', name: 'Invite', Component: InviteScreen },
-  { path: '/game', name: 'Game', Component: GameScreen },
-  { path: '/score', name: 'Score', Component: ScoreScreen }
+  { path: '/game', name: 'Game', Component: GameScreen }
 ]
 
 function App() {
@@ -35,8 +33,7 @@ function App() {
     Rules: useRef(null),
     Form: useRef(null),
     Invite: useRef(null),
-    Game: useRef(null),
-    Score: useRef(null)
+    Game: useRef(null)
   }
 
   return (

@@ -6,7 +6,7 @@ const sleep = (m) => new Promise((r) => setTimeout(r, m))
 export const slice = createSlice({
   name: 'game',
   initialState: {
-    screens: ['welcome', 'rules', 'form', 'invite', 'game', 'score'],
+    screens: ['welcome', 'rules', 'form', 'invite', 'game'],
     activeScreen: 'welcome',
     // -----------------------------
     enableNav: true,
