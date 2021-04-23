@@ -1,15 +1,15 @@
-import { useDispatch } from 'react-redux'
-import { nextScreen, prevScreen } from 'redux/reducer'
+import { useDispatch, useSelector } from 'react-redux'
+import { nextScreen } from 'redux/reducer'
 
 export default function NavButtons() {
+  const show = useSelector((state) => state.game.enableNav)
   const dispatch = useDispatch()
+
   return (
-    <div className="nav flex-center mt-1">
-      <div
-        className="nav-link back"
-        onClick={() => dispatch(prevScreen())}
-      ></div>
-      <div className="nav-link" onClick={() => dispatch(nextScreen())}></div>
+    <div className="nav flex-center mt-2">
+      <div className={`nav-link animate ${show ? 'pulse once' : 'hidden'}`}>
+        <div className="link" onClick={() => dispatch(nextScreen())}></div>
+      </div>
     </div>
   )
 }

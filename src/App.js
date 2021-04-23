@@ -54,7 +54,7 @@ function App() {
             >
               <div className="screen" ref={refs[name]}>
                 <Component />
-                <NavButtons />
+                {path !== '/invite' && path !== '/game' && <NavButtons />}
               </div>
             </CSSTransition>
           )}

@@ -20,6 +20,9 @@
   &.zoomOut {
     animation-name: zoomOut;
   }
+  &.once {
+    animation-iteration-count: 1 !important;
+  }
 }
 
 @keyframes pulse {

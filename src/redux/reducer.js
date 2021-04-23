@@ -7,7 +7,12 @@ export const slice = createSlice({
   name: 'game',
   initialState: {
     screens: ['welcome', 'rules', 'form', 'invite', 'game', 'score'],
-    activeScreen: 'game',
+    activeScreen: 'welcome',
+    // -----------------------------
+    enableNav: true,
+    rulesAccepted: false,
+    form: {},
+    // -----------------------------
     player: '',
     picksAvailable: 3,
     picksEnabled: false,
@@ -43,6 +48,15 @@ export const slice = createSlice({
         state.activeScreen = state.screens[activeScreenIdx - 1]
       }
     },
+    // -----------------------------
+    toggleNav: (state, { payload }) => {
+      state.enableNav = payload
+    },
+    toggleRulesAccepted: (state, { payload }) => {
+      state.rulesAccepted = payload
+      state.enableNav = payload
+    },
+    // -----------------------------
     startShuffle: (state) => {
       state.shuffling = true
     },
@@ -94,6 +108,10 @@ export const {
   setScreen,
   nextScreen,
   prevScreen,
+  // -----------------------------
+  toggleNav,
+  toggleRulesAccepted,
+  // -----------------------------
   startShuffle,
   stopShuffle,
   shuffleScores,

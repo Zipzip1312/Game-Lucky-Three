@@ -1,4 +1,5 @@
 import history from '../../history'
+import { toggleNav } from 'redux/reducer'
 
 const HistoryMiddleware = (store) => (next) => (action) => {
   next(action)
@@ -10,8 +11,10 @@ const HistoryMiddleware = (store) => (next) => (action) => {
     'game/prevScreen'
   ]
 
-  screenChangeActions.includes(type) &&
+  if (screenChangeActions.includes(type)) {
     history.push(store.getState().game.activeScreen)
+    store.dispatch(toggleNav(false))
+  }
 }
 
 export default HistoryMiddleware
