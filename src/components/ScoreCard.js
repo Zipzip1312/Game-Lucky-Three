@@ -46,10 +46,10 @@ export default function ScoreCard({
       setScore(score)
       setShowScore(true)
       // animate appearance
-      const defaultTimeout = () => Math.random() * (1500 - 300) + 300
-      const timeout = score === 1000 ? 2000 : defaultTimeout()
+      const randomDelay = () => Math.random() * (1500 - 300) + 300
+      const delay = score === 1000 ? 2000 : randomDelay()
       const status = selected ? CARD_SELECTED : CARD_DISABLED
-      setTimeout(setStatus, timeout, status)
+      setTimeout(setStatus, delay, status)
     }
   }, [gameOver, scores, cardIndex, selected])
   // -----------------------------

@@ -24,7 +24,8 @@ const PicksCounter = ({ picks, selecting }) => {
   useEffect(() => {
     setHasPicks(picks > 0)
     if (selecting) setAnimation(hasPicks ? 'headShake' : 'zoomOut')
-    setTimeout(setAnimation, 500, hasPicks ? '' : 'hidden')
+    const timeout = setTimeout(setAnimation, 500, hasPicks ? '' : 'hidden')
+    return () => clearTimeout(timeout)
   }, [selecting, picks, hasPicks])
 
   return (

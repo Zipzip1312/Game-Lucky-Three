@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { nextScreen } from 'redux/appReducer'
 
@@ -5,9 +6,17 @@ const SelectMediaBtn = () => {
   return <div className="message">Обери зручний спосіб відправки</div>
 }
 
-const InviteBtn = ({ onClick }) => {
+const InviteBtn = ({ media, onClick }) => {
+  const [animation, setAnimation] = useState('headShake')
+
+  useEffect(() => {
+    setAnimation('headShake')
+    const timeout = setTimeout(setAnimation, 500, '')
+    return () => clearTimeout(timeout)
+  }, [media])
+
   return (
-    <div className="active animate headShake" onClick={onClick}>
+    <div className={`active animate ${animation}`} onClick={onClick}>
       Запросити
     </div>
   )
@@ -29,7 +38,7 @@ export default function InviteButton({ media, done, onClick }) {
       {done ? (
         <ToGameBtn />
       ) : media ? (
-        <InviteBtn onClick={onClick} />
+        <InviteBtn media={media} onClick={onClick} />
       ) : (
         <SelectMediaBtn />
       )}
