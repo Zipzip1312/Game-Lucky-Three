@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { stopShuffle } from 'redux/reducer'
+import { stopShuffle } from 'redux/gameReducer'
 import { Flipper, Flipped } from 'react-flip-toolkit'
 import GameHeader from 'components/GameHeader'
 import ScoreCard from 'components/ScoreCard'

@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { startShuffle } from 'redux/reducer'
+import { startShuffle } from 'redux/gameReducer'
 import HailCard from 'components/HailCard'
 import GameResetButton from 'components/GameResetButton'
 

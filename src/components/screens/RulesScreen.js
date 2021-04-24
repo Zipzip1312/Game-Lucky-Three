@@ -1,10 +1,10 @@
 import HomeIcon from 'images/home-icon.svg'
 import Stars from 'components/Stars'
 import { useSelector, useDispatch } from 'react-redux'
-import { toggleRulesAccepted } from 'redux/reducer'
+import { toggleRulesAccepted } from 'redux/appReducer'
 
 export default function RulesScreen() {
-  const rulesAccepted = useSelector((state) => state.game.rulesAccepted)
+  const rulesAccepted = useSelector((state) => state.app.rulesAccepted)
   const dispatch = useDispatch()
 
   return (

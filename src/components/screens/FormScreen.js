@@ -4,12 +4,12 @@ import Form from 'components/Form'
 // ------------------------------
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
-import { toggleNav } from 'redux/reducer'
+import { toggleNav } from 'redux/appReducer'
 // ------------------------------
 
 export default function FormScreen() {
   // ------------------------------
-  const form = useSelector((state) => state.game.form)
+  const form = useSelector((state) => state.app.form)
   const dispatch = useDispatch()
 
   useEffect(() => {

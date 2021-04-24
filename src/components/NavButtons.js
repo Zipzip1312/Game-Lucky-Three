@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { nextScreen } from 'redux/reducer'
+import { nextScreen } from 'redux/appReducer'
 
 export default function NavButtons() {
-  const show = useSelector((state) => state.game.enableNav)
+  const show = useSelector((state) => state.app.enableNav)
   const dispatch = useDispatch()
 
   return (

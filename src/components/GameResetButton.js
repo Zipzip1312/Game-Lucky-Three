@@ -1,7 +1,7 @@
 import StartBtnImage from 'images/start-active.svg'
 import { useSelector, useDispatch } from 'react-redux'
 import { useState, useEffect } from 'react'
-import { resetGame, startShuffle } from 'redux/reducer'
+import { resetGame, startShuffle } from 'redux/gameReducer'
 
 export default function GameResetButton() {
   const resettable = useSelector((state) => state.game.resettable)

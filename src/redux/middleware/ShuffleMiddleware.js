@@ -1,20 +1,22 @@
-import { shuffleScores } from 'redux/reducer'
+import { shuffleScores } from 'redux/gameReducer'
 
-const ShuffleMiddleware = (store) => (next) => (action) => {
+const shuffleMiddleware = (store) => (next) => (action) => {
   next(action)
 
   function makeShuffle() {
-    const game = store.getState().game
+    const shuffleDuration = store.getState().game.shuffleDuration
+    const timesToShuffle = store.getState().game.timesToShuffle
+
     setTimeout(() => {
       store.dispatch(shuffleScores())
       const intervalId = setInterval(
         store.dispatch,
-        game.shuffleDuration,
+        shuffleDuration,
         shuffleScores()
       )
       setTimeout(
         clearInterval,
-        game.shuffleDuration * (game.timesToShuffle - 1),
+        shuffleDuration * (timesToShuffle - 1),
         intervalId
       )
     }, 1000)
@@ -23,4 +25,4 @@ const ShuffleMiddleware = (store) => (next) => (action) => {
   if (action.type === 'game/startShuffle') makeShuffle()
 }
 
-export default ShuffleMiddleware
+export default shuffleMiddleware

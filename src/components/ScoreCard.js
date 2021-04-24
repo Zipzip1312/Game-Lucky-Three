@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { makePick } from 'redux/reducer'
+import { makePick } from 'redux/gameReducer'
 
 const CARD_OPENED = 'opened'
 const CARD_SELECTED = 'opened win'

@@ -23,7 +23,7 @@ const routes = [
 
 function App() {
   // ------------------------------------------------------------------------
-  const activeScreen = useSelector((state) => state.game.activeScreen)
+  const activeScreen = useSelector((state) => state.app.activeScreen)
   useEffect(() => {
     history.push(activeScreen)
   }, [activeScreen])

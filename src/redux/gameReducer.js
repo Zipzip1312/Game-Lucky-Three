@@ -6,13 +6,6 @@ const sleep = (m) => new Promise((r) => setTimeout(r, m))
 export const slice = createSlice({
   name: 'game',
   initialState: {
-    screens: ['welcome', 'rules', 'form', 'invite', 'game'],
-    activeScreen: 'welcome',
-    // -----------------------------
-    enableNav: true,
-    rulesAccepted: false,
-    form: {},
-    // -----------------------------
     player: '',
     picksAvailable: 3,
     picksEnabled: false,
@@ -33,30 +26,6 @@ export const slice = createSlice({
     setPlayer: (state, { payload }) => {
       state.player = payload
     },
-    setScreen: (state, { payload }) => {
-      state.activeScreen = payload
-    },
-    nextScreen: (state) => {
-      const activeScreenIdx = state.screens.indexOf(state.activeScreen)
-      if (activeScreenIdx >= 0 && activeScreenIdx < state.screens.length - 1) {
-        state.activeScreen = state.screens[activeScreenIdx + 1]
-      }
-    },
-    prevScreen: (state) => {
-      const activeScreenIdx = state.screens.indexOf(state.activeScreen)
-      if (activeScreenIdx > 0 && activeScreenIdx <= state.screens.length) {
-        state.activeScreen = state.screens[activeScreenIdx - 1]
-      }
-    },
-    // -----------------------------
-    toggleNav: (state, { payload }) => {
-      state.enableNav = payload
-    },
-    toggleRulesAccepted: (state, { payload }) => {
-      state.rulesAccepted = payload
-      state.enableNav = payload
-    },
-    // -----------------------------
     startShuffle: (state) => {
       state.shuffling = true
     },
@@ -105,13 +74,6 @@ export const slice = createSlice({
 
 export const {
   setPlayer,
-  setScreen,
-  nextScreen,
-  prevScreen,
-  // -----------------------------
-  toggleNav,
-  toggleRulesAccepted,
-  // -----------------------------
   startShuffle,
   stopShuffle,
   shuffleScores,
