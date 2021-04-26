@@ -1,26 +1,26 @@
 import { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { handleSendInvite } from 'redux/appReducer'
 import DogsImg from 'images/dogs.svg'
 import Stars from 'components/Stars'
 import SocialLinks from 'components/SocialLinks'
 import InviteButton from 'components/InviteButton'
 
 export default function InviteScreen() {
-  const [doneInviting, setDoneInviting] = useState(false)
-  const [invitesLeft, setInvitesLeft] = useState(2)
+  const invitesLeft = useSelector((state) => state.app.invitesLeft)
+  const doneInviting = useSelector((state) => state.app.doneInviting)
   const [media, setMedia] = useState('')
   const inviteText = invitesLeft > 1 ? `${invitesLeft} друзям` : 'ще 1 другу'
+  const dispatch = useDispatch()
 
-  const handleLinkClick = (link) => {
+  const selectMedia = (link) => {
     setMedia(link)
     console.log(link)
   }
-  const handleInvite = () => {
-    setInvitesLeft(invitesLeft - 1)
-    console.log('invites left: ', invitesLeft)
-    if (invitesLeft === 1) {
-      console.log('DONE INVITING')
-      setDoneInviting(true)
-    }
+
+  const sendInvite = () => {
+    console.log('sending invite')
+    dispatch(handleSendInvite())
   }
 
   return (
@@ -42,13 +42,13 @@ export default function InviteScreen() {
         <div className="form-control">
           {!doneInviting && (
             <div className="label">
-              <SocialLinks onClick={handleLinkClick} activeLink={media} />
+              <SocialLinks onClick={selectMedia} activeLink={media} />
             </div>
           )}
           <InviteButton
             media={media}
-            done={doneInviting}
-            onClick={handleInvite}
+            toGame={doneInviting}
+            onClick={sendInvite}
           />
         </div>
       </div>

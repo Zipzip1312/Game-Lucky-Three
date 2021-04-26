@@ -1,7 +1,14 @@
 import FormCheckbox from 'components/FormCheckbox'
 import SocialLinks from 'components/SocialLinks'
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { toggleFormFilled } from 'redux/appReducer'
 
 export default function Form() {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    setTimeout(dispatch, 1000, toggleFormFilled(true))
+  }, [dispatch])
   // ---------------------------------------
   const sex = {
     male: 'чол',

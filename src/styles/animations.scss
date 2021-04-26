@@ -17,8 +17,12 @@
     animation-timing-function: ease-in-out;
     animation-name: headShake;
   }
+  &.zoomIn {
+    animation-name: zoomIn;
+  }
   &.zoomOut {
     animation-name: zoomOut;
+    animation-duration: 0.5s;
   }
   &.jello {
     animation-name: jello;
@@ -133,6 +137,16 @@
 
   50% {
     transform: translateX(0);
+  }
+}
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  50% {
+    opacity: 1;
   }
 }
 @keyframes zoomOut {

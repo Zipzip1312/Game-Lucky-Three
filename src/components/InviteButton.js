@@ -25,17 +25,17 @@ const InviteBtn = ({ media, onClick }) => {
 const ToGameBtn = () => {
   const dispatch = useDispatch()
   return (
-    <div className="done red" onClick={() => dispatch(nextScreen())}>
+    <div className="to-game-btn red" onClick={() => dispatch(nextScreen())}>
       До гри!
     </div>
   )
 }
 
-export default function InviteButton({ media, done, onClick }) {
+export default function InviteButton({ media, toGame, onClick }) {
   const animation = 'animate bounceInRight'
   return (
-    <div className={`form-submit invite light-blue ${done ? animation : ''}`}>
-      {done ? (
+    <div className={`form-submit invite light-blue ${toGame ? animation : ''}`}>
+      {toGame ? (
         <ToGameBtn />
       ) : media ? (
         <InviteBtn media={media} onClick={onClick} />

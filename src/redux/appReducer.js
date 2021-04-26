@@ -7,7 +7,10 @@ export const slice = createSlice({
     activeScreen: 'welcome',
     enableNav: true,
     rulesAccepted: false,
-    form: {}
+    form: {},
+    formFilled: false,
+    invitesLeft: 2,
+    doneInviting: false
   },
   reducers: {
     setScreen: (state, { payload }) => {
@@ -31,6 +34,15 @@ export const slice = createSlice({
     toggleRulesAccepted: (state, { payload }) => {
       state.rulesAccepted = payload
       state.enableNav = payload
+    },
+    toggleFormFilled: (state, { payload }) => {
+      state.formFilled = payload
+    },
+    handleSendInvite: (state) => {
+      --state.invitesLeft
+      if (state.invitesLeft === 0) {
+        state.doneInviting = true
+      }
     }
   }
 })
@@ -40,7 +52,9 @@ export const {
   nextScreen,
   prevScreen,
   toggleNav,
-  toggleRulesAccepted
+  toggleRulesAccepted,
+  toggleFormFilled,
+  handleSendInvite
 } = slice.actions
 
 export default slice.reducer

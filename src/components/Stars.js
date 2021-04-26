@@ -1,18 +1,16 @@
-import StarImg from 'images/star.svg'
-import StarActiveImg from 'images/star-active.svg'
+import { useSelector } from 'react-redux'
 
 export default function Stars() {
+  const rulesAccepted = useSelector((state) => state.app.rulesAccepted)
+  const formFilled = useSelector((state) => state.app.formFilled)
+  const doneInviting = useSelector((state) => state.app.doneInviting)
+
   return (
     <div className="stars">
       <div className="flex-center">
-        <img className="star" src={StarImg} alt="star" />
-        <img className="star" src={StarImg} alt="star" />
-        <img className="star" src={StarImg} alt="star" />
-      </div>
-      <div className="flex-center stars-active">
-        <img className="star visible" src={StarActiveImg} alt="star" />
-        <img className="star visible" src={StarActiveImg} alt="star" />
-        <img className="star" src={StarActiveImg} alt="star" />
+        <div className={`star ${rulesAccepted ? 'active' : ''}`}></div>
+        <div className={`star ${formFilled ? 'active' : ''}`}></div>
+        <div className={`star ${doneInviting ? 'active' : ''}`}></div>
       </div>
     </div>
   )
