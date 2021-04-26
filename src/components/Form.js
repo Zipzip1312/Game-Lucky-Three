@@ -33,19 +33,21 @@ export default function Form() {
   return (
     <div className="form flex-center">
       <div className="form-control">
-        <span className="label">Стать?</span>
+        <span className="label text-gradient">Стать?</span>
         {Object.entries(sex).map(([key, label]) => (
           <FormCheckbox label={label} isActive={key === activeSex} key={key} />
         ))}
       </div>
       <div className="form-control">
-        <span className="label">Вік?</span>
+        <span className="label text-gradient">Вік?</span>
         {Object.entries(age).map(([key, label]) => (
           <FormCheckbox label={label} isActive={key === activeAge} key={key} />
         ))}
       </div>
       <div className="form-control">
-        <span className="label">Де з тобою краще спілкуватись?</span>
+        <span className="label text-gradient">
+          Де з тобою краще спілкуватись?
+        </span>
       </div>
       <SocialLinks activeLink="" onClick={(link) => setSocialMedia(link)} />
     </div>

@@ -11,7 +11,7 @@ export default function RulesScreen() {
     <div className="card">
       <div className="card-title">
         <img src={HomeIcon} alt="Авторизуйся" />
-        Авторизуйся
+        <span className="text-gradient">Авторизуйся</span>
       </div>
       <div className="card-info text-center bold">
         <span className="d-none">

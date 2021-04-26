@@ -7,7 +7,9 @@ export default function HailCard({ show }) {
   return (
     <div className={`card hail ${show ? 'open' : ''}`}>
       <img className="card-image" src={DogImg} alt="Game Logo" />
-      <div className="card-title hail">Вітаємо!</div>
+      <div className="card-title hail">
+        <span className="text-gradient">Вітаємо!</span>
+      </div>
       <div className="card-info flex-center bold">
         <div className="card-info-title title-2">Ти виграв</div>
         <div className="card-info-card text-center red">

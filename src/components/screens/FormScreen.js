@@ -22,7 +22,7 @@ export default function FormScreen() {
     <div className="card">
       <div className="card-title">
         <img src={MenuIcon} alt="Авторизуйся" />
-        Підкажи
+        <span className="text-gradient">Підкажи</span>
       </div>
       <div className="card-info text-center bold">
         хочемо знати трішки

@@ -6,12 +6,6 @@
   }
 }
 
-@mixin text-gradient {
-  background: -webkit-linear-gradient($orange, $yellow);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 /* STRIP UNIT
 /––––––––––––––––––––––––*/
 // removes a unit from a variable

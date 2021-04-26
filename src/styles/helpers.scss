@@ -117,3 +117,11 @@
 .text-shadow {
   text-shadow: 0.05rem 0.05rem 0.1rem $black;
 }
+
+.text-gradient {
+  display: inline;
+  background: -webkit-linear-gradient($orange, $yellow);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
