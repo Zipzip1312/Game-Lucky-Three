@@ -2,15 +2,16 @@ import { useSelector } from 'react-redux'
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { startShuffle } from 'redux/gameReducer'
+import DrawPrizes from 'components/DrawPrizes'
 import HailCard from 'components/HailCard'
 import GameResetButton from 'components/GameResetButton'
 
 const GameTitle = ({ picks, remove, hide }) => {
+  const classes = 'title-4 text-center white text-shadow mt-2 animate'
+
   return (
     <div
-      className={`title-4 text-center white text-shadow animate ${
-        hide ? 'hidden' : remove ? 'backOutLeft' : ''
-      }`}
+      className={`${classes} ${hide ? 'hidden' : remove ? 'backOutLeft' : ''}`}
     >
       Грай! Ти маєш один шанс та {picks} спроби
     </div>
@@ -64,21 +65,25 @@ const GameHeader = ({ shuffling, gameOver }) => {
   }, [currentScore, picksAvailable])
 
   return (
-    <div className="game-header flex-center flex-wrap align-end pb-1">
-      <GameTitle picks={picks} remove={showPicksCounter} hide={gameOver} />
+    <>
+      {shuffling && <DrawPrizes hide={gameOver} />}
 
-      <div className="game-header-container flex-center mt-1">
-        {showPicksCounter ? (
-          <PicksCounter picks={picks} selecting={currentScore.length > 0} />
-        ) : (
-          <StartButton disabled={shuffling} />
-        )}
+      <div className="game-header flex-center flex-wrap align-end pb-1">
+        <GameTitle picks={picks} remove={showPicksCounter} hide={gameOver} />
+
+        <div className="game-header-container flex-center mt-1">
+          {showPicksCounter ? (
+            <PicksCounter picks={picks} selecting={currentScore.length > 0} />
+          ) : (
+            <StartButton disabled={shuffling} />
+          )}
+        </div>
+
+        <HailCard show={gameOver} />
+
+        <GameResetButton />
       </div>
-
-      <HailCard show={gameOver} />
-
-      <GameResetButton />
-    </div>
+    </>
   )
 }
 

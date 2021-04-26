@@ -255,7 +255,7 @@
 
 .draw-prizes {
   position: absolute;
-  top: -7rem;
+  top: 2rem;
   left: 50%;
   transform: translateX(-50%);
 
@@ -270,6 +270,7 @@
       height: 1.3rem;
       background: url(../images/coin-active.svg);
       margin-right: 0.3rem;
+      margin-bottom: -0.1rem;
     }
   }
 }
