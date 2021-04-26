@@ -18,6 +18,8 @@
         position: relative;
         background: url(../images/btn-botder.svg),
           url(../images/btn-bg-active.svg);
+        background-repeat: no-repeat;
+        background-position: center center;
         transition: background 0.3s ease-in-out;
         cursor: pointer;
         &:before {
@@ -26,7 +28,7 @@
           width: 40%;
           height: 40%;
           margin: 1rem auto;
-          background: url(../images/btn-text.svg);
+          background: url(../images/btn-text.svg) no-repeat center;
           opacity: 1;
           transition: opacity 0.3s ease;
         }
@@ -34,6 +36,8 @@
         &.disabled {
           background: url(../images/btn-botder.svg),
             url(../images/btn-bg-disabled.svg);
+          background-repeat: no-repeat;
+          background-position: center center;
           cursor: not-allowed;
           &:before {
             opacity: 0.3;
@@ -75,6 +79,7 @@
       letter-spacing: 0.05rem;
 
       .oops {
+        height: 1.5rem;
         font-size: 1rem;
       }
 
@@ -83,7 +88,7 @@
         height: 1.2rem;
         margin-top: -0.8rem;
         margin-bottom: 0.3rem;
-        background: url(../images/coin-active.svg);
+        background: url(../images/coin-active.svg) no-repeat center;
         transition: margin-top 0.15s ease-in-out;
       }
 
@@ -91,7 +96,7 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        background: url(../images/lock.svg);
+        background: url(../images/lock.svg) no-repeat center;
         top: 0;
         transform: scale(1.2);
         opacity: 0;
@@ -113,7 +118,7 @@
         background: url(../images/score-holder.svg) no-repeat center;
         background-size: 100% 3rem;
         .coin {
-          background: url(../images/coin.svg);
+          background: url(../images/coin.svg) no-repeat center;
         }
       }
     }
