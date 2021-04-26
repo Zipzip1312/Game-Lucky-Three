@@ -1,4 +1,5 @@
 import DogImg from 'images/dog.svg'
+import DrawPrizes from 'components/DrawPrizes'
 
 export default function WelcomeScreen() {
   return (
@@ -11,11 +12,12 @@ export default function WelcomeScreen() {
       </div>
       <div className="card-info flex-center bold mt-1">
         <div className="card-info-title">Пиризовий фонд</div>
-        <div className="card-info-card text-center red">
+        <div className="card-info-card text-center red animate jello delay-3">
           <div className="title-3">20</div>
           <span className="small">млн грн</span>
         </div>
       </div>
+      <DrawPrizes />
     </div>
   )
 }

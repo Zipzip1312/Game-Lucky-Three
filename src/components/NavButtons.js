@@ -7,7 +7,11 @@ export default function NavButtons() {
 
   return (
     <div className="nav flex-center mt-2">
-      <div className={`nav-link animate ${show ? 'pulse once' : 'hidden'}`}>
+      <div
+        className={`nav-link animate ${
+          show ? 'bounceInLeft' : 'bounceOutRight'
+        }`}
+      >
         <div className="link" onClick={() => dispatch(nextScreen())}></div>
       </div>
     </div>

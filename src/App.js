@@ -37,8 +37,7 @@ function App() {
   }
 
   return (
-    <div className="app">
-      <div className="control-buttons"></div>
+    <div className="app flex-center flex-column">
       {routes.map(({ path, name, Component }) => (
         <Route key={path} exact path={path}>
           {({ match }) => (

@@ -26,3 +26,10 @@ body {
   font-weight: $body-fontweight;
   line-height: $body-lineheight;
 }
+
+.app {
+  height: 100vh;
+  background: $blue;
+  background: url(../images/space-bg.jpg) repeat-y center;
+  background-size: 100%;
+}

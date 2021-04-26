@@ -21,7 +21,12 @@ export default function RulesScreen() {
           <br />
           виграшні бали ;)
         </span>
-        <label className={`${rulesAccepted ? 'orange' : 'white'}`}>
+
+        <label
+          className={`flex-center mb-1 mt-1 ${
+            rulesAccepted ? 'orange' : 'white'
+          }`}
+        >
           Приймаю правила
           <input
             onChange={() => dispatch(toggleRulesAccepted(!rulesAccepted))}

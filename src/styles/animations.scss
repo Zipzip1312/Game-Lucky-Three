@@ -27,8 +27,23 @@
   &.bounceInRight {
     animation-name: bounceInRight;
   }
-  &.once {
-    animation-iteration-count: 1 !important;
+  &.bounceInLeft {
+    animation-name: bounceInLeft;
+  }
+  &.bounceOutRight {
+    animation-name: bounceOutRight;
+  }
+  &.delay-1 {
+    animation-delay: 1s;
+  }
+  &.delay-1-5 {
+    animation-delay: 1.5s;
+  }
+  &.delay-2 {
+    animation-delay: 2s;
+  }
+  &.delay-3 {
+    animation-delay: 3s;
   }
 }
 
@@ -198,5 +213,47 @@
 
   to {
     transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes bounceInLeft {
+  from,
+  60%,
+  75%,
+  90%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  0% {
+    opacity: 0;
+    transform: translate3d(-20rem, 0, 0) scaleX(3);
+  }
+
+  40% {
+    opacity: 1;
+    transform: translate3d(2rem, 0, 0) scaleX(1);
+  }
+
+  65% {
+    transform: translate3d(-1rem, 0, 0) scaleX(0.98);
+  }
+
+  85% {
+    transform: translate3d(0.2rem, 0, 0) scaleX(0.995);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes bounceOutRight {
+  20% {
+    opacity: 1;
+    transform: translate3d(-3rem, 0, 0) scaleX(0.9);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(100rem, 0, 0) scaleX(2);
   }
 }

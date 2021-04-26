@@ -1,15 +1,6 @@
 @import './vars.scss';
 @import './mixins.scss';
 
-.app {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: $blue;
-}
-
 .card {
   position: relative;
   width: $card-width;
@@ -171,7 +162,6 @@
       width: 7rem;
       height: 3rem;
       position: relative;
-      color: $blue;
       background-image: url(../images/holder.svg);
       transition: all 0.5s ease;
 
@@ -250,6 +240,27 @@
       &:before {
         background-image: url(../images/telegram-active.svg);
       }
+    }
+  }
+}
+
+.draw-prizes {
+  position: absolute;
+  top: -7rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  .prize {
+    background: url(../images/score-holder-active.svg);
+    padding: 0.4rem;
+    margin: 0 0.5rem;
+    letter-spacing: 0.1rem;
+    &:before {
+      content: '';
+      width: 1.3rem;
+      height: 1.3rem;
+      background: url(../images/coin-active.svg);
+      margin-right: 0.3rem;
     }
   }
 }

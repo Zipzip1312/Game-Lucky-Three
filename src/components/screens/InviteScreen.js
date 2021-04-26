@@ -8,7 +8,7 @@ export default function InviteScreen() {
   const [doneInviting, setDoneInviting] = useState(false)
   const [invitesLeft, setInvitesLeft] = useState(2)
   const [media, setMedia] = useState('')
-  const inviteText = invitesLeft > 1 ? `${invitesLeft} друзям` : 'ще 1 друга'
+  const inviteText = invitesLeft > 1 ? `${invitesLeft} друзям` : 'ще 1 другу'
 
   const handleLinkClick = (link) => {
     setMedia(link)
