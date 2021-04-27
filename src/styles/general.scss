@@ -29,7 +29,6 @@ body {
 
 .app {
   height: 100vh;
-  background: $blue;
-  background: url(../images/space-bg.jpg) repeat-y center;
+  background: url(../images/space-bg.jpg) repeat-y center, $blue;
   background-size: 100%;
 }
