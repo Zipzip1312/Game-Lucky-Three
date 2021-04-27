@@ -71,7 +71,7 @@ const GameHeader = ({ shuffling, gameOver }) => {
 
   return (
     <>
-      {shuffling && <DrawPrizes hide={gameOver} />}
+      {showPicksCounter && <DrawPrizes hide={gameOver} />}
 
       <div className="game-header flex-center flex-wrap align-end pb-1">
         <GameTitle picks={picks} remove={showPicksCounter} hide={gameOver} />
