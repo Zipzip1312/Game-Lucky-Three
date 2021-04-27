@@ -46,10 +46,15 @@ const PicksCounter = ({ picks, selecting }) => {
 const StartButton = ({ disabled }) => {
   const dispatch = useDispatch()
   return (
-    <div
-      className={`btn ${disabled ? 'disabled animate pulse' : 'enabled'}`}
-      onClick={() => !disabled && dispatch(startShuffle())}
-    ></div>
+    <>
+      <div
+        className={`btn ${disabled ? 'transparent' : ''}`}
+        onClick={() => !disabled && dispatch(startShuffle())}
+      ></div>
+      <div
+        className={`btn disabled ${disabled ? 'animate pulse' : 'transparent'}`}
+      ></div>
+    </>
   )
 }
 

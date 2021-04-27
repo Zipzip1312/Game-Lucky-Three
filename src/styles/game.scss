@@ -12,11 +12,11 @@
 
     &-container {
       height: 4rem;
+      position: relative;
 
       .btn {
         width: 8rem;
         height: 100%;
-        position: relative;
         background: url(../images/btn-botder.svg),
           url(../images/btn-bg-active.svg);
         background-repeat: no-repeat;
@@ -35,6 +35,7 @@
         }
 
         &.disabled {
+          position: absolute;
           background: url(../images/btn-botder.svg),
             url(../images/btn-bg-disabled.svg);
           background-repeat: no-repeat;
