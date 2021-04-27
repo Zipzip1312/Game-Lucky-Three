@@ -45,7 +45,7 @@ export default function Form() {
         ))}
       </div>
       <div className="form-control">
-        <span className="label text-gradient">
+        <span className="label text-gradient nowrap">
           Де з тобою краще спілкуватись?
         </span>
       </div>

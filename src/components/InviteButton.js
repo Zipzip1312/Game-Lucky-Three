@@ -32,7 +32,7 @@ const ToGameBtn = () => {
 }
 
 export default function InviteButton({ media, toGame, onClick }) {
-  const animation = 'animate bounceInRight'
+  const animation = 'animate bounceInRight mt-minus-1'
   return (
     <div className={`form-submit invite light-blue ${toGame ? animation : ''}`}>
       {toGame ? (

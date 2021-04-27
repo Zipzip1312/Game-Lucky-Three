@@ -13,4 +13,22 @@
   <body>
     <div id="root"></div>
   </body>
+
+  <script>
+    function browserDetect() {
+      const standalone = window.navigator.standalone,
+        userAgent = window.navigator.userAgent.toLowerCase(),
+        safari =
+          userAgent.indexOf('safari') !== -1 &&
+          userAgent.indexOf('chrome') === -1
+
+      return (/iphone|ipod|ipad/.test(userAgent) && !standalone) || safari
+        ? 'safari'
+        : 'browser'
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.documentElement.classList.add(browserDetect())
+    })
+  </script>
 </html>

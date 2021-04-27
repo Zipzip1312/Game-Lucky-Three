@@ -3,56 +3,57 @@
 
   &-control {
     @extend .flex-center;
-    margin-top: 0.75rem;
+    margin-top: 1rem;
   }
 
   .label {
-    font-size: 0.9rem;
-    font-weight: 700;
-    padding-bottom: 0.3rem;
+    font-size: 1.2rem;
+    padding-bottom: 0.5rem;
+    @extend .bold;
     &:not(:last-child) {
       margin-right: 0.5rem;
     }
   }
 
   .checkbox {
-    width: 2rem;
-    height: 1.4rem;
+    width: 2.2rem;
+    height: 1.8rem;
     color: $blue;
-    font-size: 0.5rem;
-    font-weight: 700;
-    margin: 0 0.11rem;
+    font-size: 0.55rem;
+    margin: 0 0.25rem;
     cursor: pointer;
     background: url(../images/holder.svg) no-repeat center;
     background-size: 100% 100%;
+    @extend .bold;
     &.active {
       background: url(../images/holder-active.svg) no-repeat center;
     }
     > span {
       height: 0.7rem;
+      white-space: nowrap;
     }
   }
 
   &-submit {
     text-align: center;
-    font-weight: 700;
+    @extend .bold;
     &.invite {
-      width: 7rem;
-      height: 3rem;
+      width: 8rem;
+      height: 3.5rem;
       position: relative;
       background: url(../images/holder.svg) no-repeat center;
       background-size: 100% 100%;
       transition: all 0.5s ease;
 
       .message {
-        font-size: 0.7rem;
-        line-height: 1.7;
-        padding: 0.3rem 0 0 1rem;
+        font-size: 60%;
+        line-height: 1.5;
+        padding: 0.4rem 0 0 1rem;
         &:before {
           content: '';
           position: absolute;
           top: 0.7rem;
-          left: -0.5rem;
+          left: -0.7rem;
           width: 1.7rem;
           height: 1.6rem;
           background: url(../images/btn-arrow.svg) no-repeat center;
@@ -69,12 +70,11 @@
       }
 
       .to-game-btn {
-        font-size: 1.4rem;
+        font-size: 1.7rem;
         line-height: 1.7;
       }
 
       .active {
-        font-size: 1.2rem;
         line-height: 2.2;
       }
     }

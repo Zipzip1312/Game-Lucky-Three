@@ -26,20 +26,18 @@ export default function InviteScreen() {
   return (
     <div className="card">
       <img className="card-image" src={DogsImg} alt="Friends Logo" />
-      <div className="title-2 card-title-right mb-1">
+      <div className="title-1 card-title-right mb-1">
         Запроси
         <br />
         друга
       </div>
-      <div
-        className={`card-info text-center bold ${doneInviting ? 'hidden' : ''}`}
-      >
+      <div className={`card-info bold nowrap ${doneInviting ? 'hidden' : ''}`}>
         розкажи про нас {inviteText}
       </div>
       <div className="form flex-center">
-        <div className="form-control">
+        <div className="form-control w-100 space-around">
           {!doneInviting && (
-            <div className="label">
+            <div className="label mr-1">
               <SocialLinks onClick={selectMedia} activeLink={media} />
             </div>
           )}

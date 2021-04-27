@@ -1,10 +1,10 @@
-@import './vars.scss';
-
 .card {
+  display: flex;
+  flex-direction: column;
   position: relative;
   width: $card-width;
   max-width: $card-max-width;
-  min-height: 9rem;
+  min-height: 12rem;
   background: url(../images/card.svg) no-repeat center;
   background-size: 100% 100%;
   padding: 0.5rem 0.5rem 1rem;
@@ -12,43 +12,44 @@
 
   &-image {
     position: absolute;
-    left: -1.5rem;
+    left: -1rem;
     top: -1.75rem;
-    width: 55%;
+    width: 50%;
   }
 
   &-info {
     justify-content: space-around;
-    font-size: 1.1rem;
-    line-height: 1.7;
+    font-size: 1.6rem;
+    text-align: center;
+
     &-card {
       background: url(../images/holder-lg.svg) no-repeat center;
       background-size: 100% 100%;
-      padding: 0.6rem 1rem;
-      line-height: 0.6;
+      padding: 0.8rem 1.3rem 1rem;
+      line-height: 0.7;
     }
   }
 
   &-title {
     min-height: 2.6rem;
-    font-size: 1.8rem;
+    font-size: 2rem;
     display: flex;
     align-items: baseline;
     justify-content: center;
+    margin-top: -0.5rem;
     font-weight: 700;
     letter-spacing: 0.1rem;
     line-height: 1.7;
     > img {
       width: 2rem;
       margin-right: 0.6rem;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.7rem;
       align-self: flex-end;
     }
     &.hail {
       justify-content: flex-end;
-      font-size: 2rem;
+      font-size: 2.3rem;
       margin-top: 0;
-      margin-bottom: 1.5rem;
     }
   }
 
@@ -57,9 +58,7 @@
   }
 
   .total-score {
-    font-size: 2rem;
-    padding: 0.5rem 0 0.8rem;
-    min-width: 3rem;
+    min-width: 4rem;
   }
 
   &.hail {
@@ -73,7 +72,7 @@
     &.open {
       bottom: 2rem;
       opacity: 1;
-      transform: scale(1);
+      transform: scale(0.9);
     }
   }
 }

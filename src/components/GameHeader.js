@@ -7,7 +7,7 @@ import HailCard from 'components/HailCard'
 import GameResetButton from 'components/GameResetButton'
 
 const GameTitle = ({ picks, remove, hide }) => {
-  const classes = 'title-4 text-center white text-shadow mt-2 animate'
+  const classes = 'title-4 text-center white nowrap text-shadow mt-2 animate'
 
   return (
     <div
@@ -36,7 +36,7 @@ const PicksCounter = ({ picks, selecting }) => {
       {hasPicks && (
         <>
           <span className="count">{picks}</span>
-          <span className="text">{picks === 1 ? 'СПРОБА' : 'СПРОБИ'}</span>
+          <span className="fsz-1">{picks === 1 ? 'СПРОБА' : 'СПРОБИ'}</span>
         </>
       )}
     </div>

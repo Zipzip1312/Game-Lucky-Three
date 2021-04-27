@@ -1,13 +1,11 @@
-@import './vars.scss';
-
 .game {
-  width: 90vw;
+  width: $card-width;
+  max-width: $card-max-width;
   height: 90vh;
-  max-width: 20rem;
 
   &-header {
-    height: 40%;
-    max-height: 12rem;
+    height: 100%;
+    max-height: 15rem;
     position: relative;
 
     &-container {
@@ -66,7 +64,7 @@
   }
 
   &-body {
-    height: 60%;
+    height: 100%;
     max-height: 18rem;
 
     .score {
@@ -77,7 +75,7 @@
       background: url(../images/score-holder-active.svg) no-repeat center;
       background-size: 100% 3rem;
       color: $white;
-      font-weight: 700;
+      @extend .bold;
       letter-spacing: 0.05rem;
 
       .oops {
@@ -129,7 +127,7 @@
 
 .game-reset-btn {
   position: absolute;
-  top: 10.5rem;
+  bottom: -1.2rem;
   width: 6rem;
   height: 3rem;
   font-size: 4rem;
@@ -139,7 +137,7 @@
     content: 'RE';
     position: absolute;
     font-size: 1.2rem;
-    font-weight: 700;
+    @extend .bold;
     left: 0.3rem;
     top: 0.7rem;
     transform: rotate(-7deg);
