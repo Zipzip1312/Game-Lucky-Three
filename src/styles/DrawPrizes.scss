@@ -1,0 +1,22 @@
+.draw-prizes {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  .prize {
+    background: url(../images/botton-back.svg) no-repeat center;
+    background-size: 100% 100%;
+    padding: 0.4rem;
+    margin: 0 0.5rem;
+    letter-spacing: 0.1rem;
+    &:before {
+      content: '';
+      width: 1.3rem;
+      height: 1.3rem;
+      background: url(../images/coin-active.svg) no-repeat center;
+      margin-right: 0.3rem;
+      margin-bottom: -0.1rem;
+    }
+  }
+}

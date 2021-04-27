@@ -1,0 +1,82 @@
+.form {
+  flex-direction: column;
+
+  &-control {
+    @extend .flex-center;
+    margin-top: 0.75rem;
+  }
+
+  .label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding-bottom: 0.3rem;
+    &:not(:last-child) {
+      margin-right: 0.5rem;
+    }
+  }
+
+  .checkbox {
+    width: 2rem;
+    height: 1.4rem;
+    color: $blue;
+    font-size: 0.5rem;
+    font-weight: 700;
+    margin: 0 0.11rem;
+    cursor: pointer;
+    background: url(../images/holder.svg) no-repeat center;
+    background-size: 100% 100%;
+    &.active {
+      background: url(../images/holder-active.svg) no-repeat center;
+    }
+    > span {
+      height: 0.7rem;
+    }
+  }
+
+  &-submit {
+    text-align: center;
+    font-weight: 700;
+    &.invite {
+      width: 7rem;
+      height: 3rem;
+      position: relative;
+      background: url(../images/holder.svg) no-repeat center;
+      background-size: 100% 100%;
+      transition: all 0.5s ease;
+
+      .message {
+        font-size: 0.7rem;
+        line-height: 1.7;
+        padding: 0.3rem 0 0 1rem;
+        &:before {
+          content: '';
+          position: absolute;
+          top: 0.7rem;
+          left: -0.5rem;
+          width: 1.7rem;
+          height: 1.6rem;
+          background: url(../images/btn-arrow.svg) no-repeat center;
+          background-size: 100% 100%;
+        }
+      }
+
+      .to-game-btn,
+      .active {
+        height: 100%;
+        background: url(../images/btn-bg-active.svg) no-repeat center;
+        background-size: 100% 100%;
+        cursor: pointer;
+      }
+
+      .to-game-btn {
+        font-size: 1.4rem;
+        line-height: 1.7;
+      }
+
+      .active {
+        font-size: 1.2rem;
+        line-height: 2.2;
+      }
+    }
+  }
+}

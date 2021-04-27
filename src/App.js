@@ -44,7 +44,7 @@ function App() {
             <CSSTransition
               nodeRef={refs[name]}
               in={match != null}
-              timeout={300}
+              timeout={1000}
               classNames="screen"
               unmountOnExit
             >

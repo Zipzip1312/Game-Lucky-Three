@@ -2,7 +2,15 @@
 @import './vars.scss';
 @import './helpers.scss';
 @import './general.scss';
-@import './ui.scss';
+@import './cards.scss';
 @import './screens.scss';
-@import './game.scss';
 @import './animations.scss';
+// -------------------------
+// Components
+// -------------------------
+@import './DrawPrizes.scss';
+@import './Stars.scss';
+@import './Nav.scss';
+@import './Form.scss';
+@import './SocialLinks.scss';
+@import './Game.scss';
