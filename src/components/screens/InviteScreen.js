@@ -26,15 +26,13 @@ export default function InviteScreen() {
   return (
     <div className="card">
       <img className="card-image" src={DogsImg} alt="Friends Logo" />
-      <div className="title-2 card-title-right">
+      <div className="title-2 card-title-right mb-1">
         Запроси
         <br />
         друга
       </div>
       <div
-        className={`card-info text-center bold mt-05 ${
-          doneInviting ? 'hidden' : ''
-        }`}
+        className={`card-info text-center bold ${doneInviting ? 'hidden' : ''}`}
       >
         розкажи про нас {inviteText}
       </div>
