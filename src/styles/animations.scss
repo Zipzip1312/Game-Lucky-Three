@@ -10,6 +10,9 @@
     animation-duration: 2s;
     animation-name: backOutLeft;
   }
+  &.bounceOutRight {
+    animation-name: bounceOutRight;
+  }
   &.rubberBand {
     animation-name: rubberBand;
   }
@@ -28,15 +31,16 @@
     animation-name: jello;
     transform-origin: center;
   }
+  &.backInRight {
+    animation-name: backInRight;
+  }
   &.bounceInRight {
     animation-name: bounceInRight;
   }
   &.bounceInLeft {
     animation-name: bounceInLeft;
   }
-  &.bounceOutRight {
-    animation-name: bounceOutRight;
-  }
+
   &.delay-1 {
     animation-delay: 1s;
   }
@@ -269,5 +273,21 @@
   to {
     opacity: 0;
     transform: translate3d(100rem, 0, 0) scaleX(2);
+  }
+}
+@keyframes backInRight {
+  0% {
+    transform: translateX(100rem) scale(0.7);
+    opacity: 0.7;
+  }
+
+  70% {
+    transform: translateX(0) scale(0.7);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
 }
