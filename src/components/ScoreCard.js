@@ -32,11 +32,11 @@ export default function ScoreCard({
   // Seal cards
   // -----------------------------
   useEffect(() => {
-    if (sealed) {
-      setStatus(CARD_SEALED) // hide score behind the seal
-      setTimeout(setShowScore, 1000, false) // remove score from the DOM
+    if (sealed && !gameOver) {
+      setStatus(selected ? CARD_OPENED : CARD_SEALED) // hide score behind the seal or open if card is selected
+      setTimeout(setShowScore, 1000, selected) // remove score from the DOM or show if card is selected
     }
-  }, [sealed])
+  }, [sealed, gameOver, selected])
   // -----------------------------
   // Show all cards when game is over
   // -----------------------------
