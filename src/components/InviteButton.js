@@ -3,7 +3,13 @@ import { useDispatch } from 'react-redux'
 import { nextScreen } from 'redux/appReducer'
 
 const SelectMediaBtn = () => {
-  return <div className="message">Обери зручний спосіб відправки</div>
+  return (
+    <div className="message">
+      Обери зручний
+      <br />
+      спосіб відправки
+    </div>
+  )
 }
 
 const InviteBtn = ({ media, onClick }) => {

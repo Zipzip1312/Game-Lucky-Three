@@ -30,6 +30,8 @@ body {
 
 .app {
   height: 100vh;
+  min-height: $app-min-height;
   background: url(../images/space-bg.jpg) repeat-y center, $blue;
   background-size: 100%;
+  overflow-y: auto;
 }

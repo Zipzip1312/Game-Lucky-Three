@@ -23,7 +23,7 @@ const Game = () => {
       <Flipper
         flipKey={flipKey}
         onComplete={() => dispatch(stopShuffle())}
-        className="game-body flex-center flex-wrap w-100 pt-2"
+        className="game-body flex-center flex-wrap w-100 pt-2 mb-1"
       >
         {indexes.map((index, i) => (
           <Flipped key={index} flipId={index} stagger="none" spring={spring}>

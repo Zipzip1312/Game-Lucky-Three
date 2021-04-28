@@ -6,13 +6,9 @@ import DrawPrizes from 'components/DrawPrizes'
 import HailCard from 'components/HailCard'
 import GameResetButton from 'components/GameResetButton'
 
-const GameTitle = ({ picks, remove, hide }) => {
-  const classes = 'title-4 text-center white nowrap text-shadow mt-2 animate'
-
+const GameTitle = ({ picks }) => {
   return (
-    <div
-      className={`${classes} ${hide ? 'hidden' : remove ? 'backOutLeft' : ''}`}
-    >
+    <div className="title-4 text-center white nowrap text-shadow mt-2">
       Грай! Ти маєш один шанс та {picks} спроби
     </div>
   )
@@ -45,6 +41,7 @@ const PicksCounter = ({ picks, selecting }) => {
 
 const StartButton = ({ disabled }) => {
   const dispatch = useDispatch()
+
   return (
     <>
       <div
@@ -71,12 +68,13 @@ const GameHeader = ({ shuffling, gameOver }) => {
 
   return (
     <>
-      {showPicksCounter && <DrawPrizes hide={gameOver} />}
-
       <div className="game-header flex-center flex-wrap align-end pb-1">
-        <GameTitle picks={picks} remove={showPicksCounter} hide={gameOver} />
-
-        <div className="game-header-container flex-center mt-1">
+        {showPicksCounter ? (
+          <DrawPrizes hide={gameOver} />
+        ) : (
+          <GameTitle picks={picks} />
+        )}
+        <div className="game-header-container flex-center mt-2">
           {showPicksCounter ? (
             <PicksCounter picks={picks} selecting={currentScore.length > 0} />
           ) : (
