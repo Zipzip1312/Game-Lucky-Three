@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { nextScreen } from 'redux/appReducer'
 
-export default function NavButtons() {
+export default function NavButton() {
   const show = useSelector((state) => state.app.enableNav)
   const dispatch = useDispatch()
 

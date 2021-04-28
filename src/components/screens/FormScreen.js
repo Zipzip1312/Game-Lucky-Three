@@ -4,7 +4,6 @@ import Form from 'components/Form'
 // ------------------------------
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
-import { toggleNav } from 'redux/appReducer'
 // ------------------------------
 
 export default function FormScreen() {
@@ -13,7 +12,6 @@ export default function FormScreen() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(toggleNav(true))
     if (form) console.log('form')
   }, [dispatch, form])
   // ------------------------------

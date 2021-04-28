@@ -6,7 +6,7 @@ import RulesScreen from 'components/screens/RulesScreen'
 import FormScreen from 'components/screens/FormScreen'
 import InviteScreen from 'components/screens/InviteScreen'
 import GameScreen from 'components/screens/GameScreen'
-import NavButtons from 'components/NavButtons'
+import NavButton from 'components/NavButton'
 // ------------------------------------------------------------------------
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
@@ -50,7 +50,7 @@ function App() {
             >
               <div className="screen" ref={refs[name]}>
                 <Component />
-                {path !== '/invite' && path !== '/game' && <NavButtons />}
+                {path !== '/invite' && path !== '/game' && <NavButton />}
               </div>
             </CSSTransition>
           )}
