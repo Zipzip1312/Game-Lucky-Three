@@ -68,24 +68,22 @@ const GameHeader = ({ shuffling, gameOver }) => {
 
   return (
     <>
-      <div className="game-header flex-center flex-wrap align-end pb-1">
+      {showPicksCounter ? (
+        <DrawPrizes hide={gameOver} />
+      ) : (
+        <GameTitle picks={picks} />
+      )}
+      <div className="game-header-container flex-center mt-2">
         {showPicksCounter ? (
-          <DrawPrizes hide={gameOver} />
+          <PicksCounter picks={picks} selecting={currentScore.length > 0} />
         ) : (
-          <GameTitle picks={picks} />
+          <StartButton disabled={shuffling} />
         )}
-        <div className="game-header-container flex-center mt-2">
-          {showPicksCounter ? (
-            <PicksCounter picks={picks} selecting={currentScore.length > 0} />
-          ) : (
-            <StartButton disabled={shuffling} />
-          )}
-        </div>
-
-        <HailCard show={gameOver} />
-
-        <GameResetButton />
       </div>
+
+      <HailCard show={gameOver} />
+
+      <GameResetButton />
     </>
   )
 }

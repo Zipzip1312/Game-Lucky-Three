@@ -19,11 +19,13 @@ const Game = () => {
 
   return (
     <div className="game flex-center flex-column">
-      <GameHeader shuffling={shuffling} gameOver={gameOver} />
+      <div className="game-header flex-center flex-wrap align-end pb-2">
+        <GameHeader shuffling={shuffling} gameOver={gameOver} />
+      </div>
       <Flipper
         flipKey={flipKey}
         onComplete={() => dispatch(stopShuffle())}
-        className="game-body flex-center flex-wrap w-100 pt-2 mb-1"
+        className="game-body flex-center flex-wrap w-100 pt-1 mb-2"
       >
         {indexes.map((index, i) => (
           <Flipped key={index} flipId={index} stagger="none" spring={spring}>
