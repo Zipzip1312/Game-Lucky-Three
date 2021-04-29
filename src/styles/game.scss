@@ -2,11 +2,10 @@
   width: $card-width;
   max-width: $card-max-width;
   height: 90vh;
-  min-height: $app-min-height;
 
   &-header {
     height: 100%;
-    min-height: 15rem;
+    min-height: $game-header-min-height;
     position: relative;
 
     &-container {
@@ -66,7 +65,7 @@
 
   &-body {
     height: 100%;
-    min-height: 18rem;
+    min-height: $game-body-min-height;
 
     .score {
       flex: 1 20%;

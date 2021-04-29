@@ -14,9 +14,8 @@ $black: #000;
 ==================================================================================*/
 $base-size: 4.4vw;
 $breakpoint: 500px;
-$app-min-height: 33rem;
 /*==================================================================================
-  DEFAULTS
+DEFAULTS
 ==================================================================================*/
 $body-fontsize: 1.3rem;
 $body-fontweight: 300;
@@ -25,3 +24,8 @@ $body-lineheight: 1.1;
 
 $card-width: 90vw;
 $card-max-width: 20rem;
+$card-min-height: 12rem;
+
+$app-min-height: 33rem;
+$game-header-min-height: 15rem;
+$game-body-min-height: 18rem;
