@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { createRef } from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import { CSSTransition } from 'react-transition-group'
 import WelcomeScreen from 'components/screens/WelcomeScreen'
@@ -14,7 +14,7 @@ import history from './history'
 // ------------------------------------------------------------------------
 
 const routes = [
-  { path: ['/', '/welcome'], name: 'Welcome', Component: WelcomeScreen },
+  { path: ['/welcome'], name: 'Welcome', Component: WelcomeScreen },
   { path: '/rules', name: 'Rules', Component: RulesScreen },
   { path: '/form', name: 'Form', Component: FormScreen },
   { path: '/invite', name: 'Invite', Component: InviteScreen },
@@ -28,13 +28,8 @@ function App() {
     history.push(activeScreen)
   }, [activeScreen])
   // ------------------------------------------------------------------------
-  const refs = {
-    Welcome: useRef(null),
-    Rules: useRef(null),
-    Form: useRef(null),
-    Invite: useRef(null),
-    Game: useRef(null)
-  }
+  // Create ref for each route
+  routes.forEach(({ name }) => (routes[name] = createRef()))
 
   return (
     <div className="app flex-center flex-column">
@@ -42,13 +37,13 @@ function App() {
         <Route key={path} exact path={path}>
           {({ match }) => (
             <CSSTransition
-              nodeRef={refs[name]}
+              nodeRef={routes[name]}
               in={match != null}
               timeout={2000}
               classNames="screen"
               unmountOnExit
             >
-              <div className="screen" ref={refs[name]}>
+              <div className="screen" ref={routes[name]}>
                 <Component />
                 {path !== '/invite' && path !== '/game' && <NavButton />}
               </div>
@@ -56,7 +51,7 @@ function App() {
           )}
         </Route>
       ))}
-      <Redirect to="/" />
+      <Redirect to="/welcome" />
     </div>
   )
 }
