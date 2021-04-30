@@ -1,5 +1,6 @@
 import DogImg from 'images/dog.svg'
 import DrawPrizes from 'components/DrawPrizes'
+import NavButton from 'components/NavButton'
 
 export default function WelcomeScreen() {
   return (
@@ -20,6 +21,7 @@ export default function WelcomeScreen() {
           </div>
         </div>
       </div>
+      <NavButton />
     </>
   )
 }
