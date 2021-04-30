@@ -4,8 +4,7 @@
   height: 90vh;
 
   &-header {
-    height: 100%;
-    min-height: $game-header-min-height;
+    min-height: $game-header-height;
     position: relative;
 
     &-container {
@@ -64,8 +63,7 @@
   }
 
   &-body {
-    height: 100%;
-    min-height: $game-body-min-height;
+    height: $game-body-height;
 
     .score {
       flex: 1 20%;
