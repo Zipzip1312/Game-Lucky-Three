@@ -56,10 +56,9 @@ const StartButton = ({ disabled }) => {
 }
 
 const GameHeader = ({ shuffling, gameOver }) => {
-  const picksAvailable = useSelector((state) => state.game.picksAvailable)
-  const currentScore = useSelector((state) => state.game.currentScore)
-  const showPicksCounter = useSelector((state) => state.game.showPicksCounter)
-
+  const { picksAvailable, currentScore, showPicksCounter } = useSelector(
+    (state) => state.game
+  )
   const [picks, setPicks] = useState(picksAvailable)
 
   useEffect(() => {
