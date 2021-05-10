@@ -7,28 +7,10 @@
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"
     />
-    <meta name="theme-color" content="#fff" />
+    <meta name="theme-color" content="#062459" />
     <title>Грай та вигравай!</title>
   </head>
   <body>
     <div id="root"></div>
   </body>
-
-  <script>
-    function browserDetect() {
-      const standalone = window.navigator.standalone,
-        userAgent = window.navigator.userAgent.toLowerCase(),
-        safari =
-          userAgent.indexOf('safari') !== -1 &&
-          userAgent.indexOf('chrome') === -1
-
-      return (/iphone|ipod|ipad/.test(userAgent) && !standalone) || safari
-        ? 'safari'
-        : 'browser'
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      document.documentElement.classList.add(browserDetect())
-    })
-  </script>
 </html>

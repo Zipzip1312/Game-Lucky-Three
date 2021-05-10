@@ -1,16 +1,15 @@
-import { createRef } from 'react'
+import { useEffect, createRef } from 'react'
+import { useSelector } from 'react-redux'
 import { Route, Redirect } from 'react-router-dom'
 import { CSSTransition } from 'react-transition-group'
+import history from './history'
+import isSafari from 'util/isSafari'
+// ------------------------------------------------------------------------
 import WelcomeScreen from 'components/screens/WelcomeScreen'
 import RulesScreen from 'components/screens/RulesScreen'
 import FormScreen from 'components/screens/FormScreen'
 import InviteScreen from 'components/screens/InviteScreen'
 import GameScreen from 'components/screens/GameScreen'
-// ------------------------------------------------------------------------
-import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import history from './history'
-// ------------------------------------------------------------------------
 
 const routes = [
   { path: ['/welcome'], name: 'Welcome', Component: WelcomeScreen },
@@ -21,6 +20,10 @@ const routes = [
 ]
 
 function App() {
+  // ------------------------------------------------------------------------
+  useEffect(() => {
+    isSafari() && document.documentElement.classList.add('safari')
+  }, [])
   // ------------------------------------------------------------------------
   const activeScreen = useSelector((state) => state.app.activeScreen)
   useEffect(() => {
