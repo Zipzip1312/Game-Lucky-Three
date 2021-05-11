@@ -3,14 +3,15 @@
     background: url(../images/botton-back.svg) no-repeat center;
     background-size: 100%;
     padding: 0.4rem;
-    margin: 0 0.8rem;
+    margin: 0 0.4rem;
+    font-size: 1.4rem;
     letter-spacing: 0.1rem;
     &:before {
       content: '';
-      width: 1.3rem;
-      height: 1.3rem;
+      width: 1.4rem;
+      height: 1.4rem;
       background: url(../images/coin-active.svg) no-repeat center;
-      margin-right: 0.3rem;
+      margin-right: 0.4rem;
       margin-bottom: -0.1rem;
     }
   }

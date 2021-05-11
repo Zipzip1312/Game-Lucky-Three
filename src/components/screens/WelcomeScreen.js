@@ -15,7 +15,7 @@ export default function WelcomeScreen() {
         </div>
         <div className="card-info flex-center bold mt-2">
           <div className="card-info-title">Пиризовий фонд</div>
-          <div className="card-info-card text-center red animate jello delay-3">
+          <div className="card-info-card text-center red animate jello delay-5">
             <div className="title-1">20</div>
             <span className="fsz-1">млн грн</span>
           </div>

@@ -68,7 +68,7 @@ const GameHeader = ({ shuffling, gameOver }) => {
   return (
     <>
       {showPicksCounter ? (
-        <DrawPrizes hide={gameOver} />
+        <DrawPrizes hide={gameOver} delay={false} />
       ) : (
         <GameTitle picks={picks} />
       )}
