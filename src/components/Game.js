@@ -3,6 +3,7 @@ import { stopShuffle } from 'redux/gameReducer'
 import { Flipper, Flipped } from 'react-flip-toolkit'
 import GameHeader from 'components/GameHeader'
 import ScoreCard from 'components/ScoreCard'
+import Confetti from 'components/Confetti'
 
 const Game = () => {
   const {
@@ -43,6 +44,7 @@ const Game = () => {
           </Flipped>
         ))}
       </Flipper>
+      {gameOver && <Confetti />}
     </div>
   )
 }
