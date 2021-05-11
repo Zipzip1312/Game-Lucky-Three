@@ -37,45 +37,44 @@
   &-submit {
     text-align: center;
     @extend .bold;
-    &.invite {
-      width: 8rem;
-      height: 3.5rem;
-      position: relative;
-      background: url(../images/holder.svg) no-repeat center;
+
+    width: 8rem;
+    height: 3.5rem;
+    position: relative;
+    background: url(../images/holder.svg) no-repeat center;
+    background-size: 100% 100%;
+    transition: all 0.5s ease;
+
+    .active {
+      background: url(../images/btn-bg-active.svg) no-repeat center;
+      cursor: pointer;
+    }
+
+    .active,
+    .disabled {
+      height: 100%;
       background-size: 100% 100%;
-      transition: all 0.5s ease;
+      line-height: 2.2;
+    }
 
-      .message {
-        font-size: 60%;
-        line-height: 1.5;
-        padding: 0.4rem 0 0 1rem;
-        &:before {
-          content: '';
-          position: absolute;
-          top: 0.7rem;
-          left: -0.7rem;
-          width: 1.7rem;
-          height: 1.6rem;
-          background: url(../images/btn-arrow.svg) no-repeat center;
-          background-size: 100% 100%;
-        }
-      }
+    .large {
+      font-size: 1.7rem;
+      line-height: 1.7;
+    }
 
-      .to-game-btn,
-      .active {
-        height: 100%;
-        background: url(../images/btn-bg-active.svg) no-repeat center;
+    .message {
+      font-size: 60%;
+      line-height: 1.5;
+      padding: 0.4rem 0 0 1rem;
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0.7rem;
+        left: -0.7rem;
+        width: 1.7rem;
+        height: 1.6rem;
+        background: url(../images/btn-arrow.svg) no-repeat center;
         background-size: 100% 100%;
-        cursor: pointer;
-      }
-
-      .to-game-btn {
-        font-size: 1.7rem;
-        line-height: 1.7;
-      }
-
-      .active {
-        line-height: 2.2;
       }
     }
   }

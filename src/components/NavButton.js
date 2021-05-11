@@ -6,7 +6,7 @@ export default function NavButton() {
   const dispatch = useDispatch()
 
   return (
-    <div className="nav flex-center mt-2">
+    <div className="nav flex-center mt-2 mb-auto">
       <div
         className={`nav-link animate ${
           show ? 'bounceInLeft' : 'bounceOutRight'

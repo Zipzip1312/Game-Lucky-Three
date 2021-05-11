@@ -3,9 +3,9 @@ import { createSlice } from '@reduxjs/toolkit'
 export const slice = createSlice({
   name: 'app',
   initialState: {
-    screens: ['welcome', 'rules', 'form', 'invite', 'game'],
+    screens: ['welcome', 'form', 'invite', 'game'],
     activeScreen: 'welcome',
-    enableNav: true,
+    enableNav: false,
     rulesAccepted: false,
     form: {},
     formFilled: false,

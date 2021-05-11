@@ -4,7 +4,7 @@ import { nextScreen } from 'redux/appReducer'
 
 const SelectMediaBtn = () => {
   return (
-    <div className="message">
+    <div className="message light-blue">
       Обери зручний
       <br />
       спосіб відправки
@@ -22,7 +22,7 @@ const InviteBtn = ({ media, onClick }) => {
   }, [media])
 
   return (
-    <div className={`active animate ${animation}`} onClick={onClick}>
+    <div className={`active light-blue animate ${animation}`} onClick={onClick}>
       Запросити
     </div>
   )
@@ -31,7 +31,7 @@ const InviteBtn = ({ media, onClick }) => {
 const ToGameBtn = () => {
   const dispatch = useDispatch()
   return (
-    <div className="to-game-btn red" onClick={() => dispatch(nextScreen())}>
+    <div className="active large red" onClick={() => dispatch(nextScreen())}>
       До гри!
     </div>
   )
@@ -40,7 +40,7 @@ const ToGameBtn = () => {
 export default function InviteButton({ media, toGame, onClick }) {
   const animation = 'animate bounceInRight mt-minus-1'
   return (
-    <div className={`form-submit invite light-blue ${toGame ? animation : ''}`}>
+    <div className={`form-submit ${toGame ? animation : ''}`}>
       {toGame ? (
         <ToGameBtn />
       ) : media ? (

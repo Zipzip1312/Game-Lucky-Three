@@ -6,14 +6,12 @@ import history from './history'
 import isSafari from 'util/isSafari'
 // ------------------------------------------------------------------------
 import WelcomeScreen from 'components/screens/WelcomeScreen'
-import RulesScreen from 'components/screens/RulesScreen'
 import FormScreen from 'components/screens/FormScreen'
 import InviteScreen from 'components/screens/InviteScreen'
 import GameScreen from 'components/screens/GameScreen'
 
 const routes = [
   { path: ['/welcome'], name: 'Welcome', Component: WelcomeScreen },
-  { path: '/rules', name: 'Rules', Component: RulesScreen },
   { path: '/form', name: 'Form', Component: FormScreen },
   { path: '/invite', name: 'Invite', Component: InviteScreen },
   { path: '/game', name: 'Game', Component: GameScreen }

@@ -1,5 +1,5 @@
 export default function DrawPrizes({ hide = false, delay = true }) {
-  const wrapperClasses = 'draw-prizes flex-center white bold'
+  const wrapperClasses = 'draw-prizes flex-center white bold mt-2 mb-auto'
   const prizeClasses = 'prize flex-center'
   const prizeAnimation = 'animate bounceInRight'
   const hideAnimation = 'animate hidden'
