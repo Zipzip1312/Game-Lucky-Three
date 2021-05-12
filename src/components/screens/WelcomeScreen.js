@@ -24,7 +24,7 @@ export default function WelcomeScreen() {
   return (
     <>
       <DrawPrizes />
-      <div className="card mt-2 mb-2">
+      <div className="card mt-minus-2 mb-2">
         <img className="card-image" src={DogImg} alt="Game Logo" />
         <div className="title-1 text-right pr-05">
           Грай та&nbsp;

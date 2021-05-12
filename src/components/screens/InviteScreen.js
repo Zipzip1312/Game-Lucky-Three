@@ -35,7 +35,7 @@ export default function InviteScreen() {
         розкажи про нас {inviteText}
       </div>
       <div className="form flex-center">
-        <div className="form-control w-100 space-around">
+        <div className="form-control w-100 space-around mb-1">
           {!doneInviting && (
             <div className="label mr-1">
               <SocialLinks onClick={selectMedia} activeLink={media} />
