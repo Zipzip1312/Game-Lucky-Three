@@ -19,8 +19,7 @@ export const slice = createSlice({
     totalScore: 0,
     currentScore: [],
     selectedCards: [],
-    gameResults: [],
-    resettable: false
+    gameResults: []
   },
   reducers: {
     setPlayer: (state, { payload }) => {
@@ -56,18 +55,6 @@ export const slice = createSlice({
           })
         }
       }
-    },
-    resetGame: (state) => {
-      if (state.resettable) {
-        state.gameOver = false
-        state.showPicksCounter = false
-        state.picksEnabled = false
-        state.shuffling = false
-        state.totalScore = 0
-        state.currentScore = []
-        state.selectedCards = []
-        state.gameResults = []
-      }
     }
   }
 })
@@ -78,8 +65,7 @@ export const {
   stopShuffle,
   shuffleScores,
   updateCurrentScore,
-  disablePicks,
-  resetGame
+  disablePicks
 } = slice.actions
 
 export default slice.reducer
