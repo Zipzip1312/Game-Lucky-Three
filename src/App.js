@@ -1,7 +1,8 @@
 import { useEffect, createRef } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { Route, Redirect } from 'react-router-dom'
 import { CSSTransition } from 'react-transition-group'
+import { getPlayerStatus } from 'redux/appReducer'
 import history from './history'
 import isSafari from 'util/isSafari'
 // ------------------------------------------------------------------------
@@ -18,10 +19,15 @@ const routes = [
 ]
 
 function App() {
+  const { pending } = useSelector((state) => state.app)
+  const classes = 'app flex-center flex-column'
+  const dispatch = useDispatch()
   // ------------------------------------------------------------------------
   useEffect(() => {
     isSafari() && document.documentElement.classList.add('safari')
-  }, [])
+    dispatch(getPlayerStatus())
+  }, [dispatch])
+  // ------------------------------------------------------------------------
   // ------------------------------------------------------------------------
   const activeScreen = useSelector((state) => state.app.activeScreen)
   useEffect(() => {
@@ -32,7 +38,7 @@ function App() {
   routes.forEach(({ name }) => (routes[name] = createRef()))
 
   return (
-    <div className="app flex-center flex-column">
+    <div className={`${classes} ${pending ? 'pending' : 'animate zoomIn'}`}>
       {routes.map(({ path, name, Component }) => (
         <Route key={path} exact path={path}>
           {({ match }) => (

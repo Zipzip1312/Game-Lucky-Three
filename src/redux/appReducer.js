@@ -1,8 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+const sleep = (m) => new Promise((r) => setTimeout(r, m))
+
 export const slice = createSlice({
   name: 'app',
   initialState: {
+    pending: true,
     screens: ['welcome', 'form', 'invite', 'game'],
     activeScreen: 'welcome',
     enableNav: false,
@@ -29,6 +32,9 @@ export const slice = createSlice({
         state.activeScreen = state.screens[activeScreenIdx - 1]
       }
     },
+    togglePending: (state) => {
+      state.pending = false
+    },
     toggleNav: (state, { payload }) => {
       state.enableNav = payload
     },
@@ -52,6 +58,7 @@ export const slice = createSlice({
 })
 
 export const {
+  togglePending,
   setScreen,
   nextScreen,
   prevScreen,
@@ -63,3 +70,10 @@ export const {
 } = slice.actions
 
 export default slice.reducer
+
+export function getPlayerStatus() {
+  return async (dispatch) => {
+    await sleep(1000)
+    dispatch(togglePending())
+  }
+}

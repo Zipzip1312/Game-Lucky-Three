@@ -24,7 +24,7 @@ class SpaceBackground extends PureComponent {
     depth: 300,
     style: {
       position: 'absolute',
-      zIndex: 1,
+      zIndex: -1,
       top: 0,
       left: 0,
       right: 0,
