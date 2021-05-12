@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 
 export default function Confetti() {
   useEffect(() => {
-    const duration = 4 * 1000
+    const duration = 3 * 1000
     const end = Date.now() + duration
     const frame = () => {
       // launch a few confetti from the left edge

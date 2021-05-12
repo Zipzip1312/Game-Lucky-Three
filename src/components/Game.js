@@ -19,7 +19,7 @@ const Game = () => {
   const spring = { stiffness: 300, damping: 30 }
 
   return (
-    <div className="game flex-center flex-column">
+    <div className="game flex-center flex-column mt-minus-2">
       <GameHeader shuffling={shuffling} gameOver={gameOver} />
       <Flipper
         flipKey={flipKey}
