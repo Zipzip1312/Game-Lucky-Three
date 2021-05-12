@@ -6,6 +6,7 @@ export const slice = createSlice({
     screens: ['welcome', 'form', 'invite', 'game'],
     activeScreen: 'welcome',
     enableNav: false,
+    showRules: false,
     rulesAccepted: false,
     form: {},
     formFilled: false,
@@ -31,9 +32,12 @@ export const slice = createSlice({
     toggleNav: (state, { payload }) => {
       state.enableNav = payload
     },
-    toggleRulesAccepted: (state, { payload }) => {
-      state.rulesAccepted = payload
-      state.enableNav = payload
+    toggleRules: (state) => {
+      state.showRules = !state.showRules
+    },
+    toggleRulesAccepted: (state) => {
+      state.rulesAccepted = !state.rulesAccepted
+      state.enableNav = state.rulesAccepted
     },
     toggleFormFilled: (state, { payload }) => {
       state.formFilled = payload
@@ -52,6 +56,7 @@ export const {
   nextScreen,
   prevScreen,
   toggleNav,
+  toggleRules,
   toggleRulesAccepted,
   toggleFormFilled,
   handleSendInvite

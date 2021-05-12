@@ -19,7 +19,7 @@ export default function FormScreen() {
 
   return (
     <>
-      <div className="card">
+      <div className="card mt-auto">
         <div className="card-title">
           <img src={MenuIcon} alt="Авторизуйся" />
           <span className="text-gradient">Підкажи</span>
