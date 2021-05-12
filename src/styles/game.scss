@@ -7,56 +7,51 @@
     min-height: $game-header-height;
     position: relative;
 
-    &-container {
+    .btn {
+      width: 8rem;
       height: 4rem;
-      position: relative;
+      background: url(../images/btn-botder.svg),
+        url(../images/btn-bg-active.svg);
+      background-repeat: no-repeat;
+      background-position: center center;
+      transition: background 0.3s ease-in-out;
+      cursor: pointer;
+      &:before {
+        content: '';
+        display: block;
+        width: 40%;
+        height: 40%;
+        margin: 1rem auto;
+        background: url(../images/btn-text.svg) no-repeat center;
+        opacity: 1;
+        transition: opacity 0.3s ease;
+      }
 
-      .btn {
-        width: 8rem;
-        height: 100%;
+      &.disabled {
+        position: absolute;
         background: url(../images/btn-botder.svg),
-          url(../images/btn-bg-active.svg);
+          url(../images/btn-bg-disabled.svg);
         background-repeat: no-repeat;
         background-position: center center;
-        transition: background 0.3s ease-in-out;
-        cursor: pointer;
+        cursor: not-allowed;
         &:before {
-          content: '';
-          display: block;
-          width: 40%;
-          height: 40%;
-          margin: 1rem auto;
-          background: url(../images/btn-text.svg) no-repeat center;
-          opacity: 1;
-          transition: opacity 0.3s ease;
+          opacity: 0.3;
         }
+      }
 
-        &.disabled {
-          position: absolute;
-          background: url(../images/btn-botder.svg),
-            url(../images/btn-bg-disabled.svg);
-          background-repeat: no-repeat;
-          background-position: center center;
-          cursor: not-allowed;
-          &:before {
-            opacity: 0.3;
-          }
+      &.picks-counter {
+        font-size: 2rem;
+        cursor: default;
+        .count {
+          align-self: flex-start;
+          margin-top: 0.7rem;
+          margin-right: 0.5rem;
         }
-
-        &.picks-counter {
-          font-size: 2rem;
-          cursor: default;
-          .count {
-            align-self: flex-start;
-            margin-top: 0.7rem;
-            margin-right: 0.5rem;
-          }
-          .text {
-            font-size: 1rem;
-          }
-          &:before {
-            display: none;
-          }
+        .text {
+          font-size: 1rem;
+        }
+        &:before {
+          display: none;
         }
       }
     }

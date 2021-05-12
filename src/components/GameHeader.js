@@ -7,7 +7,7 @@ import HailCard from 'components/HailCard'
 
 const GameTitle = ({ picks }) => {
   return (
-    <div className="title-4 text-center white nowrap text-shadow mt-2">
+    <div className="title-4 text-center white nowrap text-shadow mt-4 mb-auto">
       Грай! Ти маєш один шанс та {picks} спроби
     </div>
   )
@@ -65,22 +65,21 @@ const GameHeader = ({ shuffling, gameOver }) => {
   }, [currentScore, picksAvailable])
 
   return (
-    <>
+    <div className="game-header flex-center flex-wrap align-end pb-2">
       {showPicksCounter ? (
-        <DrawPrizes hide={gameOver} delay={false} />
-      ) : (
-        <GameTitle picks={picks} />
-      )}
-      <div className="game-header-container flex-center mt-2">
-        {showPicksCounter ? (
+        <>
+          <DrawPrizes hide={gameOver} delay={false} />
           <PicksCounter picks={picks} selecting={currentScore.length > 0} />
-        ) : (
+        </>
+      ) : (
+        <>
+          <GameTitle picks={picks} />
           <StartButton disabled={shuffling} />
-        )}
-      </div>
+        </>
+      )}
 
       <HailCard show={gameOver} />
-    </>
+    </div>
   )
 }
 

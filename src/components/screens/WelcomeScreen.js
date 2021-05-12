@@ -9,11 +9,14 @@ import Rules from 'components/Rules'
 const ShowRulesBtn = () => {
   const rulesAccepted = useSelector((state) => state.app.rulesAccepted)
   const dispatch = useDispatch()
-  const classes = rulesAccepted ? 'disabled headShake' : 'active jello'
+  const classes = {
+    wrapper: rulesAccepted ? 'form-submit' : 'form-submit animate pulse',
+    btn: rulesAccepted ? 'disabled headShake' : 'active jello'
+  }
 
   return (
-    <div className="form-submit" onClick={() => dispatch(toggleRules())}>
-      <div className={`${classes} light-blue cursor-pointer ls-1 animate`}>
+    <div className={classes.wrapper} onClick={() => dispatch(toggleRules())}>
+      <div className={`${classes.btn} light-blue cursor-pointer ls-1 animate`}>
         Правила
       </div>
     </div>

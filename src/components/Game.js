@@ -20,9 +20,7 @@ const Game = () => {
 
   return (
     <div className="game flex-center flex-column">
-      <div className="game-header flex-center flex-wrap align-end pb-2">
-        <GameHeader shuffling={shuffling} gameOver={gameOver} />
-      </div>
+      <GameHeader shuffling={shuffling} gameOver={gameOver} />
       <Flipper
         flipKey={flipKey}
         onComplete={() => dispatch(stopShuffle())}
