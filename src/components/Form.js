@@ -32,7 +32,7 @@ export default function Form() {
   }
   // ---------------------------------------
   return (
-    <div className="form flex-center">
+    <div className="form flex-center mb-1">
       <div className="form-control">
         <span className="label text-gradient">Стать?</span>
         {Object.entries(sex).map(([key, label]) => (

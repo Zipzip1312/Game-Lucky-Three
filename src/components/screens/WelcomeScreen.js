@@ -24,15 +24,15 @@ export default function WelcomeScreen() {
   return (
     <>
       <DrawPrizes />
-      <div className="card mt-auto mb-2">
+      <div className="card mt-2 mb-2">
         <img className="card-image" src={DogImg} alt="Game Logo" />
         <div className="title-1 text-right pr-05">
           Грай та&nbsp;
           <br />
           вигравай!
         </div>
-        <div className="card-info flex-center bold mt-2">
-          <div className="card-info-title">Пиризовий фонд</div>
+        <div className="card-info flex-center bold mt-1">
+          <div className="card-info-title">Призовий фонд</div>
           <div className="card-info-card text-center red animate jello delay-5">
             <div className="title-1">10</div>
             <span className="fsz-1">млн грн</span>

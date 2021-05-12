@@ -25,7 +25,7 @@ export default function InviteScreen() {
 
   return (
     <div className="card">
-      <img className="card-image" src={DogsImg} alt="Friends Logo" />
+      <img className="card-image friends" src={DogsImg} alt="Friends Logo" />
       <div className="title-1 card-title-right mb-1">
         Запроси
         <br />

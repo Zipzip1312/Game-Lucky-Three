@@ -13,8 +13,13 @@
   &-image {
     position: absolute;
     left: -1rem;
-    top: -1.75rem;
+    top: -1rem;
     width: 50%;
+    &.friends {
+      left: -1.3rem;
+      top: -0.9rem;
+      width: 55%;
+    }
   }
 
   &-info {
@@ -41,6 +46,9 @@
     font-weight: 700;
     letter-spacing: 0.1rem;
     line-height: 1.7;
+    &-right {
+      padding-left: 53%;
+    }
     > img {
       width: 2rem;
       margin-right: 0.6rem;
@@ -48,14 +56,8 @@
       align-self: flex-end;
     }
     &.hail {
-      justify-content: flex-end;
       font-size: 2.3rem;
-      margin-top: 0;
     }
-  }
-
-  &-title-right {
-    padding-left: 50%;
   }
 
   .total-score {
