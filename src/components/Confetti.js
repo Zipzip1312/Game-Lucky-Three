@@ -12,7 +12,7 @@ export default function Confetti() {
         angle: 60,
         spread: 55,
         origin: { x: 0 },
-        zIndex: 0
+        zIndex: -1
       })
       // and launch a few from the right edge
       confetti({
@@ -20,7 +20,7 @@ export default function Confetti() {
         angle: 120,
         spread: 55,
         origin: { x: 1 },
-        zIndex: 0
+        zIndex: -1
       })
 
       // keep going until we are out of time
