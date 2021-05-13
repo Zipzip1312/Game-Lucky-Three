@@ -1,6 +1,7 @@
 import DogImg from 'images/dog.svg'
 import { useSelector } from 'react-redux'
 import { useState, useEffect } from 'react'
+import ShowRulesButton from 'components/ShowRulesButton'
 
 export default function HailCard({ show }) {
   const totalScore = useSelector((state) => state.game.totalScore)
@@ -9,8 +10,9 @@ export default function HailCard({ show }) {
 
   useEffect(() => {
     if (show) {
-      setTimeout(setAnimationOut, 2000, 'animate backOutLeft delay-3')
-      setTimeout(setAnimationIn, 2000, 'animate backInRight delay-4')
+      const timeout = 2000
+      setTimeout(setAnimationOut, timeout, 'animate backOutLeft delay-3')
+      setTimeout(setAnimationIn, timeout, 'animate backInRight delay-4')
     }
   }, [show])
 
@@ -22,7 +24,11 @@ export default function HailCard({ show }) {
             Очікуй на CMS/Viber повідомлення!
           </span>
         </div>
+        <div className="card-info flex-center bold">
+          <ShowRulesButton />
+        </div>
       </div>
+
       <div className={`card hail ${show ? 'open ' : ''} ${animationOut}`}>
         <img className="card-image" src={DogImg} alt="Game Logo" />
         <div className="card-title card-title-right hail pr-05 mb-2 mt-0">
