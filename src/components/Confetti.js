@@ -6,21 +6,18 @@ export default function Confetti() {
     const duration = 3 * 1000
     const end = Date.now() + duration
     const frame = () => {
-      // launch a few confetti from the left edge
+      const defaults = { particleCount: 6, spread: 50, ticks: 100, zIndex: -1 }
+      // left edge
       confetti({
-        particleCount: 5,
         angle: 60,
-        spread: 45,
         origin: { x: 0 },
-        zIndex: -1
+        ...defaults
       })
-      // and launch a few from the right edge
+      // right edge
       confetti({
-        particleCount: 5,
         angle: 120,
-        spread: 45,
         origin: { x: 1 },
-        zIndex: -1
+        ...defaults
       })
 
       // keep going until we are out of time
@@ -28,7 +25,7 @@ export default function Confetti() {
         requestAnimationFrame(frame)
       }
     }
-    setTimeout(frame, 500)
+    setTimeout(requestAnimationFrame, 500, frame)
   }, [])
   return <></>
 }

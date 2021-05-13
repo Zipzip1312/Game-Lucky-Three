@@ -1,14 +1,10 @@
 import FormCheckbox from 'components/FormCheckbox'
 import SocialLinks from 'components/SocialLinks'
-import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { toggleFormFilled, toggleNav } from 'redux/appReducer'
+import { toggleFormFilled } from 'redux/appReducer'
 
 export default function Form() {
   const dispatch = useDispatch()
-  useEffect(() => {
-    setTimeout(dispatch, 1000, toggleFormFilled(true))
-  }, [dispatch])
   // ---------------------------------------
   const sex = {
     male: 'чол',
@@ -27,7 +23,7 @@ export default function Form() {
   const activeAge = ''
 
   const setSocialMedia = (link) => {
-    dispatch(toggleNav(true))
+    dispatch(toggleFormFilled(true))
     console.log(`Selected: ${link}`)
   }
   // ---------------------------------------

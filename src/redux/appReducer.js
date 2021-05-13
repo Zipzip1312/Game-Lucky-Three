@@ -47,6 +47,7 @@ export const slice = createSlice({
     },
     toggleFormFilled: (state, { payload }) => {
       state.formFilled = payload
+      state.enableNav = payload
     },
     handleSendInvite: (state) => {
       --state.invitesLeft

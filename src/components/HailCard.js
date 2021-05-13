@@ -10,7 +10,7 @@ export default function HailCard({ show }) {
 
   useEffect(() => {
     if (show) {
-      const timeout = 2000
+      const timeout = 1000
       setTimeout(setAnimationOut, timeout, 'animate backOutLeft delay-3')
       setTimeout(setAnimationIn, timeout, 'animate backInRight delay-4')
     }
