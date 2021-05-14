@@ -24,11 +24,12 @@ class SpaceBackground extends PureComponent {
     depth: 300,
     style: {
       position: 'absolute',
-      zIndex: -1,
       top: 0,
       left: 0,
       right: 0,
-      bottom: 0
+      bottom: 0,
+      overflow: 'hidden',
+      zIndex: -1
     },
     size: {
       width: window.innerWidth,
@@ -57,14 +58,7 @@ class SpaceBackground extends PureComponent {
     } = this.props
 
     return (
-      <div
-        id="space-bg"
-        style={{
-          overflow: 'hidden',
-          ...style
-        }}
-        {...rest}
-      >
+      <div id="space-bg" style={style} {...rest}>
         <canvas ref={this._canvasRef} width={size.width} height={size.height} />
       </div>
     )
