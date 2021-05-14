@@ -6,7 +6,7 @@ export default function Confetti() {
     const duration = 3 * 1000
     const end = Date.now() + duration
     const frame = () => {
-      const defaults = { particleCount: 6, spread: 50, ticks: 100, zIndex: -1 }
+      const defaults = { particleCount: 6, spread: 50, ticks: 180, zIndex: -1 }
       // left edge
       confetti({
         angle: 60,
