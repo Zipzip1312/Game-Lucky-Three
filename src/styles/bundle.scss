@@ -1,0 +1,21 @@
+@import './normalize.scss';
+@import './fonts.scss';
+@import './vars.scss';
+@import './app.scss';
+@import './cards.scss';
+@import './screens.scss';
+@import './animations.scss';
+@import './helpers.scss';
+// -------------------------
+// Components
+// -------------------------
+@import './DrawPrizes.scss';
+@import './Stars.scss';
+@import './Nav.scss';
+@import './Rules.scss';
+@import './Form.scss';
+@import './SocialLinks.scss';
+@import './Game.scss';
+
+// fix safari font bug
+@import './safari-fix.scss';

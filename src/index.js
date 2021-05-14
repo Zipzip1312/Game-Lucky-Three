@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import 'styles/app.scss'
 import reportWebVitals from 'reportWebVitals'
 import { Provider } from 'react-redux'
 import store from 'redux/store'
@@ -8,6 +7,7 @@ import { Router } from 'react-router-dom'
 import history from './history'
 import App from 'App'
 import SpaceBackground from 'components/SpaceBackground'
+import 'styles/bundle.scss'
 
 ReactDOM.render(
   <React.StrictMode>
