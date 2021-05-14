@@ -5,15 +5,30 @@
   max-width: $card-max-width;
 
   &-link .link {
+    position: relative;
     width: 6rem;
     height: 4rem;
     background: url(../images/arrow.svg) no-repeat center;
     background-size: 100% 100%;
     cursor: pointer;
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url(../images/arrow-active.svg) no-repeat center;
+      opacity: 0;
+      transition: opacity 0.3s ease-out;
+      transition-delay: 1s;
+    }
 
-    &.back {
-      transform: rotate(-180deg);
-      margin-top: -0.2rem;
+    &.active:after {
+      opacity: 1;
+    }
+
+    &.clicked:after {
+      animation-name: zoomOut;
+      animation-duration: 0.5s;
     }
   }
 }
