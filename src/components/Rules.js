@@ -5,7 +5,7 @@ import { toggleRules, toggleRulesAccepted } from 'redux/appReducer'
 export default function Rules() {
   const { showRules, rulesAccepted } = useSelector((state) => state.app)
   const dispatch = useDispatch()
-  const [animation, setAnimation] = useState('bounceInUp')
+  const [animation, setAnimation] = useState('hidden')
   const hideRules = () => {
     setAnimation('bounceOutDown')
     setTimeout(dispatch, 500, toggleRules())
