@@ -1,7 +1,7 @@
 import DogImg from 'images/dog.svg'
+import DogOkImg from 'images/dog-ok-2.svg'
 import { useSelector } from 'react-redux'
 import { useState, useEffect } from 'react'
-import ShowRulesButton from 'components/ShowRulesButton'
 
 export default function HailCard({ show }) {
   const totalScore = useSelector((state) => state.game.totalScore)
@@ -19,13 +19,18 @@ export default function HailCard({ show }) {
   return (
     <>
       <div className={`card hail ${show ? 'open ' : ''} ${animationIn}`}>
-        <div className="card-title text-center pr-05 mb-1 pt-2">
-          <span className="title-2 lh-1-3">
-            Очікуй на CMS/Viber повідомлення!
+        <img className="card-image hail" src={DogOkImg} alt="Game Logo" />
+        <div className="card-title card-title-right text-left pr-05 mb-1 pt-1 ml-minus-1">
+          <span className="title-3 lh-1-3">
+            Очікуй на cms/viber повідомлення
           </span>
         </div>
-        <div className="card-info flex-center bold">
-          <ShowRulesButton />
+        <div className="card-info bold lh-1-3 fsz-1-3">
+          <span>
+            про нарахування виграшних балів
+            <br />
+            на твою картку <span className="yellow">ВИГОДА!</span>
+          </span>
         </div>
       </div>
 

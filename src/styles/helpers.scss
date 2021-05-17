@@ -153,6 +153,9 @@
 .mt-minus-2 {
   margin-top: -2rem !important;
 }
+.ml-minus-1 {
+  margin-left: -1rem !important;
+}
 .pt-1 {
   padding-top: 1rem;
 }
@@ -197,11 +200,17 @@
   -webkit-text-fill-color: transparent;
 }
 
+.lh-1-2 {
+  line-height: 1.2 !important;
+}
 .lh-1-3 {
   line-height: 1.3 !important;
 }
 .fsz-1 {
   font-size: 1rem !important;
+}
+.fsz-1-3 {
+  font-size: 1.3rem !important;
 }
 .fsz-2 {
   font-size: 2rem !important;
