@@ -6,6 +6,12 @@ import { getPlayerStatus } from 'redux/appReducer'
 import history from './history'
 import isSafari from 'util/isSafari'
 // ------------------------------------------------------------------------
+import imagePreload from 'util/imagePreload'
+import ScoreHolderImage from 'images/score-holder.svg'
+import HolderActiveImage from 'images/holder-active.svg'
+import LockImage from 'images/lock.svg'
+import CoinImage from 'images/coin.svg'
+// ------------------------------------------------------------------------
 import WelcomeScreen from 'components/screens/WelcomeScreen'
 import FormScreen from 'components/screens/FormScreen'
 import InviteScreen from 'components/screens/InviteScreen'
@@ -25,6 +31,7 @@ function App() {
   // ------------------------------------------------------------------------
   useEffect(() => {
     isSafari() && document.documentElement.classList.add('safari')
+    imagePreload([ScoreHolderImage, HolderActiveImage, LockImage, CoinImage])
     dispatch(getPlayerStatus())
   }, [dispatch])
   // ------------------------------------------------------------------------
