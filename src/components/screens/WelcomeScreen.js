@@ -1,11 +1,34 @@
 import DogImg from 'images/dog.svg'
+import { useSelector, useDispatch } from 'react-redux'
+import { toggleRules, toggleNav } from 'redux/appReducer'
+import { useEffect } from 'react'
 import DrawPrizes from 'components/DrawPrizes'
 import Stars from 'components/Stars'
 import NavButton from 'components/NavButton'
-import ShowRulesButton from 'components/ShowRulesButton'
 import Rules from 'components/Rules'
 
+const ShowRulesBtn = ({ rulesAccepted, onClick }) => {
+  const classes = {
+    wrapper: `form-submit light-blue cursor-pointer ls-1 animate ${
+      rulesAccepted ? '' : 'pulse'
+    }`,
+    btn: rulesAccepted ? 'disabled headShake' : 'active jello'
+  }
+  return (
+    <div className={classes.wrapper} onClick={onClick}>
+      <div className={classes.btn}>Правила</div>
+    </div>
+  )
+}
+
 export default function WelcomeScreen() {
+  const rulesAccepted = useSelector((state) => state.app.rulesAccepted)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    setTimeout(dispatch, 1000, toggleNav(rulesAccepted))
+  }, [dispatch, rulesAccepted])
+
   return (
     <>
       <DrawPrizes />
@@ -25,7 +48,10 @@ export default function WelcomeScreen() {
         </div>
         <Stars />
       </div>
-      <ShowRulesButton />
+      <ShowRulesBtn
+        rulesAccepted={rulesAccepted}
+        onClick={() => dispatch(toggleRules())}
+      />
       <NavButton />
       <Rules />
     </>

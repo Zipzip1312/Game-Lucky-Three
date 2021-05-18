@@ -43,7 +43,6 @@ export const slice = createSlice({
     },
     toggleRulesAccepted: (state) => {
       state.rulesAccepted = !state.rulesAccepted
-      state.enableNav = state.rulesAccepted
     },
     toggleFormFilled: (state, { payload }) => {
       state.formFilled = payload
