@@ -26,7 +26,7 @@ export default class Particle {
     this.osx = this.sx
     this.osy = this.sy
     this.hue = random(120, 200)
-    this.lightness = random(70, 100)
+    this.lightness = random(100, 150)
     this.alpha = 0
   }
 

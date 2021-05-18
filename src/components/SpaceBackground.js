@@ -132,7 +132,7 @@ class SpaceBackground extends PureComponent {
       height: size.height,
       x: { min: -vp.x, max: size.width - vp.x },
       y: { min: -vp.y, max: size.height - vp.y },
-      z: { min: -depth, max: 1000 }
+      z: { min: -depth, max: 500 }
     }
 
     for (let i = 0; i < numParticles; ++i) {
