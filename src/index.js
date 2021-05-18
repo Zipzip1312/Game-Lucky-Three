@@ -6,7 +6,6 @@ import store from 'redux/store'
 import { Router } from 'react-router-dom'
 import history from './history'
 import App from 'App'
-import SpaceBackground from 'components/SpaceBackground'
 import 'styles/bundle.scss'
 
 ReactDOM.render(
@@ -14,7 +13,6 @@ ReactDOM.render(
     <Provider store={store}>
       <Router history={history}>
         <App />
-        <SpaceBackground />
       </Router>
     </Provider>
   </React.StrictMode>,
