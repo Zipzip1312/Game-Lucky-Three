@@ -201,7 +201,7 @@ export default function Rules() {
           мобільному додатку Епіцентр&nbsp;К.
         </p>
       </div>
-      <div className="rules-blackout"></div>
+      {/* <div className="rules-blackout"></div> */}
       <div className="rules-controls-wrapper w-100">
         <div className="rules-controls d-flex light-blue">
           <div className="form-submit close cursor-pointer" onClick={hideRules}>
