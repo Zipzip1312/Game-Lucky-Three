@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { handleSendInvite } from 'redux/appReducer'
 import DogsImg from 'images/dogs.svg'
@@ -8,10 +8,14 @@ import InviteButton from 'components/InviteButton'
 
 export default function InviteScreen() {
   const invitesLeft = useSelector((state) => state.app.invitesLeft)
-  const doneInviting = useSelector((state) => state.app.doneInviting)
+  const [doneInviting, setDoneInviting] = useState(invitesLeft < 1)
   const [media, setMedia] = useState('')
   const inviteText = invitesLeft > 1 ? `${invitesLeft} друзям` : 'ще 1 другу'
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    setDoneInviting(invitesLeft < 1)
+  }, [invitesLeft])
 
   const selectMedia = (link) => {
     setMedia(link)

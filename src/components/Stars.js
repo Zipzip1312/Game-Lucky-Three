@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 export default function Stars() {
   const rulesAccepted = useSelector((state) => state.app.rulesAccepted)
   const formFilled = useSelector((state) => state.app.formFilled)
-  const doneInviting = useSelector((state) => state.app.doneInviting)
+  const invitesLeft = useSelector((state) => state.app.invitesLeft)
   const activeClasses = 'active animate tada'
 
   return (
@@ -11,7 +11,7 @@ export default function Stars() {
       <div className="flex-center">
         <div className={`star ${rulesAccepted ? activeClasses : ''}`}></div>
         <div className={`star ${formFilled ? activeClasses : ''}`}></div>
-        <div className={`star ${doneInviting ? activeClasses : ''}`}></div>
+        <div className={`star ${invitesLeft < 1 ? activeClasses : ''}`}></div>
       </div>
     </div>
   )

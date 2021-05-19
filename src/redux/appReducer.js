@@ -14,8 +14,7 @@ export const slice = createSlice({
     rulesAccepted: false,
     form: {},
     formFilled: false,
-    invitesLeft: 2,
-    doneInviting: false
+    invitesLeft: 2
   },
   reducers: {
     setScreen: (state, { payload }) => {
@@ -46,10 +45,7 @@ export const slice = createSlice({
       state.enableNav = payload
     },
     handleSendInvite: (state) => {
-      --state.invitesLeft
-      if (state.invitesLeft === 0) {
-        state.doneInviting = true
-      }
+      state.invitesLeft = state.invitesLeft - 1
     }
   }
 })
