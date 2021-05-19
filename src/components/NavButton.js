@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useState, useEffect } from 'react'
-import { nextScreen } from 'redux/appReducer'
+import { toggleScreen } from 'redux/appReducer'
 
 export default function NavButton() {
   const show = useSelector((state) => state.app.enableNav)
@@ -8,7 +8,7 @@ export default function NavButton() {
   const [animation, setAnimation] = useState('')
   const onClick = () => {
     setAnimation('clicked')
-    dispatch(nextScreen())
+    dispatch(toggleScreen())
   }
 
   useEffect(() => {

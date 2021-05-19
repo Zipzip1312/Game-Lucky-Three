@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { nextScreen } from 'redux/appReducer'
+import { toggleScreen } from 'redux/appReducer'
 
 const SelectMediaBtn = () => {
   return (
@@ -31,7 +31,7 @@ const InviteBtn = ({ media, onClick }) => {
 const ToGameBtn = () => {
   const dispatch = useDispatch()
   return (
-    <div className="active large red" onClick={() => dispatch(nextScreen())}>
+    <div className="active large red" onClick={() => dispatch(toggleScreen())}>
       До гри!
     </div>
   )

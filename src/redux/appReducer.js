@@ -17,10 +17,7 @@ export const slice = createSlice({
     invitesLeft: 2
   },
   reducers: {
-    setScreen: (state, { payload }) => {
-      state.activeScreen = payload
-    },
-    nextScreen: (state) => {
+    toggleScreen: (state) => {
       let activeScreen = 0
       state.rulesAccepted && activeScreen++
       state.formFilled && activeScreen++
@@ -52,8 +49,7 @@ export const slice = createSlice({
 
 export const {
   togglePending,
-  setScreen,
-  nextScreen,
+  toggleScreen,
   toggleNav,
   toggleRules,
   toggleRulesAccepted,
