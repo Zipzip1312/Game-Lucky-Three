@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import history from '../history'
 
 const sleep = (m) => new Promise((r) => setTimeout(r, m))
 
@@ -21,16 +22,12 @@ export const slice = createSlice({
       state.activeScreen = payload
     },
     nextScreen: (state) => {
-      const activeScreenIdx = state.screens.indexOf(state.activeScreen)
-      if (activeScreenIdx >= 0 && activeScreenIdx < state.screens.length - 1) {
-        state.activeScreen = state.screens[activeScreenIdx + 1]
-      }
-    },
-    prevScreen: (state) => {
-      const activeScreenIdx = state.screens.indexOf(state.activeScreen)
-      if (activeScreenIdx > 0 && activeScreenIdx <= state.screens.length) {
-        state.activeScreen = state.screens[activeScreenIdx - 1]
-      }
+      let activeScreen = 0
+      state.rulesAccepted && activeScreen++
+      state.formFilled && activeScreen++
+      state.invitesLeft < 1 && activeScreen++
+      history.push(state.screens[activeScreen])
+      state.enableNav = false
     },
     togglePending: (state) => {
       state.pending = false
@@ -61,7 +58,6 @@ export const {
   togglePending,
   setScreen,
   nextScreen,
-  prevScreen,
   toggleNav,
   toggleRules,
   toggleRulesAccepted,
