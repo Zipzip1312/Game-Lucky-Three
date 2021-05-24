@@ -61,7 +61,7 @@ export default slice.reducer
 
 export function getPlayerStatus() {
   return async (dispatch) => {
-    await sleep(1000)
+    await sleep(1500)
     dispatch(togglePending())
   }
 }

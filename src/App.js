@@ -17,6 +17,7 @@ import FormScreen from 'components/screens/FormScreen'
 import InviteScreen from 'components/screens/InviteScreen'
 import GameScreen from 'components/screens/GameScreen'
 import SpaceBackground from 'components/SpaceBackground'
+// import Ruler from 'components/Ruler'
 
 const routes = [
   { path: ['/welcome'], name: 'Welcome', Component: WelcomeScreen },
@@ -74,6 +75,7 @@ function App() {
           size={{ width: window.innerWidth, height: window.innerHeight }}
         />
       )}
+      {/* {showSpaceBg && <Ruler />} */}
     </>
   )
 }

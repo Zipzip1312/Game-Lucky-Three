@@ -1,0 +1,45 @@
+#ruler {
+  height: 100vh;
+  display: flex;
+  position: absolute;
+  left: 20%;
+  bottom: 0;
+  z-index: 999999;
+  .ruler {
+    display: flex;
+    flex-direction: column-reverse;
+    text-align: center;
+    color: #fff;
+  }
+  .stroke {
+    font-size: 8px;
+    position: relative;
+    width: 45px;
+    &.px {
+      height: 10px;
+    }
+    &.rem {
+      min-height: 1rem;
+      max-height: 1rem;
+    }
+    &.vh {
+      width: 30px;
+      font-size: 6px;
+      min-height: 1vh;
+      max-height: 1vh;
+    }
+    &:before,
+    &:after {
+      content: '---';
+      position: absolute;
+      top: 0;
+      font-family: 'Helvetica';
+    }
+    &:after {
+      left: 0;
+    }
+    &:before {
+      right: 0;
+    }
+  }
+}

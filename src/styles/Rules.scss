@@ -36,8 +36,8 @@
       width: 100%;
       position: fixed;
       left: 0;
-      bottom: 8rem;
-      height: 5rem;
+      bottom: 155px;
+      height: 60px;
       background: linear-gradient(rgba(6, 36, 89, 0), $blue);
     }
   }
@@ -51,10 +51,11 @@
 
   .rules-controls-wrapper {
     background-color: $blue;
-    padding: 0.5rem 0 5rem;
+    padding: 0.5rem 0 100px;
     .rules-controls {
       max-width: 23rem;
       margin: 0 auto;
+      z-index: 11;
       .form-submit {
         margin: 0 auto;
         &.close {
