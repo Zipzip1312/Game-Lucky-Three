@@ -6,14 +6,8 @@ import ScoreCard from 'components/ScoreCard'
 import Confetti from 'components/Confetti'
 
 const Game = () => {
-  const {
-    scores,
-    indexes,
-    shuffling,
-    selectedCards,
-    picksEnabled,
-    gameOver
-  } = useSelector((state) => state.game)
+  const { scores, indexes, shuffling, selectedCards, picksEnabled, gameOver } =
+    useSelector((state) => state.game)
   const dispatch = useDispatch()
   const flipKey = JSON.stringify(indexes)
   const spring = { stiffness: 300, damping: 30 }
@@ -31,7 +25,7 @@ const Game = () => {
             {(flippedProps) => (
               <ScoreCard
                 cardIndex={i}
-                enabled={picksEnabled}
+                picksEnabled={picksEnabled}
                 sealed={shuffling}
                 selected={selectedCards.includes(i)}
                 gameOver={gameOver}
