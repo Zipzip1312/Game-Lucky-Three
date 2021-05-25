@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { toggleScreen } from 'redux/appReducer'
+import { setScreen } from 'redux/appReducer'
 
 const SelectMediaBtn = () => {
   return (
@@ -30,8 +30,12 @@ const InviteBtn = ({ media, onClick }) => {
 
 const ToGameBtn = () => {
   const dispatch = useDispatch()
+
   return (
-    <div className="active large red" onClick={() => dispatch(toggleScreen())}>
+    <div
+      className="active large red"
+      onClick={() => dispatch(setScreen('game'))}
+    >
       До гри!
     </div>
   )
@@ -39,6 +43,7 @@ const ToGameBtn = () => {
 
 export default function InviteButton({ media, toGame, onClick }) {
   const animation = 'animate bounceInRight mt-minus-2'
+
   return (
     <div className={`form-submit ${toGame ? animation : ''}`}>
       {toGame ? (

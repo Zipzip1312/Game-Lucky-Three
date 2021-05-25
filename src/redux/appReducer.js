@@ -1,14 +1,20 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import history from '../history'
+import { status } from 'mock'
 
 const sleep = (m) => new Promise((r) => setTimeout(r, m))
+
+export const fetchStatus = createAsyncThunk('fetchStatus', async () => {
+  await sleep(1000)
+  return status
+})
 
 export const slice = createSlice({
   name: 'app',
   initialState: {
     pending: true,
     screens: ['welcome', 'form', 'invite', 'game'],
-    activeScreen: 'welcome',
+    activeScreen: undefined,
     enableNav: false,
     showRules: false,
     rulesAccepted: false,
@@ -17,16 +23,17 @@ export const slice = createSlice({
     invitesLeft: 2
   },
   reducers: {
+    setScreen: (state, { payload }) => {
+      state.activeScreen = payload
+      history.push(payload)
+    },
     toggleScreen: (state) => {
       let activeScreen = 0
       state.rulesAccepted && activeScreen++
       state.formFilled && activeScreen++
       state.invitesLeft < 1 && activeScreen++
-      history.push(state.screens[activeScreen])
+      state.activeScreen = state.screens[activeScreen]
       state.enableNav = false
-    },
-    togglePending: (state) => {
-      state.pending = false
     },
     toggleNav: (state, { payload }) => {
       state.enableNav = payload
@@ -43,25 +50,33 @@ export const slice = createSlice({
     },
     handleSendInvite: (state) => {
       state.invitesLeft = state.invitesLeft - 1
+    },
+    updateState: (state, { payload }) => {
+      return { ...state, ...payload }
     }
+  },
+  extraReducers: {
+    [fetchStatus.pending]: (state) => {
+      state.pending = true
+    },
+    [fetchStatus.fulfilled]: (state) => {
+      state.pending = false
+    }
+    // [fetchStatus.rejected]: (state, action) => {
+    //   state.pending = true
+    // }
   }
 })
 
 export const {
-  togglePending,
+  setScreen,
   toggleScreen,
   toggleNav,
   toggleRules,
   toggleRulesAccepted,
   toggleFormFilled,
-  handleSendInvite
+  handleSendInvite,
+  updateState
 } = slice.actions
 
 export default slice.reducer
-
-export function getPlayerStatus() {
-  return async (dispatch) => {
-    await sleep(1500)
-    dispatch(togglePending())
-  }
-}

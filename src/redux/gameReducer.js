@@ -55,6 +55,9 @@ export const slice = createSlice({
           })
         }
       }
+    },
+    updateState: (state, { payload }) => {
+      return { ...state, ...payload }
     }
   }
 })
@@ -65,7 +68,8 @@ export const {
   stopShuffle,
   shuffleScores,
   updateCurrentScore,
-  disablePicks
+  disablePicks,
+  updateState
 } = slice.actions
 
 export default slice.reducer

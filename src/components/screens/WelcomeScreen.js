@@ -26,7 +26,7 @@ export default function WelcomeScreen() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    setTimeout(dispatch, 1000, toggleNav(rulesAccepted))
+    rulesAccepted && setTimeout(dispatch, 1000, toggleNav(true))
   }, [dispatch, rulesAccepted])
 
   return (

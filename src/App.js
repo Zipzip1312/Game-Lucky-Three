@@ -1,10 +1,10 @@
 import { useState, useEffect, createRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Route, Redirect } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import { CSSTransition } from 'react-transition-group'
-import { getPlayerStatus } from 'redux/appReducer'
-import history from './history'
+import { fetchStatus } from 'redux/appReducer'
 import isSafari from 'util/isSafari'
+import history from './history'
 // ------------------------------------------------------------------------
 import imagePreload from 'util/imagePreload'
 import ScoreHolderImage from 'images/score-holder.svg'
@@ -27,20 +27,19 @@ const routes = [
 ]
 
 function App() {
+  const activeScreen = useSelector((state) => state.app.activeScreen)
   const { pending } = useSelector((state) => state.app)
   const classes = 'app flex-center flex-column'
-  const dispatch = useDispatch()
   const [showSpaceBg, setShowSpaceBg] = useState(false)
+  const dispatch = useDispatch()
   // ------------------------------------------------------------------------
   useEffect(() => {
     isSafari() && document.documentElement.classList.add('safari')
     imagePreload([ScoreHolderImage, HolderActiveImage, LockImage, CoinImage])
     setTimeout(setShowSpaceBg, isSafari() ? 0 : 1000, true) // fix bug on android webview
-    dispatch(getPlayerStatus())
+    dispatch(fetchStatus())
   }, [dispatch])
   // ------------------------------------------------------------------------
-  // ------------------------------------------------------------------------
-  const activeScreen = useSelector((state) => state.app.activeScreen)
   useEffect(() => {
     history.push(activeScreen)
   }, [activeScreen])
@@ -68,7 +67,6 @@ function App() {
             )}
           </Route>
         ))}
-        <Redirect to="/welcome" />
       </div>
       {showSpaceBg && (
         <SpaceBackground

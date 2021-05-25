@@ -4,16 +4,17 @@ import { toggleScreen } from 'redux/appReducer'
 
 export default function NavButton() {
   const show = useSelector((state) => state.app.enableNav)
-  const dispatch = useDispatch()
   const [animation, setAnimation] = useState('')
-  const onClick = () => {
-    setAnimation('clicked')
-    dispatch(toggleScreen())
-  }
+  const dispatch = useDispatch()
 
   useEffect(() => {
     show && setAnimation('active jello delay-1')
   }, [show])
+
+  const onClick = () => {
+    setAnimation('clicked')
+    dispatch(toggleScreen())
+  }
 
   return (
     <div className="nav flex-center mt-2 mb-auto">
