@@ -1,24 +1,21 @@
-export const _status = {
+export const status = {
   app: {
-    rulesAccepted: true,
+    rulesAccepted: false,
     form: {},
-    formFilled: true,
-    invitesLeft: 0
+    formFilled: false,
+    invitesLeft: 2
   },
   game: {
+    picksAvailable: 3,
+    timesToShuffle: 3,
     totalScore: 0,
     currentScore: [],
     selectedCards: [],
-    gameResults: [],
-
-    picksAvailable: 1,
-    picksEnabled: false,
-    shuffleDuration: 500,
-    timesToShuffle: 1
+    gameResults: []
   }
 }
 
-export const status = {
+export const _status = {
   app: {
     rulesAccepted: true,
     form: {},

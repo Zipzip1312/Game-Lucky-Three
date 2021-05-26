@@ -20,10 +20,9 @@ export default function ScoreCard({
   const [showScore, setShowScore] = useState(true)
   const [status, setStatus] = useState(gameOver ? CARD_SEALED : CARD_OPENED) // className
   const dispatch = useDispatch()
-  const select = async (cardIndex) => {
+  const select = async () => {
     const score = await dispatch(makePick(cardIndex))
     setScore(score)
-    setShowScore(true)
     setStatus(CARD_OPENED)
   }
   const isSelectable = () =>
@@ -40,11 +39,11 @@ export default function ScoreCard({
   useEffect(() => {
     const cardStatusHandler = () => {
       sealed && setStatus(selected ? CARD_OPENED : CARD_SEALED) // hide score behind the seal or open if card is selected
-      setShowScore(!picksEnabled) // remove score from the DOM if player still have some picks
+      setShowScore(status !== CARD_SEALED) // remove score from the DOM when sealed
       picksEnabled && setStatus(selected ? CARD_SELECTED : CARD_SEALED)
     }
     !gameOver && cardStatusHandler()
-  }, [gameOver, sealed, selected, picksEnabled])
+  }, [gameOver, sealed, selected, picksEnabled, status])
   // -----------------------------
   // Show all cards when the game is over
   // -----------------------------
@@ -66,7 +65,7 @@ export default function ScoreCard({
     <div
       className={`score flex-center flex-column ${status}`}
       {...flippedProps}
-      onClick={() => isSelectable() && select(cardIndex)}
+      onClick={() => isSelectable() && select()}
     >
       <span className="seal"></span>
       <span className="coin"></span>
