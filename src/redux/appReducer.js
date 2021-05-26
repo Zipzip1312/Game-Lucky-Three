@@ -1,9 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import history from '../history'
 import { status } from 'mock'
 
 const sleep = (m) => new Promise((r) => setTimeout(r, m))
-
 export const fetchStatus = createAsyncThunk('fetchStatus', async () => {
   await sleep(1000)
   return status
@@ -23,10 +21,6 @@ export const slice = createSlice({
     invitesLeft: 2
   },
   reducers: {
-    setScreen: (state, { payload }) => {
-      state.activeScreen = payload
-      history.push(payload)
-    },
     toggleScreen: (state) => {
       let activeScreen = 0
       state.rulesAccepted && activeScreen++
@@ -69,7 +63,6 @@ export const slice = createSlice({
 })
 
 export const {
-  setScreen,
   toggleScreen,
   toggleNav,
   toggleRules,
