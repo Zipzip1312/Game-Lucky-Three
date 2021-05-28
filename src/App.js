@@ -1,10 +1,9 @@
 import { useState, useEffect, createRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Route, useLocation } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import { CSSTransition } from 'react-transition-group'
 import { fetchStatus } from 'redux/appReducer'
 import isSafari from 'util/isSafari'
-import history from './history'
 // Images ---------------------------------
 import imagePreload from 'util/imagePreload'
 import ScoreHolderImage from 'images/score-holder.svg'
@@ -27,7 +26,6 @@ const routes = [
 ]
 
 function App() {
-  const activeScreen = useSelector((state) => state.app.activeScreen)
   const { pending } = useSelector((state) => state.app)
   const classes = 'app flex-center flex-column'
   const [showSpaceBg, setShowSpaceBg] = useState(false)
@@ -41,13 +39,6 @@ function App() {
     setTimeout(setShowSpaceBg, isSafari() ? 0 : 1000, true) // fix bug on android webview
     dispatch(fetchStatus())
   }, [dispatch])
-  // -----------------------------
-  // Track for screen change to sync it with history and keep query params
-  // -----------------------------
-  const query = useLocation().search
-  useEffect(() => {
-    activeScreen && history.push(activeScreen + query)
-  }, [activeScreen, query])
   // -----------------------------
   // Create ref for each route
   // -----------------------------
