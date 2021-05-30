@@ -105,9 +105,6 @@ export const _status = {
         score: 0,
         won: true
       }
-    ],
-    gameOver: true,
-    showPicksCounter: true,
-    picksEnabled: false
+    ]
   }
 }

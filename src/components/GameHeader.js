@@ -72,10 +72,12 @@ const GameHeader = ({ shuffling, gameOver }) => {
           <PicksCounter picks={picks} selecting={currentScore.length > 0} />
         </>
       ) : (
-        <>
-          <GameTitle picks={picks} />
-          <StartButton disabled={shuffling} />
-        </>
+        !gameOver && (
+          <>
+            <GameTitle picks={picks} />
+            <StartButton disabled={shuffling} />
+          </>
+        )
       )}
 
       <HailCard show={gameOver} />
