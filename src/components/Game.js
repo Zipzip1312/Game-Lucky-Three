@@ -6,8 +6,15 @@ import ScoreCard from 'components/ScoreCard'
 import Confetti from 'components/Confetti'
 
 const Game = () => {
-  const { scores, indexes, shuffling, selectedCards, picksEnabled, gameOver } =
-    useSelector((state) => state.game)
+  const {
+    scores,
+    indexes,
+    shuffling,
+    selectedCards,
+    picksEnabled,
+    gameOver,
+    showConfetti
+  } = useSelector((state) => state.game)
   const dispatch = useDispatch()
   const flipKey = JSON.stringify(indexes)
   const spring = { stiffness: 300, damping: 30 }
@@ -36,7 +43,7 @@ const Game = () => {
           </Flipped>
         ))}
       </Flipper>
-      {gameOver && <Confetti />}
+      {gameOver && showConfetti && <Confetti />}
     </div>
   )
 }

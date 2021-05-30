@@ -5,6 +5,7 @@ const apiMiddleware = (store) => (next) => (action) => {
   if (action.type === 'fetchStatus/fulfilled') {
     const { app, game } = action.payload
     game.gameOver = game.gameResults.length > 0
+    game.showConfetti = !game.gameOver // show confetti only once, not for returned players
     store.dispatch(updateGameState(game))
     store.dispatch(updateAppState(app))
     store.dispatch(toggleScreen())

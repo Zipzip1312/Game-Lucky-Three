@@ -19,7 +19,8 @@ export const slice = createSlice({
     totalScore: 0,
     currentScore: [],
     selectedCards: [],
-    gameResults: []
+    gameResults: [],
+    showConfetti: true
   },
   reducers: {
     setPlayer: (state, { payload }) => {
