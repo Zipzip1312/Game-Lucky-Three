@@ -1,12 +1,8 @@
-import { useState } from 'react'
-
-export default function FormCheckbox({ label, isActive }) {
-  const [active, setActive] = useState(isActive)
-
+export default function FormCheckbox({ label, active, onClick }) {
   return (
     <div
-      className={`checkbox flex-center ${active ? 'active animate jello' : ''}`}
-      onClick={() => setActive(!active)}
+      className={`checkbox flex-center ${active ? 'active' : ''}`}
+      onClick={onClick}
     >
       <span>{label}</span>
     </div>

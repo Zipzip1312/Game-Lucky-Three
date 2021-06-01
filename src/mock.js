@@ -1,6 +1,6 @@
 export const status = {
   app: {
-    rulesAccepted: false,
+    rulesAccepted: true,
     form: {},
     formFilled: false,
     invitesLeft: 2

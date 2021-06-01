@@ -15,22 +15,91 @@
     }
   }
 
+  .checkbox,
+  .birthdaypicker > select {
+    color: $blue;
+    @extend .bold;
+    cursor: pointer;
+    background-image: url(../images/holder.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+
+    &.active {
+      background-image: url(../images/holder-active.svg);
+      animation-name: jello;
+      transform-origin: center;
+      animation-duration: 1s;
+      animation-fill-mode: both;
+    }
+  }
+
   .checkbox {
     width: 2.2rem;
     height: 1.8rem;
-    color: $blue;
     font-size: 0.55rem;
     margin: 0 0.25rem;
-    cursor: pointer;
-    background: url(../images/holder.svg) no-repeat center;
-    background-size: 100% 100%;
-    @extend .bold;
-    &.active {
-      background: url(../images/holder-active.svg) no-repeat center;
-    }
     > span {
       height: 0.7rem;
       white-space: nowrap;
+    }
+  }
+
+  .birthdaypicker > select {
+    width: auto;
+    min-height: 2.7rem;
+    font-size: 1.2rem;
+    line-height: 2;
+    padding-bottom: 0.2em;
+    max-width: 100%;
+    margin: 0.2rem 0.4rem;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+    background-color: transparent;
+
+    /* Align text in select boxes */
+    &.select-day {
+      width: 4.5rem;
+      padding-left: 1.1rem;
+    }
+    &.select-month {
+      width: 6rem;
+      padding-left: 1.5rem;
+    }
+    &.select-year {
+      width: 5rem;
+      padding-left: 1.6rem;
+    }
+
+    &.active {
+      &.select-day {
+        padding-left: 1.5rem;
+      }
+      &.select-month {
+        padding-left: 0.7rem;
+      }
+      &.select-year {
+        padding-left: 1.2rem;
+      }
+    }
+
+    /* Set options to normal weight */
+    > option {
+      font-weight: normal;
+    }
+
+    /* States styles */
+    &:hover,
+    &:focus,
+    &:active {
+      border-color: none;
+      outline: none;
+    }
+    /* Hide arrow icon in IE browsers */
+    &::-ms-expand {
+      display: none;
     }
   }
 
