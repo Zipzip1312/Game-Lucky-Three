@@ -13,35 +13,19 @@ export default function Form() {
     female: 'жін',
     other: 'інше'
   }
-
-  const age = {
-    '<30': 'до 30',
-    '30-40': '30-40',
-    '40-50': '40-50',
-    '50-60': '50-60',
-    '60+': 'за 60'
-  }
+  const [activeSex, setActiveSex] = useState('')
 
   const setSocialMedia = (link) => {
     dispatch(toggleFormFilled(true))
     console.log(`Selected: ${link}`)
   }
-
-  const [activeSex, setActiveSex] = useState('')
-  const [activeAge, setActiveAge] = useState('')
   // ---------------------------------------
-  // const dateValue = 503280000000
   let dateValue = ''
   // dateValue = '1985-12-13'
   const [date, setDate] = useState(dateValue)
-  // const [date, setDate] = useState(new Date('1985/12/13'))
   // ---------------------------------------
   return (
-    <div className="form flex-center mb-1">
-      <BirthdayPicker
-        birthday={date}
-        onUpdate={(newDate) => setDate(newDate)}
-      />
+    <div className="form flex-center">
       <div className="form-control">
         <span className="label text-gradient">Стать?</span>
         {Object.entries(sex).map(([key, label]) => (
@@ -53,23 +37,21 @@ export default function Form() {
           />
         ))}
       </div>
-      <div className="form-control">
-        <span className="label text-gradient">Вік?</span>
-        {Object.entries(age).map(([key, label]) => (
-          <FormCheckbox
-            label={label}
-            active={key === activeAge}
-            key={key}
-            onClick={() => setActiveAge(key)}
-          />
-        ))}
+      <div className="form-control flex-column">
+        <span className="label text-gradient nowrap mb-05">
+          Коли твій День народження?
+        </span>
+        <BirthdayPicker
+          birthday={date}
+          onUpdate={(newDate) => setDate(newDate)}
+        />
       </div>
-      <div className="form-control">
-        <span className="label text-gradient nowrap">
+      <div className="form-control flex-column">
+        <span className="label text-gradient nowrap mb-05">
           Де з тобою краще спілкуватись?
         </span>
+        <SocialLinks activeLink="" onClick={(link) => setSocialMedia(link)} />
       </div>
-      <SocialLinks activeLink="" onClick={(link) => setSocialMedia(link)} />
     </div>
   )
 }

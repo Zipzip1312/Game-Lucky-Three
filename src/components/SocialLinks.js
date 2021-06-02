@@ -9,7 +9,7 @@ export default function SocialLinks({ onClick, activeLink = 'telegram' }) {
   }
 
   return (
-    <div className="social-links flex-center mt-05">
+    <div className="social-links flex-center">
       {media.map((link) => {
         return (
           <div

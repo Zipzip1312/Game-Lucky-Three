@@ -3,15 +3,18 @@
 
   &-control {
     @extend .flex-center;
-    margin-top: 1rem;
-  }
-
-  .label {
-    font-size: 1.2rem;
-    padding-bottom: 0.5rem;
-    @extend .bold;
-    &:not(:last-child) {
+    margin-bottom: 1rem;
+    .label {
+      font-size: 1.2rem;
+      line-height: 2;
       margin-right: 0.5rem;
+      @extend .bold;
+    }
+    &.flex-column {
+      .label {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+      }
     }
   }
 
@@ -35,12 +38,12 @@
   }
 
   .checkbox {
-    width: 2.2rem;
-    height: 1.8rem;
-    font-size: 0.55rem;
-    margin: 0 0.25rem;
+    width: 2.7rem;
+    height: 2.2rem;
+    font-size: 1rem;
+    margin: 0 0.4rem;
     > span {
-      height: 0.7rem;
+      padding-bottom: 0.3rem;
       white-space: nowrap;
     }
   }

@@ -38,8 +38,8 @@ export default function InviteScreen() {
       <div className={`card-info bold nowrap ${doneInviting ? 'hidden' : ''}`}>
         розкажи про нас {inviteText}
       </div>
-      <div className="form flex-center">
-        <div className="form-control w-100 space-around mb-1">
+      <div className="form flex-center mt-1">
+        <div className="form-control w-100 space-around">
           {!doneInviting && (
             <div className="label mr-1">
               <SocialLinks onClick={selectMedia} activeLink={media} />
