@@ -23,12 +23,17 @@ function createRange(start, end, pad = true, reverse = false) {
   return reverse ? range.reverse() : range
 }
 
-const Option = ({ value, label = false }) => {
-  return <option value={value}>{label || value}</option>
+function datePropsNotEmpty(state, dateProps) {
+  for (let i = 0; i < dateProps.length; i++) {
+    const prop = dateProps[i]
+    if (state[prop].value === '') return false
+  }
+
+  return true
 }
 
 const Select = ({
-  type,
+  dateProp,
   value,
   firstOption,
   options,
@@ -37,7 +42,7 @@ const Select = ({
 }) => {
   return (
     <select
-      className={`select-${type} ${value && 'active'}`}
+      className={`select-${dateProp} ${value && 'active'}`}
       value={value}
       onChange={onChange}
     >
@@ -46,7 +51,7 @@ const Select = ({
       </option>
 
       {options.map((option, i) => (
-        <option value={option} key={`${type}-${i}`}>
+        <option value={option} key={`${dateProp}-${i}`}>
           {labels.length ? labels[i] : option}
         </option>
       ))}
@@ -54,45 +59,55 @@ const Select = ({
   )
 }
 
-export default function BirthdayPicker({ date }) {
-  const [value, setValue] = useState({
-    day: date ? date.getDate() : '',
-    month: date ? date.getMonth() : '',
-    year: date ? date.getFullYear() : ''
+export default function BirthdayPicker({ birthday, onUpdate }) {
+  const date = birthday ? new Date(birthday) : undefined
+  const dateProps = ['day', 'month', 'year']
+  const [state, setState] = useState({
+    date,
+    day: {
+      value: date ? date.getDate() : '',
+      options: createRange(1, 31),
+      firstOption: 'День'
+    },
+    month: {
+      value: date ? date.getMonth() + 1 : '',
+      options: createRange(1, 12),
+      firstOption: 'Місяць',
+      labels: monthNames
+    },
+    year: {
+      value: date ? date.getFullYear() : '',
+      options: createRange(1921, 2021, false, true),
+      firstOption: 'Рік'
+    }
   })
-  const days = createRange(1, 31)
-  const months = createRange(0, 11)
-  const years = createRange(1921, 2021, false, true)
 
-  const onChange = (key, newValue) => {
-    setValue({ ...value, [key]: newValue })
-    console.log({ ...value, [key]: newValue })
+  const onChange = (dateProp, newValue) => {
+    const newState = {
+      ...state,
+      [dateProp]: { ...state[dateProp], value: newValue }
+    }
+
+    if (datePropsNotEmpty(newState, dateProps)) {
+      newState.date = [
+        ...dateProps.reverse().map((prop) => newState[prop].value)
+      ].join('-')
+      onUpdate(newState.date)
+    }
+
+    setState(newState)
   }
 
   return (
     <div className="birthdaypicker flex-center">
-      <Select
-        type="day"
-        value={value.day}
-        firstOption="День"
-        options={days}
-        onChange={(event) => onChange('day', event.target.value)}
-      />
-      <Select
-        type="month"
-        value={value.month}
-        firstOption="Місяць"
-        options={months}
-        labels={monthNames}
-        onChange={(event) => onChange('month', event.target.value)}
-      />
-      <Select
-        type="year"
-        value={value.year}
-        firstOption="Рік"
-        options={years}
-        onChange={(event) => onChange('year', event.target.value)}
-      />
+      {dateProps.map((prop) => (
+        <Select
+          dateProp={prop}
+          onChange={(event) => onChange(prop, event.target.value)}
+          key={prop}
+          {...state[prop]}
+        />
+      ))}
     </div>
   )
 }

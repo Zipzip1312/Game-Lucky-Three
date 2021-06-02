@@ -30,14 +30,18 @@ export default function Form() {
   const [activeSex, setActiveSex] = useState('')
   const [activeAge, setActiveAge] = useState('')
   // ---------------------------------------
-  // const dateValue = '1985/12/13'
-  const dateValue = ''
-  const [date, setDate] = useState(dateValue ? new Date(dateValue) : '')
+  // const dateValue = 503280000000
+  let dateValue = ''
+  // dateValue = '1985-12-13'
+  const [date, setDate] = useState(dateValue)
   // const [date, setDate] = useState(new Date('1985/12/13'))
   // ---------------------------------------
   return (
     <div className="form flex-center mb-1">
-      <BirthdayPicker date={date} />
+      <BirthdayPicker
+        birthday={date}
+        onUpdate={(newDate) => setDate(newDate)}
+      />
       <div className="form-control">
         <span className="label text-gradient">Стать?</span>
         {Object.entries(sex).map(([key, label]) => (
