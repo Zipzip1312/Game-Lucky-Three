@@ -27,7 +27,6 @@ const routes = [
 
 function App() {
   const { pending } = useSelector((state) => state.app)
-  const classes = 'app flex-center flex-column'
   const [showSpaceBg, setShowSpaceBg] = useState(false)
   const dispatch = useDispatch()
   // -----------------------------
@@ -43,10 +42,12 @@ function App() {
   // Create ref for each route
   // -----------------------------
   routes.forEach(({ name }) => (routes[name] = createRef()))
+  // Wait for api response
+  if (pending) return <></>
 
   return (
     <>
-      <div className={`${classes} ${pending ? 'pending' : 'animate zoomIn'}`}>
+      <div className="app flex-center flex-column">
         {routes.map(({ path, name, Component }) => (
           <Route key={path} exact path={path}>
             {({ match }) => (
