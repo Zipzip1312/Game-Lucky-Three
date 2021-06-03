@@ -6,10 +6,9 @@ import WelcomeScreen from 'components/screens/WelcomeScreen'
 import FormScreen from 'components/screens/FormScreen'
 import InviteScreen from 'components/screens/InviteScreen'
 import GameScreen from 'components/screens/GameScreen'
-// import Ruler from 'components/Ruler'
 
 const routes = [
-  { path: ['/welcome'], name: 'Welcome', Component: WelcomeScreen },
+  { path: '/welcome', name: 'Welcome', Component: WelcomeScreen },
   { path: '/form', name: 'Form', Component: FormScreen },
   { path: '/invite', name: 'Invite', Component: InviteScreen },
   { path: '/game', name: 'Game', Component: GameScreen }
