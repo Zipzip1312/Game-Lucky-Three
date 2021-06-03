@@ -20,7 +20,7 @@ export const slice = createSlice({
       sex: '',
       birthday: '',
       messenger: '',
-      isDisabled: false
+      disabled: false
     },
     formFilled: false,
     inviteLink: '',
@@ -53,6 +53,10 @@ export const slice = createSlice({
         }
       }
       state.formFilled = formFiled
+      state.enableNav = formFiled
+    },
+    disableForm: (state) => {
+      state.form.disabled = true
     },
     setInviteLink: (state, { payload }) => {
       state.inviteLink = payload
@@ -83,6 +87,7 @@ export const {
   toggleRules,
   toggleRulesAccepted,
   updateForm,
+  disableForm,
   setInviteLink,
   handleSendInvite,
   updateState

@@ -1,22 +1,15 @@
+import { useDispatch } from 'react-redux'
+import { disableForm } from 'redux/appReducer'
 import MenuIcon from 'images/menu-icon.svg'
-// ------------------------------
-import { useSelector, useDispatch } from 'react-redux'
-import { useEffect } from 'react'
-import { toggleNav } from 'redux/appReducer'
-// ------------------------------
-import Stars from 'components/Stars'
 import Form from 'components/Form'
+import Stars from 'components/Stars'
 import NavButton from 'components/NavButton'
 
 export default function FormScreen() {
-  // ------------------------------
-  const formFilled = useSelector((state) => state.app.formFilled)
   const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(toggleNav(formFilled))
-  }, [dispatch, formFilled])
-  // ------------------------------
+  const handleDisableForm = () => {
+    setTimeout(dispatch, 1000, disableForm())
+  }
 
   return (
     <>
@@ -33,7 +26,7 @@ export default function FormScreen() {
         <Form />
         <Stars />
       </div>
-      <NavButton />
+      <NavButton onClick={handleDisableForm} />
     </>
   )
 }

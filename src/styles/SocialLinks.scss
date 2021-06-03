@@ -40,4 +40,8 @@
       }
     }
   }
+
+  &.disabled .link {
+    opacity: 0.7;
+  }
 }

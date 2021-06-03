@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useState, useEffect } from 'react'
 import { toggleScreen } from 'redux/appReducer'
 
-export default function NavButton() {
+export default function NavButton(props) {
   const show = useSelector((state) => state.app.enableNav)
   const [animation, setAnimation] = useState('')
   const dispatch = useDispatch()
@@ -11,9 +11,10 @@ export default function NavButton() {
     show && setAnimation('active jello delay-1')
   }, [show])
 
-  const onClick = () => {
+  const handleClick = () => {
     setAnimation('clicked')
     dispatch(toggleScreen())
+    props.onClick && props.onClick()
   }
 
   return (
@@ -23,7 +24,10 @@ export default function NavButton() {
           show ? 'bounceInLeft' : 'bounceOutRight'
         }`}
       >
-        <div className={`link animate ${animation}`} onClick={onClick}></div>
+        <div
+          className={`link animate ${animation}`}
+          onClick={handleClick}
+        ></div>
       </div>
     </div>
   )

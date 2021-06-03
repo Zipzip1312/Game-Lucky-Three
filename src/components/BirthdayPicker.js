@@ -38,13 +38,15 @@ const Select = ({
   firstOption,
   options,
   labels = [],
-  onChange
+  onChange,
+  disabled
 }) => {
   return (
     <select
       className={`select-${dateProp} ${value && 'active'}`}
       value={value}
       onChange={onChange}
+      disabled={disabled}
     >
       <option value="" disabled>
         {firstOption}
@@ -59,7 +61,7 @@ const Select = ({
   )
 }
 
-export default function BirthdayPicker({ birthday, onUpdate }) {
+export default function BirthdayPicker({ birthday, onUpdate, disabled }) {
   const date = birthday ? new Date(birthday) : undefined
   const dateProps = ['day', 'month', 'year']
   const [state, setState] = useState({
@@ -106,6 +108,7 @@ export default function BirthdayPicker({ birthday, onUpdate }) {
           onChange={(event) => onChange(prop, event.target.value)}
           key={prop}
           {...state[prop]}
+          disabled={disabled}
         />
       ))}
     </div>

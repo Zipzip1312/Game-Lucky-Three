@@ -1,8 +1,14 @@
-export default function FormCheckbox({ label, active, onClick }) {
+export default function FormCheckbox({
+  label,
+  active,
+  onClick,
+  disabled = false
+}) {
+  const classes = `checkbox flex-center ${disabled ? 'disabled' : ''}`
   return (
     <div
-      className={`checkbox flex-center ${active ? 'active' : ''}`}
-      onClick={onClick}
+      className={`${classes} ${active ? 'active' : ''} `}
+      onClick={() => !disabled && onClick()}
     >
       <span>{label}</span>
     </div>

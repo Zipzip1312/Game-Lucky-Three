@@ -46,6 +46,9 @@
       padding-bottom: 0.3rem;
       white-space: nowrap;
     }
+    &.disabled {
+      opacity: 0.7;
+    }
   }
 
   .birthdaypicker > select {

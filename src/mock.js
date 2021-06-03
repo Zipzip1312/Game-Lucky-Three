@@ -1,12 +1,14 @@
 export const status = {
   app: {
-    rulesAccepted: false,
+    rulesAccepted: true,
     form: {
       sex: '',
       birthday: '',
-      // birthday: '1985-12-13',
       messenger: '',
-      isDisabled: false
+      // sex: 1,
+      // birthday: '1985-12-13',
+      // messenger: 'telegram',
+      disabled: false
     },
     formFilled: false,
     inviteLink: '',
