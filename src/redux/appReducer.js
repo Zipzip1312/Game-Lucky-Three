@@ -23,6 +23,7 @@ export const slice = createSlice({
       isDisabled: false
     },
     formFilled: false,
+    inviteLink: '',
     invitesLeft: 2
   },
   reducers: {
@@ -53,6 +54,9 @@ export const slice = createSlice({
       }
       state.formFilled = formFiled
     },
+    setInviteLink: (state, { payload }) => {
+      state.inviteLink = payload
+    },
     handleSendInvite: (state) => {
       state.invitesLeft = state.invitesLeft - 1
     },
@@ -79,6 +83,7 @@ export const {
   toggleRules,
   toggleRulesAccepted,
   updateForm,
+  setInviteLink,
   handleSendInvite,
   updateState
 } = slice.actions

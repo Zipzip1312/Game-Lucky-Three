@@ -9,6 +9,7 @@ export const status = {
       isDisabled: false
     },
     formFilled: false,
+    inviteLink: '',
     invitesLeft: 2
   },
   game: {

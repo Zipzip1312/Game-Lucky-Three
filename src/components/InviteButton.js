@@ -12,14 +12,14 @@ const SelectMediaBtn = () => {
   )
 }
 
-const InviteBtn = ({ media, onClick }) => {
+const InviteBtn = ({ inviteLink, onClick }) => {
   const [animation, setAnimation] = useState('headShake')
 
   useEffect(() => {
     setAnimation('headShake')
     const timeout = setTimeout(setAnimation, 500, '')
     return () => clearTimeout(timeout)
-  }, [media])
+  }, [inviteLink])
 
   return (
     <div className={`active light-blue animate ${animation}`} onClick={onClick}>
@@ -38,15 +38,15 @@ const ToGameBtn = () => {
   )
 }
 
-export default function InviteButton({ media, toGame, onClick }) {
-  const animation = 'animate bounceInRight mt-minus-1'
+export default function InviteButton({ inviteLink, showToGameBtn, onClick }) {
+  const toGameBtnClasses = 'animate bounceInRight mt-minus-1'
 
   return (
-    <div className={`form-submit ${toGame ? animation : ''}`}>
-      {toGame ? (
+    <div className={`form-submit ${showToGameBtn ? toGameBtnClasses : ''}`}>
+      {showToGameBtn ? (
         <ToGameBtn />
-      ) : media ? (
-        <InviteBtn media={media} onClick={onClick} />
+      ) : inviteLink ? (
+        <InviteBtn inviteLink={inviteLink} onClick={onClick} />
       ) : (
         <SelectMediaBtn />
       )}
