@@ -16,7 +16,12 @@ export const slice = createSlice({
     enableNav: false,
     showRules: false,
     rulesAccepted: false,
-    form: {},
+    form: {
+      sex: '',
+      birthday: '',
+      messenger: '',
+      isDisabled: false
+    },
     formFilled: false,
     invitesLeft: 2
   },
@@ -38,9 +43,15 @@ export const slice = createSlice({
     toggleRulesAccepted: (state) => {
       state.rulesAccepted = !state.rulesAccepted
     },
-    toggleFormFilled: (state, { payload }) => {
-      state.formFilled = payload
-      state.enableNav = payload
+    updateForm: (state, { payload }) => {
+      state.form = payload
+      let formFiled = true
+      for (const key in state.form) {
+        if (state.form[key] === '') {
+          formFiled = false
+        }
+      }
+      state.formFilled = formFiled
     },
     handleSendInvite: (state) => {
       state.invitesLeft = state.invitesLeft - 1
@@ -67,7 +78,7 @@ export const {
   toggleNav,
   toggleRules,
   toggleRulesAccepted,
-  toggleFormFilled,
+  updateForm,
   handleSendInvite,
   updateState
 } = slice.actions
