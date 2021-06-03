@@ -51,7 +51,7 @@
   .birthdaypicker > select {
     width: auto;
     min-height: 2.7rem;
-    font-size: 1.2rem;
+    font-size: 1rem;
     line-height: 2;
     padding-bottom: 0.2em;
     max-width: 100%;
@@ -64,21 +64,21 @@
 
     /* Align text in select boxes */
     &.select-day {
-      width: 4.5rem;
-      padding-left: 1.1rem;
+      width: 4rem;
+      padding-left: 1rem;
     }
     &.select-month {
-      width: 6rem;
+      width: 5.5rem;
       padding-left: 1.5rem;
     }
     &.select-year {
-      width: 5rem;
+      width: 4.5rem;
       padding-left: 1.6rem;
     }
 
     &.active {
       &.select-day {
-        padding-left: 1.5rem;
+        padding-left: 1.4rem;
       }
       &.select-month {
         padding-left: 0.7rem;
