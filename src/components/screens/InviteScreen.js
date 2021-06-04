@@ -27,13 +27,13 @@ export default function InviteScreen() {
         <br />
         друга
       </div>
-      <div className={`card-info bold nowrap ${doneInviting ? 'hidden' : ''}`}>
+      <div className={`card-info nowrap lh-1 ${doneInviting ? 'hidden' : ''}`}>
         {inviteFriendsText}
       </div>
       <div className="form flex-center mt-2">
         <div className="form-control w-100 space-around">
           {!doneInviting && (
-            <div className="label mr-1">
+            <div className="label">
               <SocialLinks
                 onClick={(link) => dispatch(setInviteLink(link))}
                 activeLink={inviteLink}

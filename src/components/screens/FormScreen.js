@@ -18,7 +18,7 @@ export default function FormScreen() {
           <img src={MenuIcon} alt="Авторизуйся" />
           <span className="text-gradient">Підкажи</span>
         </div>
-        <div className="card-info bold mb-1">
+        <div className="card-info mb-1">
           хочемо знати трішки
           <br />
           більше про тебе ;)

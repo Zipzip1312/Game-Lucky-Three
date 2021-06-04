@@ -34,9 +34,7 @@ export default function Form() {
         ))}
       </div>
       <div className="form-control flex-column">
-        <span className="label text-gradient nowrap mb-05">
-          Коли твій День народження?
-        </span>
+        <span className="label text-gradient">Коли твій День народження?</span>
         <BirthdayPicker
           birthday={form.birthday}
           onUpdate={(birthday) => handleFormUpdate({ birthday })}
@@ -44,7 +42,7 @@ export default function Form() {
         />
       </div>
       <div className="form-control flex-column">
-        <span className="label text-gradient nowrap mb-05">
+        <span className="label text-gradient">
           Де з тобою краще спілкуватись?
         </span>
         <SocialLinks
