@@ -15,8 +15,9 @@ import SpaceBackground from 'components/SpaceBackground'
 
 function AppWrapper() {
   const { pending } = useSelector((state) => state.app)
-  const [animation, setAnimation] = useState('hidden')
+  const [showApp, setShowApp] = useState(false)
   const [showSpaceBg, setShowSpaceBg] = useState(false)
+  const [animation, setAnimation] = useState('hidden')
   const dispatch = useDispatch()
   // -----------------------------
   // Initial setup
@@ -29,14 +30,19 @@ function AppWrapper() {
   }, [dispatch])
 
   useEffect(() => {
-    !pending && setAnimation('zoomIn')
+    if (!pending) {
+      setTimeout(setShowApp, 500, true)
+      setAnimation('zoomIn delay-0-5')
+    }
   }, [pending])
 
   return (
     <>
-      <div className={`app flex-center flex-column animate ${animation}`}>
-        <App />
-      </div>
+      {showApp && (
+        <div className={`app flex-center flex-column animate ${animation}`}>
+          <App />
+        </div>
+      )}
       {showSpaceBg && (
         <SpaceBackground
           size={{ width: window.innerWidth, height: window.innerHeight }}

@@ -25,7 +25,7 @@ export default function HailCard({ show }) {
             Очікуй на cms/viber повідомлення
           </span>
         </div>
-        <div className="card-info bold lh-1-3 fsz-1-3 pb-1">
+        <div className="card-info lh-1-3 fsz-1-3 pb-1">
           <span>
             про нарахування виграшних балів
             <br />
@@ -39,7 +39,7 @@ export default function HailCard({ show }) {
         <div className="card-title card-title-right hail pr-05 mb-2 mt-0">
           <span className="text-gradient">Вітаємо!</span>
         </div>
-        <div className="card-info flex-center space-around bold">
+        <div className="card-info flex-center space-around">
           <div className="card-info-title title-1 nowrap">Ти виграв</div>
           <div className="card-info-card">
             <div className="total-score red fsz-2 lh-1-3">{totalScore}</div>
