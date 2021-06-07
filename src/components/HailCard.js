@@ -20,12 +20,12 @@ export default function HailCard({ show }) {
     <>
       <div className={`card hail ${show ? 'open ' : ''} ${animationIn}`}>
         <img className="card-image hail" src={DogOkImg} alt="Game Logo" />
-        <div className="card-title card-title-right text-left pr-05 mb-2 pt-1 ml-minus-1">
+        <div className="card-title card-title-right text-left pr-05 mb-1 pt-1 ml-minus-1">
           <span className="title-3 lh-1-3 mt-minus-1">
             Очікуй на cms/viber повідомлення
           </span>
         </div>
-        <div className="card-info lh-1-3 fsz-1-3 pb-1">
+        <div className="card-info lh-1-3 fsz-1-3">
           <span>
             про нарахування виграшних балів
             <br />
