@@ -41,6 +41,9 @@
   background-repeat: no-repeat;
   background-position: center center;
 }
+.d-block {
+  display: block;
+}
 .d-flex {
   display: flex;
 }
@@ -226,4 +229,7 @@
 }
 .cursor-pointer {
   cursor: pointer;
+}
+.no-decoration {
+  text-decoration: none !important;
 }

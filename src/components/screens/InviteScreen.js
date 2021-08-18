@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { setInviteLink, handleSendInvite } from 'redux/appReducer'
+import { setInviteLink } from 'redux/appReducer'
 import DogsImg from 'images/dogs.svg'
 import Stars from 'components/Stars'
 import SocialLinks from 'components/SocialLinks'
@@ -39,11 +39,7 @@ export default function InviteScreen() {
               />
             </div>
           )}
-          <InviteButton
-            inviteLink={inviteLink}
-            showToGameBtn={doneInviting}
-            onClick={() => dispatch(handleSendInvite())}
-          />
+          <InviteButton inviteLink={inviteLink} showToGameBtn={doneInviting} />
         </div>
       </div>
       <Stars />

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { toggleScreen } from 'redux/appReducer'
+import { toggleScreen, handleSendInvite } from 'redux/appReducer'
 
 const SelectMediaBtn = () => {
   return (
@@ -12,8 +12,10 @@ const SelectMediaBtn = () => {
   )
 }
 
-const InviteBtn = ({ inviteLink, onClick }) => {
+const InviteBtn = ({ inviteLink }) => {
+  const classes = 'active light-blue d-block no-decoration animate'
   const [animation, setAnimation] = useState('headShake')
+  const dispatch = useDispatch()
 
   useEffect(() => {
     setAnimation('headShake')
@@ -22,9 +24,15 @@ const InviteBtn = ({ inviteLink, onClick }) => {
   }, [inviteLink])
 
   return (
-    <div className={`active light-blue animate ${animation}`} onClick={onClick}>
+    <a
+      href={`#${inviteLink}`}
+      className={`${classes} ${animation}`}
+      onClick={() => dispatch(handleSendInvite())}
+      // target="_blank"
+      rel="noreferrer"
+    >
       Запросити
-    </div>
+    </a>
   )
 }
 
@@ -38,7 +46,7 @@ const ToGameBtn = () => {
   )
 }
 
-export default function InviteButton({ inviteLink, showToGameBtn, onClick }) {
+export default function InviteButton({ inviteLink, showToGameBtn }) {
   const toGameBtnClasses = 'animate bounceInRight mt-minus-1'
 
   return (
@@ -46,7 +54,7 @@ export default function InviteButton({ inviteLink, showToGameBtn, onClick }) {
       {showToGameBtn ? (
         <ToGameBtn />
       ) : inviteLink ? (
-        <InviteBtn inviteLink={inviteLink} onClick={onClick} />
+        <InviteBtn inviteLink={inviteLink} />
       ) : (
         <SelectMediaBtn />
       )}
