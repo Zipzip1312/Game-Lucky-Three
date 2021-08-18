@@ -1,7 +1,10 @@
 import axios from 'axios'
 import getPlayerParam from 'util/getPlayerParam'
 
-axios.defaults.baseURL = 'http://games.epicentrk.test/api/'
+axios.defaults.baseURL =
+  process.env.NODE_ENV === 'production'
+    ? 'https://epicentrk-games.online/api/'
+    : 'http://games.epicentrk.test/api/'
 
 /** Common request headers */
 axios.interceptors.request.use(function (config) {
