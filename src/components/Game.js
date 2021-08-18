@@ -33,7 +33,7 @@ const Game = () => {
               <ScoreCard
                 cardIndex={i}
                 picksEnabled={picksEnabled}
-                sealed={shuffling}
+                sealed={shuffling || selectedCards.length}
                 selected={selectedCards.includes(i)}
                 gameOver={gameOver}
                 scores={scores}

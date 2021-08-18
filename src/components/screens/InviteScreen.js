@@ -16,7 +16,6 @@ export default function InviteScreen() {
 
   useEffect(() => {
     setDoneInviting(invitesLeft < 1)
-    // ToDo: done inviting -> send link and state to api for update
   }, [invitesLeft])
 
   return (

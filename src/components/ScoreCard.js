@@ -1,6 +1,7 @@
+import { makePick } from 'api'
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { makePick } from 'redux/gameReducer'
+import { disablePicks, updateCurrentScore } from 'redux/gameReducer'
 
 const CARD_OPENED = 'opened'
 const CARD_SELECTED = 'opened win'
@@ -20,13 +21,15 @@ export default function ScoreCard({
   const [showScore, setShowScore] = useState(true)
   const [status, setStatus] = useState(gameOver ? CARD_SEALED : CARD_OPENED) // className
   const dispatch = useDispatch()
-  const select = async () => {
-    const score = await dispatch(makePick(cardIndex))
-    setScore(score)
-    setStatus(CARD_OPENED)
-  }
   const isSelectable = () =>
     picksEnabled && !gameOver && !status.includes(CARD_OPENED)
+  const select = async () => {
+    dispatch(disablePicks())
+    const response = await makePick(cardIndex)
+    dispatch(updateCurrentScore({ index: cardIndex, ...response }))
+    setScore(response.score)
+    setStatus(CARD_OPENED)
+  }
   // -----------------------------
   // Update score
   // -----------------------------

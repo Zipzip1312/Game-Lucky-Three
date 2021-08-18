@@ -1,15 +1,20 @@
 import { updateState as updateAppState, toggleScreen } from 'redux/appReducer'
 import { updateState as updateGameState } from 'redux/gameReducer'
+import { acceptRules, saveProfile, sendInvite } from 'api'
 
 const apiMiddleware = (store) => (next) => (action) => {
-  if (action.type === 'fetchStatus/fulfilled') {
-    const { app, game } = action.payload
-    game.gameOver = game.gameResults.length > 0
-    game.showConfetti = !game.gameOver // show confetti only once, not for returned players
-    store.dispatch(updateGameState(game))
-    store.dispatch(updateAppState(app))
+  const { type } = action
+
+  if (type === 'fetchStatus/fulfilled') {
+    store.dispatch(updateGameState(action.payload.game))
+    store.dispatch(updateAppState(action.payload.app))
     store.dispatch(toggleScreen())
   }
+
+  type === 'app/toggleRulesAccepted' && acceptRules()
+  type === 'app/disableForm' && saveProfile(store.getState().app.form)
+  type === 'app/handleSendInvite' && sendInvite()
+
   next(action)
 }
 

@@ -1,10 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { status } from 'mock'
+import { getPlayerStatus } from 'api'
 
-const sleep = (m) => new Promise((r) => setTimeout(r, m))
 export const fetchStatus = createAsyncThunk('fetchStatus', async () => {
-  await sleep(1000)
-  return status
+  return await getPlayerStatus()
 })
 
 export const slice = createSlice({
@@ -75,9 +73,6 @@ export const slice = createSlice({
     [fetchStatus.fulfilled]: (state) => {
       state.pending = false
     }
-    // [fetchStatus.rejected]: (state, action) => {
-    //   state.pending = true
-    // }
   }
 })
 
