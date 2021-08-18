@@ -6,12 +6,14 @@ import WelcomeScreen from 'components/screens/WelcomeScreen'
 import FormScreen from 'components/screens/FormScreen'
 import InviteScreen from 'components/screens/InviteScreen'
 import GameScreen from 'components/screens/GameScreen'
+import ErrorScreen from 'components/screens/ErrorScreen'
 
 const routes = [
   { path: '/welcome', name: 'Welcome', Component: WelcomeScreen },
   { path: '/form', name: 'Form', Component: FormScreen },
   { path: '/invite', name: 'Invite', Component: InviteScreen },
-  { path: '/game', name: 'Game', Component: GameScreen }
+  { path: '/game', name: 'Game', Component: GameScreen },
+  { path: '/error', name: 'Error', Component: ErrorScreen }
 ]
 
 function App() {

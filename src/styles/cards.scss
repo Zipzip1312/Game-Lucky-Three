@@ -25,6 +25,11 @@
       top: -1rem;
       left: -0.8rem;
     }
+    &.error {
+      width: 43%;
+      top: -2rem;
+      left: -0.5rem;
+    }
   }
 
   &-info {
@@ -40,6 +45,12 @@
       padding: 0.8rem 1.3rem 1rem;
       line-height: 0.7;
     }
+
+    &.error {
+      padding-left: 1rem;
+      padding-right: 1rem;
+      font-size: 1.4rem;
+    }
   }
 
   &-title {
@@ -53,6 +64,9 @@
     line-height: 1.7;
     &-right {
       padding-left: 53%;
+    }
+    &-error {
+      padding-left: 50%;
     }
     > img {
       width: 2rem;

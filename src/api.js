@@ -9,16 +9,6 @@ axios.interceptors.request.use(function (config) {
   config.headers.token = getPlayerParam(false)
   return config
 })
-/** Handle errors */
-axios.interceptors.response.use(
-  (response) => {
-    return response
-  },
-  function (error) {
-    console.log(error)
-    return Promise.reject(error)
-  }
-)
 
 export async function getPlayerStatus() {
   const response = await axios.get('player')

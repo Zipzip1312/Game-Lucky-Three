@@ -22,7 +22,8 @@ export const slice = createSlice({
     },
     formFilled: false,
     inviteLink: '',
-    invitesLeft: 2
+    invitesLeft: 2,
+    error: null
   },
   reducers: {
     toggleScreen: (state) => {
@@ -64,6 +65,9 @@ export const slice = createSlice({
     handleSendInvite: (state) => {
       state.invitesLeft = state.invitesLeft - 1
     },
+    setError: (state, { payload }) => {
+      state.error = payload
+    },
     updateState: (state, { payload }) => {
       return { ...state, ...payload }
     }
@@ -73,6 +77,10 @@ export const slice = createSlice({
       state.pending = true
     },
     [fetchStatus.fulfilled]: (state) => {
+      state.pending = false
+    },
+    [fetchStatus.rejected]: (state) => {
+      state.activeScreen = 'error'
       state.pending = false
     }
   }
@@ -87,6 +95,7 @@ export const {
   disableForm,
   setInviteLink,
   handleSendInvite,
+  setError,
   updateState
 } = slice.actions
 
