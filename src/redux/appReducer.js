@@ -29,7 +29,7 @@ export const slice = createSlice({
       let activeScreen = 0
       state.rulesAccepted && activeScreen++
       state.formFilled && activeScreen++
-      state.invitesLeft < 1 && activeScreen++
+      state.invitesLeft < 1 && state.formFilled && activeScreen++
       state.activeScreen = state.screens[activeScreen]
       state.enableNav = false
     },
