@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { setError } from 'redux/appReducer'
 import history from '../../history'
+import { setError } from 'redux/appReducer'
 
 const apiErrorMiddleware = (store) => (next) => (action) => {
   /** Handle errors */
