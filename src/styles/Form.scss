@@ -154,5 +154,14 @@
         background-size: 100% 100%;
       }
     }
+
+    &.error {
+      display: inline-block;
+      text-decoration: none;
+      .btn {
+        display: inline-block;
+        padding: 0 1.5rem;
+      }
+    }
   }
 }
