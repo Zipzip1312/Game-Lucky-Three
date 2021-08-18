@@ -52,6 +52,8 @@ export const slice = createSlice({
       }
       state.formFilled = formFiled
       state.enableNav = formFiled
+      // set default inviteLink same as messenger
+      if (formFiled) state.inviteLink = state.form.messenger
     },
     disableForm: (state) => {
       state.form.disabled = true
