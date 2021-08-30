@@ -79,7 +79,7 @@ export default function BirthdayPicker({ birthday, onUpdate, disabled }) {
     },
     year: {
       value: date ? date.getFullYear() : '',
-      options: createRange(1921, 2021, false, true),
+      options: createRange(1921, 2005, false, true),
       firstOption: 'Рік'
     }
   })
