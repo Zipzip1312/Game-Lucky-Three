@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import isValidDate from 'util/isValidDate'
 
 const monthNames = [
   'Січень',
@@ -23,13 +24,20 @@ function createRange(start, end, pad = true, reverse = false) {
   return reverse ? range.reverse() : range
 }
 
-function datePropsNotEmpty(state, dateProps) {
+function datePropsFilled(state, dateProps) {
   for (let i = 0; i < dateProps.length; i++) {
-    const prop = dateProps[i]
-    if (state[prop].value === '') return false
+    if (state[dateProps[i]].value === '') return false
   }
-
   return true
+}
+
+function setInitialStateValues(obj) {
+  for (const key in obj) {
+    if (Object.hasOwnProperty.call(obj, key)) {
+      typeof obj[key] === 'string' ? (obj[key] = '') : (obj[key].value = '')
+    }
+  }
+  return obj
 }
 
 const Select = ({
@@ -62,7 +70,7 @@ const Select = ({
 }
 
 export default function BirthdayPicker({ birthday, onUpdate, disabled }) {
-  const date = birthday ? new Date(birthday) : undefined
+  const date = birthday ? new Date(birthday) : ''
   const dateProps = ['day', 'month', 'year']
   const [state, setState] = useState({
     date,
@@ -79,21 +87,29 @@ export default function BirthdayPicker({ birthday, onUpdate, disabled }) {
     },
     year: {
       value: date ? date.getFullYear() : '',
-      options: createRange(1921, 2005, false, true),
+      options: createRange(1925, 2005, false, true),
       firstOption: 'Рік'
     }
   })
+  const [hasError, setHasError] = useState(false)
 
   const onChange = (dateProp, newValue) => {
-    const newState = {
+    let newState = {
       ...state,
       [dateProp]: { ...state[dateProp], value: newValue }
     }
 
-    if (datePropsNotEmpty(newState, dateProps)) {
+    if (datePropsFilled(newState, dateProps)) {
       newState.date = [
         ...dateProps.reverse().map((prop) => newState[prop].value)
       ].join('-')
+
+      if (!isValidDate(newState.date)) {
+        newState = setInitialStateValues(newState)
+        setHasError(true)
+        setTimeout(setHasError, 1000, false)
+      }
+
       onUpdate(newState.date)
     }
 
@@ -101,7 +117,11 @@ export default function BirthdayPicker({ birthday, onUpdate, disabled }) {
   }
 
   return (
-    <div className="birthdaypicker flex-center">
+    <div
+      className={`birthdaypicker flex-center ${
+        hasError ? 'animate headShake' : ''
+      }`}
+    >
       {dateProps.map((prop) => (
         <Select
           dateProp={prop}
