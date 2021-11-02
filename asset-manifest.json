@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/Game-Lucky-Three/static/css/main.865dedfd.chunk.css",
+    "main.js": "/Game-Lucky-Three/static/js/main.a1eeb257.chunk.js",
+    "main.js.map": "/Game-Lucky-Three/static/js/main.a1eeb257.chunk.js.map",
+    "runtime-main.js": "/Game-Lucky-Three/static/js/runtime-main.aa9e4c23.js",
+    "runtime-main.js.map": "/Game-Lucky-Three/static/js/runtime-main.aa9e4c23.js.map",
+    "static/js/2.bffe77a4.chunk.js": "/Game-Lucky-Three/static/js/2.bffe77a4.chunk.js",
+    "static/js/2.bffe77a4.chunk.js.map": "/Game-Lucky-Three/static/js/2.bffe77a4.chunk.js.map",
+    "static/js/3.87c47ca7.chunk.js": "/Game-Lucky-Three/static/js/3.87c47ca7.chunk.js",
+    "static/js/3.87c47ca7.chunk.js.map": "/Game-Lucky-Three/static/js/3.87c47ca7.chunk.js.map",
+    "index.html": "/Game-Lucky-Three/index.html",
+    "static/css/main.865dedfd.chunk.css.map": "/Game-Lucky-Three/static/css/main.865dedfd.chunk.css.map",
+    "static/js/2.bffe77a4.chunk.js.LICENSE.txt": "/Game-Lucky-Three/static/js/2.bffe77a4.chunk.js.LICENSE.txt",
+    "static/media/bundle.scss": "/Game-Lucky-Three/static/media/viber.6ca918ef.svg",
+    "static/media/dog-ok-2.60a0a07b.svg": "/Game-Lucky-Three/static/media/dog-ok-2.60a0a07b.svg",
+    "static/media/dog.f613ca8c.svg": "/Game-Lucky-Three/static/media/dog.f613ca8c.svg",
+    "static/media/dogs.06946a8a.svg": "/Game-Lucky-Three/static/media/dogs.06946a8a.svg",
+    "static/media/menu-icon.1f97dba3.svg": "/Game-Lucky-Three/static/media/menu-icon.1f97dba3.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.aa9e4c23.js",
+    "static/js/2.bffe77a4.chunk.js",
+    "static/css/main.865dedfd.chunk.css",
+    "static/js/main.a1eeb257.chunk.js"
+  ]
+}
