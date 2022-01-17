@@ -9,7 +9,7 @@ export const slice = createSlice({
     showPicksCounter: false,
     shuffling: false,
     shuffleDuration: 1500,
-    timesToShuffle: 1,
+    timesToShuffle: 3,
     gameOver: false,
     scores: [1000, 500, 250, 250, 100, 100, 50, 50, 25, 25, 10, 10, 0, 0, 0, 0],
     indexes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], // for shuffling animation and further score select
